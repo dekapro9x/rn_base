@@ -7,6 +7,14 @@ target 'rn_base' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+  
+   # Cấu hình Permission:
+   permissions_path = '../node_modules/react-native-permissions/ios'
+   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
+   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
+   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"
+   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+   pod 'XCDYouTubeKit', '~> 2.8'
 
   target 'rn_baseTests' do
     inherit! :complete

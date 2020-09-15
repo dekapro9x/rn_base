@@ -12,6 +12,33 @@ What is the name of your State or Province? HaNoi
 What is the two-letter country code for this unit? VN
 Is CN=xuannam, OU=company, O=rabiloo, L=HaNoi, ST=HaNoi, C=VN correct? Y
 
+Vào build.gradle
+Thay
+signingConfigs {
+debug {
+storeFile file('debug.keystore')
+storePassword 'android'
+keyAlias 'androiddebugkey'
+keyPassword 'android'
+}
+}
+
+    Thành:
+       signingConfigs {
+          debug {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
+        release {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
+    }
+
 Vào : gradle.properties
 
 MYAPP_RELEASE_STORE_FILE=mykeystore.keystore

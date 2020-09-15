@@ -7,7 +7,7 @@ Các bước cài đặt:
 
 # yarn add @react-navigation/native
 
-# yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+# yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view react-native-tab-view
 
 # yarn add @react-navigation/stack
 
@@ -82,3 +82,19 @@ Link :https://github.com/react-native-community/react-native-modal
 Link : https://github.com/leecade/react-native-swiper
 
 # yarn add react-native-swiper@next
+
+---
+
+# 11.react-native-spinkit
+
+Link :https://github.com/maxs15/react-native-spinkit
+
+yarn add react-native-spinkit
+
+---
+
+# 12 :moment
+
+Link : https://momentjs.com
+
+yarn add moment

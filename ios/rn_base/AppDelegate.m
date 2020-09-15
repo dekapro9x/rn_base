@@ -3,8 +3,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
-#ifdef FB_SONARKIT_ENABLED
+#import "RNBootSplash.h"
+#ifdef FB_SONARKIT_ENABLED 
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
 #import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
@@ -43,7 +43,8 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  return YES;
+ [RNBootSplash initWithStoryboard:@"LaunchScreen" rootView:rootView];
+return YES;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

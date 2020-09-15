@@ -7,13 +7,22 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import {keyNavigation} from './items/KeyNavigator';
+import {KEY_NAVIGATION} from '../utils/keys/KeyNavigation';
 
 //Màn hình dành cho người dùng đã xác thực:
 import MainNavigator from './MainNavigator';
 
 //Màn hình dành cho người dùng chưa xác thực:
 import AuthNavigator from './AuthNavigatior';
+
+//Các màn hình không cần xác thực dùng cho toàn App:
+import AppIntro from '../screens/AppIntro/AppIntro';
+import Webview from '../screens/Webview/Webview';
+import Location from '../screens/Location/Location';
+import Map from '../screens/Map/Map';
+import Notification from '../screens/Notification/Notification';
+import QR from '../screens/QR/QR';
+import Video from '../screens/Video/Video';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -33,18 +42,34 @@ function RootNavigator() {
         }}>
         <RootStack.Navigator
           headerMode={'none'}
-          initialRouteName={keyNavigation.main_navigator}
+          initialRouteName={KEY_NAVIGATION.app_intro}
           screenOptions={{
             ...TransitionPresets.SlideFromRightIOS,
           }}>
           <RootStack.Screen
-            name={keyNavigation.main_navigator}
+            name={KEY_NAVIGATION.app_intro}
+            component={AppIntro}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.main_navigator}
             component={MainNavigator}
           />
           <RootStack.Screen
-            name={keyNavigation.auth_navigator}
+            name={KEY_NAVIGATION.auth_navigator}
             component={AuthNavigator}
           />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.location}
+            component={Location}
+          />
+          <RootStack.Screen name={KEY_NAVIGATION.map} component={Map} />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.notification}
+            component={Notification}
+          />
+          <RootStack.Screen name={KEY_NAVIGATION.qr} component={QR} />
+          <RootStack.Screen name={KEY_NAVIGATION.video} component={Video} />
+          <RootStack.Screen name={KEY_NAVIGATION.webview} component={Webview} />
         </RootStack.Navigator>
       </NavigationContainer>
     </>
