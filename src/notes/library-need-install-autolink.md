@@ -108,3 +108,9 @@ Link: https://github.com/ascoders/react-native-image-viewer
 yarn add react-native-image-zoom-viewer
 
 ---
+
+# 14: react-native-linear-gradient
+
+Link :https://github.com/react-native-community/react-native-linear-gradient
+
+yarn add react-native-linear-gradient

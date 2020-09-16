@@ -1,19 +1,12 @@
-//Library:
 import React, {PureComponent} from 'react';
 import {StyleSheet, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-
-//Setup:
+import ListMenuLocationSelection from './component/ListMenuLocationSelection';
+import {DATA_AROUND_LOCATION} from './DataAroundLocation';
+import CricleMapView from './component/CricleMapView';
+import MakerMapOnMapViewCricle from './component/MakerOnMapViewCricle';
+import ListMaker from './component/ListMaker';
 import {SIZE} from '../../utils';
-
-//Component:
-import ListMenuLocationSelection from './items/ListMenuLocationSelection';
-import CricleMapView from './items/CricleMapView';
-import ListMaker from './items/ListMaker';
-import MakerMapOnMapViewCricle from './items/MakerOnMapViewCricle';
-
-//Data:
-import {DATA_AROUND_LOCATION} from './utils/DataAroundLocation';
 
 export default class Project extends PureComponent {
   constructor(props) {
