@@ -23,6 +23,7 @@ import Map from '../screens/Map/Map';
 import Notification from '../screens/Notification/Notification';
 import QR from '../screens/QR/QR';
 import Video from '../screens/Video/Video';
+import NotificationDetail from '../screens/NotificationDetail/NotificationDetail';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -66,6 +67,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.notification}
             component={Notification}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.notification_detail}
+            component={NotificationDetail}
           />
           <RootStack.Screen name={KEY_NAVIGATION.qr} component={QR} />
           <RootStack.Screen name={KEY_NAVIGATION.video} component={Video} />

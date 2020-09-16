@@ -35,16 +35,11 @@ function AppIntroScreen() {
     );
     if (registration == null) {
       const response = await FetchApi.registrationDeviceId();
-      console.log('response', response);
       if (response && response.success) {
         await AsyncStorage.setItem(
           KEY_ASYNC_STORE.registration_device_ID,
           'DEVICE_ID_SUCCESS',
         );
-      } else if (response.status_code >= 500) {
-        checkError = 'server_maintain';
-      } else {
-        checkError = 'network';
       }
     }
   };

@@ -1,13 +1,14 @@
 //Library:
 import React, {useEffect, useRef} from 'react';
 import {TouchableOpacity, View} from 'react-native';
-import {COLOR, SIZE} from '../../../utils';
 import hexToRgba from 'hex-to-rgba';
 import * as Animatable from 'react-native-animatable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/core';
 
 //Setup:
 import {GetTimeJapan} from '../../../utils/modules/GetTimeJapan';
+import {COLOR, KEY_NAVIGATION, SIZE} from '../../../utils';
 
 //Component:
 import {AppText} from '../../../elements/AppText';
@@ -15,6 +16,7 @@ import {AppImage} from '../../../elements';
 
 function ItemNoti(props) {
   const {item, index} = props;
+  const navigation = useNavigation();
   const disableClickItem = useRef(false);
   useEffect(() => {
     return () => {
@@ -22,7 +24,16 @@ function ItemNoti(props) {
     };
   }, []);
 
-  const readNoti = async () => {};
+  const readNoti = async () => {
+    console.log(item);
+    let nameScreenDetail = 'NOTI_DETAIL';
+    //Mở chi tiết thông báo:
+    if (`${item.typeOpenNoti}` === 'VIEW_DETAIL') {
+      navigation.navigate(KEY_NAVIGATION.notification_detail, {
+        data: {item, nameScreenDetail},
+      });
+    }
+  };
 
   //Hiển thị thời gian bắt đầu thông báo:
   const renderTimeJaPan = (time) => {
@@ -34,7 +45,7 @@ function ItemNoti(props) {
           fontWeight: 'bold',
           marginLeft: SIZE.width(3),
         }}>
-        {/* {GetTimeJapan.convertTimeJaPanCreateTime(time)} */}
+        {GetTimeJapan.convertTimeJaPanCreateTime(time)}
       </AppText>
     );
   };

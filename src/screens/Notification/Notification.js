@@ -3,16 +3,18 @@ import React, {useState, useRef, useEffect} from 'react';
 import {FlatList, RefreshControl} from 'react-native';
 
 //Setup:
-import {COLOR, FetchApi} from '../../utils';
+import {COLOR} from '../../utils';
 
 //Component:
+import {NetworkError} from '../../elements/NetworkError';
 import ReloadDataScreen from '../../elements/ReloadData';
 import {AppContainer, Loading} from '../../elements';
 import {ItemNoti} from './items/ItemNoti';
 import NotiImportant from './items/NotiImportant';
-import {NetworkError} from '../../elements/NetworkError';
+import ServicesUpdateComponent from '../../utils/services/ServicesUpdateComponent';
+import {FetchApi} from '../../utils/modules/FetchAPI';
 
-//Screen:
+//Screen:activeTabBackground
 function Notifications({route}) {
   const [loading, setStateLoading] = useState(true);
   const [isLoadingRefresh, setStateIsLoadingRefresh] = useState(false);
@@ -38,12 +40,12 @@ function Notifications({route}) {
   const onDidMount = async () => {
     await getNameScreen();
     await getData();
+    ServicesUpdateComponent.set('UPDATE_NOTI_HOME');
   };
 
   //Lấy tên màn hình:
   const getNameScreen = () => {
-    const {name} = route.params.itemMenu;
-    setStateName(name);
+    setStateName('NOTIFICATION');
   };
 
   //Lấy danh sách thông báo từ API:
@@ -93,6 +95,7 @@ function Notifications({route}) {
 
   //Tải lại danh sách:
   const refreshPage = () => {
+    ServicesUpdateComponent.set('UPDATE_NOTI_HOME');
     page.current = 1;
     getData();
   };
@@ -184,7 +187,7 @@ function Notifications({route}) {
       haveTitle
       nameScreen={nameScreen}
       goBackScreen
-      style={{backgroundColor: COLOR.red}}>
+      style={{backgroundColor: COLOR.milk}}>
       {renderContent()}
     </AppContainer>
   );

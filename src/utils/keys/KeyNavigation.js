@@ -14,5 +14,6 @@ const KEY_NAVIGATION = {
   notification: 'NOTIFICATION',
   qr: 'QR',
   youtobe: 'YOUTOBE',
+  notification_detail: 'NOTIFICATION_DETAIL',
 };
 export {KEY_NAVIGATION};

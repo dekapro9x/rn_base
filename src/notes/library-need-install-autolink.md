@@ -98,3 +98,13 @@ yarn add react-native-spinkit
 Link : https://momentjs.com
 
 yarn add moment
+
+---
+
+# 13:react-native-image-zoom-viewer
+
+Link: https://github.com/ascoders/react-native-image-viewer
+
+yarn add react-native-image-zoom-viewer
+
+---

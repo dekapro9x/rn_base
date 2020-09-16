@@ -66,7 +66,7 @@ function NotiImpotant(props) {
           fontWeight: 'bold',
           marginLeft: SIZE.width(3),
         }}>
-        {/* {GetTimeJapan.convertTimeJaPanCreateTime(time)} */}
+        {GetTimeJapan.convertTimeJaPanCreateTime(time)}
       </AppText>
     );
   };
@@ -86,8 +86,7 @@ function NotiImpotant(props) {
     );
   };
 
-  //Ấn vào đọc thông báo:
-  const readNoti = (item) => async () => {};
+  const readNoti = (item) => {};
 
   //Item thông báo quan trọng:
   const itemNotiImportant = (item, index) => {

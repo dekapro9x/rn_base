@@ -180,6 +180,14 @@ const FetchApi = {
     const api = Api.getListNotificationAll(size, page);
     return CommonCall(api, header);
   },
+  //Lấy chi tiết detail thông báo thường:
+  getDetailNoti: (notificationId) => {
+    const header = {
+      method: 'GET',
+    };
+    const api = Api.detailNoti(notificationId);
+    return CommonCall(api, header);
+  },
   login: (phone, password, typeLogin, birthday) => {
     let data = new FormData();
     data.append('email', phone);

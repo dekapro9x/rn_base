@@ -15,5 +15,10 @@ const Api = {
   getListNotificationAll: (size, page) => {
     return `${URL_DOMAIN}/api/v1/app/${APP_ID}/notification/all?page=${page}&size=${size}&deviceId=${DEVICE_ID}&typeScreen=LIST_NOTIFICATION`;
   },
+
+  //Lấy chi tiết thông báo thường:
+  detailNoti: (notificationId) => {
+    return `${URL_DOMAIN}/api/v1/app/${APP_ID}/notification/detail/${notificationId}?deviceId=${DEVICE_ID}`;
+  },
 };
 export {Api};
