@@ -1,6 +1,6 @@
 //Library:
 import React, {useEffect, useRef} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {Alert, TouchableOpacity, View} from 'react-native';
 import hexToRgba from 'hex-to-rgba';
 import * as Animatable from 'react-native-animatable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -25,13 +25,29 @@ function ItemNoti(props) {
   }, []);
 
   const readNoti = async () => {
-    console.log(item);
     let nameScreenDetail = 'NOTI_DETAIL';
     //Mở chi tiết thông báo:
     if (`${item.typeOpenNoti}` === 'VIEW_DETAIL') {
       navigation.navigate(KEY_NAVIGATION.notification_detail, {
         data: {item, nameScreenDetail},
       });
+    }
+    //Mở PDF.
+    if (`${item.typeOpenNoti}` === 'OPEN_PDF') {
+      if (item.typeOpenLink === 'BROWSER') {
+        Linking.canOpenURL(item.pdfUrl).then((supported) => {
+          if (supported) {
+            Linking.openURL(item.pdfUrl);
+          } else {
+          }
+        });
+        return;
+      }
+      navigation.navigate(KEY_NAVIGATION.webview, {
+        data: {url: item.pdfUrl},
+      });
+    } else {
+      Alert.alert('Chức năng cần đăng nhập');
     }
   };
 

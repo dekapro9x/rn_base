@@ -1,9 +1,10 @@
 //Library:
 import React, {useContext, useRef, useEffect} from 'react';
-import {View, TouchableOpacity, Animated} from 'react-native';
+import {View, TouchableOpacity, Animated, Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 
 //Setup:
-import {SIZE, COLOR} from '../../../utils';
+import {SIZE, COLOR, KEY_NAVIGATION} from '../../../utils';
 import {ContextContainer} from '../../../contexts/AppContext';
 
 //Component:
@@ -12,6 +13,7 @@ import {GetTimeJapan} from '../../../utils/modules/GetTimeJapan';
 
 function NotiImpotant(props) {
   const {dataImportantNotification} = props;
+  const navigation = useNavigation();
   const skipAnimation = useRef(new Animated.Value(0)).current;
   const {colorApp} = useContext(ContextContainer);
   const opacity = skipAnimation.interpolate({
@@ -86,7 +88,30 @@ function NotiImpotant(props) {
     );
   };
 
-  const readNoti = (item) => {};
+  const readNoti = (item) => () => {
+    let nameScreenDetail = 'NOTI_DETAIL';
+    //Mở chi tiết thông báo:
+    if (`${item.typeOpenNoti}` === 'VIEW_DETAIL') {
+      navigation.navigate(KEY_NAVIGATION.notification_detail, {
+        data: {item, nameScreenDetail},
+      });
+    }
+    //Mở PDF.
+    if (`${item.typeOpenNoti}` === 'OPEN_PDF') {
+      if (item.typeOpenLink === 'BROWSER') {
+        Linking.canOpenURL(item.pdfUrl).then((supported) => {
+          if (supported) {
+            Linking.openURL(item.pdfUrl);
+          } else {
+          }
+        });
+        return;
+      }
+      navigation.navigate(KEY_NAVIGATION.webview, {
+        data: {url: item.pdfUrl},
+      });
+    }
+  };
 
   //Item thông báo quan trọng:
   const itemNotiImportant = (item, index) => {

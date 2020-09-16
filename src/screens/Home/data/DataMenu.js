@@ -54,7 +54,7 @@ const DATA_MENU_HOME = [
       type: 'icon',
       screen: KEY_NAVIGATION.qr,
       img:
-        'https://lh3.googleusercontent.com/proxy/YdKtBiB9a5TpSZ2fonjV5vSHRtszlr2nxd6Bs7MODCNrl2fCEfFE7hRaT6VM5AC76w_nb9agGbhVISk57hJJ6ntcxBrbXoWw20_G8XB1JzWYkIK7yjAKVA',
+        'https://www.seekpng.com/png/detail/128-1285139_qr-code-qr-code-icon-png.png',
       name: 'QR',
       link: '',
     },
