@@ -1,10 +1,10 @@
-import React, {useRef, createContext} from 'react';
+import React, {useState, createContext} from 'react';
 import {COLOR} from '../utils';
 const ContextContainer = createContext();
 
 const AppContext = (props) => {
   //Khởi tạo dữ liệu ban đầu cho toàn bộ cấu hình App 1:
-  const appDataSetup = useRef({
+  const [appData, setStateAppData] = useState({
     logoApp: '',
     policy: '',
     colorApp: {
@@ -44,7 +44,7 @@ const AppContext = (props) => {
   });
 
   return (
-    <ContextContainer.Provider value={{...appDataSetup}}>
+    <ContextContainer.Provider value={{...appData}}>
       {props.children}
     </ContextContainer.Provider>
   );

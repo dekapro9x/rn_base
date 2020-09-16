@@ -15,5 +15,6 @@ const KEY_NAVIGATION = {
   qr: 'QR',
   youtobe: 'YOUTOBE',
   notification_detail: 'NOTIFICATION_DETAIL',
+  video_detail_android: 'VIDEO_DETAIL_ANDROID',
 };
 export {KEY_NAVIGATION};

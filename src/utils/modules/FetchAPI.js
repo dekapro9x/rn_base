@@ -188,6 +188,14 @@ const FetchApi = {
     const api = Api.detailNoti(notificationId);
     return CommonCall(api, header);
   },
+    //Lấy danh sách video:
+    getListVideo: (page, size) => {
+      const header = {
+        method: 'GET',
+      };
+      const api = Api.getListVideo(page, size);
+      return CommonCall(api, header, false);
+    },
   login: (phone, password, typeLogin, birthday) => {
     let data = new FormData();
     data.append('email', phone);

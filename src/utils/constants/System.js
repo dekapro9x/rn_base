@@ -13,7 +13,7 @@ const isIos = Platform.OS === 'ios';
 const isAndroid = Platform.OS === 'android';
 const versionApp = isIos ? '1.0.0' : '1.0.0';
 const PRIVATE_KEY_DEVICE_ID = 'device_id_yoneyama';
-const API_KEY_YOUTUBE = 'AIzaSyDklvH4yPikP9l1m9KgF9S4CJtCtVttf8o';
+const API_KEY_YOUTUBE = 'AIzaSyBXHSKE791ah1TTBaS9SP9uthF35nXsq1g';
 const DEVICE_ID = DeviceInfo.getUniqueId();
 const VERSION_PLAFORM = DeviceInfo.getSystemVersion();
 const {width, height} = Dimensions.get('window');

@@ -20,5 +20,9 @@ const Api = {
   detailNoti: (notificationId) => {
     return `${URL_DOMAIN}/api/v1/app/${APP_ID}/notification/detail/${notificationId}?deviceId=${DEVICE_ID}`;
   },
+  //Lấy danh sách video:
+  getListVideo: (page, size) => {
+    return `${URL_DOMAIN}/api/v1/app/${APP_ID}/video/list?page=${page}&size=${size}`;
+  },
 };
 export {Api};
