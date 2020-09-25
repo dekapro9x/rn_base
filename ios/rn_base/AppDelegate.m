@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import <CodePush/CodePush.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -55,7 +55,9 @@ return YES;
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  // return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  // Chuyển đoạn sau để cấu hình codepush:
+  return [CodePush bundleURL];
 #endif
 }
 
