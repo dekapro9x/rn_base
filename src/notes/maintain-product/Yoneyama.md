@@ -93,9 +93,24 @@ Reset bản build về 1.
 <key>CodePushDeploymentKey</key>
 <string>IxO5lUEjLuMwfsAeXtE70SY2wkf29UuusyZ1u</string>
 
-# 4:Kiểm tra lại certificate , quyền build và đẩy App :
+# 4 : Cấu hình SDK (Phần này Dev cấu hình sẵn rồi chỉ kiểm tra lại ).
 
-# 5: Chạy lệnh Code push: appcenter codepush release-react -a Yoneyama/Yoneyama-IOS -d Production
+# => Giải nén pro, coppy file libsdk-advertise.a trong react-native-shop-sdk/ios ném vào thư mục ios/komeda_app.
+
+# => Mở XCode lên link SDK bằng tay => Add File To komeda_app => react-native-shop-sdk/ios/libsdk-advertise.a
+
+# => Kiểm tra cấu hình trong react-native-shop-sdk/weblink:
+
+const onClickApi = (notificationId, memberCode, deviceId) => {
+if (memberCode !== undefined || memberCode !== null) {
+return `http://sdk-ads-analyze.com/app/api/notification/onClick?notificationId=${notificationId}&memberCode=${memberCode}&deviceId=${deviceId}`;
+}
+return `http://sdk-ads-analyze.com/app/api/notification/onClick?notificationId=${notificationId}&deviceId=${deviceId}`;
+};
+
+# 5:Kiểm tra lại certificate , quyền build và đẩy App :
+
+# 6: Chạy lệnh Code push: appcenter codepush release-react -a Yoneyama/Yoneyama-IOS -d Production
 
 Tài khoản test Pro:
 08032065556 shinto10
