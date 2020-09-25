@@ -1,8 +1,4 @@
-# **\*\*\***\***\*\*\*\*KOMEDA**\*\*\*\***\*\*\*\***KOMEDA**\*\*\*\***\*\*\***\*\*\*\***KOMEDA**\*\*\*\***\*\*\*\***\*\*\*\*\*\***\*\*\*\*\*\*
-
-# Các bước cấu hình Komeda Product Android: (1.0.2)
-
-# Android:
+# =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA =>>>>>>>> KOMEDA
 
 # Chú ý:
 
@@ -11,6 +7,10 @@ Sau đó chạy lệnh đẩy code push.
 Còn sửa native cập nhật APK lên Apstore thì nhớ tăng version lên 1.
 Đẩy IOS lên testFlight, cập nhật thông tin bản vá.
 Sau đó chạy lệnh code push.
+
+# Các bước cấu hình Komeda Product Android: (1.0.2)
+
+# Android:
 
 # 1: VersionApp đổi chiếu update ( đối chiếu với server) trong System.js:
 
@@ -64,7 +64,7 @@ AAAA8eKp7Rw:APA91bE42Z-tpkwVhjC78z1Xb-v1LmtiflLGeixnuHT6q-o7XnrPlWSZbwFT3I50rnuO
 
 # 10: Đẩy lệnh code push android: appcenter codepush release-react -a Komeda-Co./Komeda-Android -d Production -m
 
-# **\*\*\***IOS\***\*\*\*\***\*\*\*\***\*\*\*\***IOS**\*\*\*\***\*\*\***\*\*\*\***IOS**\*\*\*\***\*\*\*\***\*\*\*\***IOS**\*\*\*\***
+# =>>>>>>>> IOS =>>>>>>>> IOS =>>>>>>>> IOS =>>>>>>>> IOS =>>>>>>>> IOS =>>>>>>>> IOS =>>>>>>>> IOS
 
 # IOS: (1.0.2)
 
@@ -76,23 +76,20 @@ const APP_ID = '1596690646035';
 const URL_DOMAIN = 'https://komeda.shop-analyze.com';
 const COMPANY_ID = '1596690640174';
 
-# 2: Đổi bundle và thay tên app:
+# 2: Cấu hình Xcode:
 
-jp.co.app.ios.komeda.public
+bundle : jp.co.app.ios.komeda.public
 Tên App : コメダ珈琲店
+Tăng version App lên 1.0.2 Và reset bản build về 1.
 
-# 3: Tăng version App:
-
-1.0.2 Và reset bản build về 1.
-
-# 4 : Đổi key Code push:
+# 3: Đổi key Code push trong info.split :
 
 <key>CodePushDeploymentKey</key>
 <string>GSTH5g4a5eVAO0Ghjz2HAoS5TVj7RjwIWKdI5</string>
 
-# 5: Kiểm tra lại certificate , quyền build và đẩy App .
+# 4: Kiểm tra lại certificate , quyền build và đẩy App . ( Cái này App Pro cần quyền IOS certificate distribution)
 
-# 6: Chạy lệnh code push IOS : appcenter codepush release-react -a Komeda-Co./Komeda-iOS -d Production -m
+# 5: Chạy lệnh code push IOS : appcenter codepush release-react -a Komeda-Co./Komeda-iOS -d Production -m
 
 Tài khoản check Pro:  
 vonh1995.it1@gmail.com
