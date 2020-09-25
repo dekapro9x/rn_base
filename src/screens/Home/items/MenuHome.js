@@ -75,10 +75,12 @@ export default function MenuHome(props) {
 
   //Ấn vào menu:
   const pressItem = (item) => () => {
-    if (item.screen == KEY_NAVIGATION.webview) {
-      navigation.navigate(KEY_NAVIGATION.webview, {data: {url: item.link}});
-    } else {
-      navigation.navigate(item.screen);
+    if (item.type != 'none') {
+      if (item.screen == KEY_NAVIGATION.webview) {
+        navigation.navigate(KEY_NAVIGATION.webview, {data: {url: item.link}});
+      } else {
+        navigation.navigate(item.screen);
+      }
     }
   };
   //Hiển thị Item Menu:

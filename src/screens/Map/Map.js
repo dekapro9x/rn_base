@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 //Setup:
-import {SIZE} from '../../utils';
+import {COLOR, SIZE} from '../../utils';
 
 //Component:
 import ListMenuLocationSelection from './items/ListMenuLocationSelection';
@@ -14,6 +14,7 @@ import MakerMapOnMapViewCricle from './items/MakerOnMapViewCricle';
 
 //Data:
 import {DATA_AROUND_LOCATION} from './utils/DataAroundLocation';
+import {AppContainer} from '../../elements';
 
 export default class Project extends PureComponent {
   constructor(props) {
@@ -213,11 +214,15 @@ export default class Project extends PureComponent {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <AppContainer
+        haveTitle
+        nameScreen={'Map'}
+        goBackScreen
+        style={{backgroundColor: COLOR.milk}}>
         {this.renderMapView()}
         {/* Danh sách 2 menu lựa chọn  */}
         {this.listMenuLocationSelection()}
-      </View>
+      </AppContainer>
     );
   }
 }

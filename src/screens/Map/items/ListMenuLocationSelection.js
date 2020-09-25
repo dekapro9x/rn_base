@@ -74,7 +74,7 @@ export default class ListMenuLocationSelection extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    top: SIZE.width(10),
+    bottom: SIZE.width(10),
     height: SIZE.height(32),
     width: SIZE.height(25),
     left: SIZE.width(6),
