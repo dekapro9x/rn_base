@@ -115,7 +115,11 @@ export default function MenuHome(props) {
                 height: sizeImg,
                 width: sizeImg,
               }}></AppImage>
-            <AppText style={{fontSize: SIZE.H4, fontWeight: 'bold'}}>
+            <AppText
+              style={{
+                fontSize: item.name.length > 6 ? SIZE.H5 : SIZE.H4,
+                fontWeight: 'bold',
+              }}>
               {item.name}
             </AppText>
           </View>

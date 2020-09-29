@@ -69,7 +69,15 @@ const DATA_MENU_HOME = [
       name: 'Youtobe',
       icon: '',
     },
-    {id: 7, type: 'none', screen: '', img: '', icon: ''},
+    {
+      id: 7,
+      type: 'icon',
+      screen: KEY_NAVIGATION.direction_map,
+      img:
+        'https://cdn.dribbble.com/users/22930/screenshots/1919115/line-art-map_2.gif',
+      name: 'Direction Map',
+      icon: '',
+    },
     {id: 8, type: 'none', screen: '', img: '', icon: ''},
   ],
   // [

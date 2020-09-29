@@ -16,5 +16,6 @@ const KEY_NAVIGATION = {
   youtobe: 'YOUTOBE',
   notification_detail: 'NOTIFICATION_DETAIL',
   video_detail_android: 'VIDEO_DETAIL_ANDROID',
+  direction_map: 'DIRECTION_MAP',
 };
 export {KEY_NAVIGATION};

@@ -24,6 +24,7 @@ import Notification from '../screens/Notification/Notification';
 import QR from '../screens/QR/QR';
 import Video from '../screens/Video/Video';
 import NotificationDetail from '../screens/NotificationDetail/NotificationDetail';
+import DirectionMap from '../screens/DirectionMap/DirectionMap';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -75,6 +76,10 @@ function RootNavigator() {
           <RootStack.Screen name={KEY_NAVIGATION.qr} component={QR} />
           <RootStack.Screen name={KEY_NAVIGATION.video} component={Video} />
           <RootStack.Screen name={KEY_NAVIGATION.webview} component={Webview} />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.direction_map}
+            component={DirectionMap}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     </>

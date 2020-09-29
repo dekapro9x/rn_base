@@ -1,6 +1,7 @@
 //Library:
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import * as Animatable from 'react-native-animatable';
+import LinearGradient from 'react-native-linear-gradient';
 
 //Setup:
 import {DataBottomMenu} from '../screens/Home/data/DataBottomMenu';
@@ -13,7 +14,9 @@ export default function BottomMenu() {
   if (DataBottomMenu.length == 0) {
     return null;
   }
-  const pressMenu = () => {};
+  const pressMenu = (item) => () => {
+    console.log('hehehe', item);
+  };
   //Item:
   const renderItem = () => {
     return DataBottomMenu.map((item) => {
@@ -35,20 +38,25 @@ export default function BottomMenu() {
     });
   };
   return (
-    <Animatable.View
-      useNativeDriver={true}
-      animation={'fadeInUp'}
-      delay={450}
-      duration={600}
-      style={{
-        flexDirection: 'row',
-        width: SIZE.device_width,
-        justifyContent: 'space-around',
-        alignItems: 'flex-end',
-        backgroundColor: COLOR.red,
-        paddingVertical: 10,
-      }}>
-      {renderItem()}
-    </Animatable.View>
+    <LinearGradient
+      locations={[0.9, 0.2]}
+      start={{x: 0.2, y: 0.1}}
+      end={{x: 0.5, y: 1.0}}
+      colors={['#fdfcfb', '#e2d1c3']}>
+      <Animatable.View
+        useNativeDriver={true}
+        animation={'fadeInUp'}
+        delay={450}
+        duration={600}
+        style={{
+          flexDirection: 'row',
+          width: SIZE.device_width,
+          justifyContent: 'space-around',
+          alignItems: 'flex-end',
+          paddingVertical: 10,
+        }}>
+        {renderItem()}
+      </Animatable.View>
+    </LinearGradient>
   );
 }
