@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
-import {FlatList, Text, View, TouchableOpacity, Animated} from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import Modal from 'react-native-modal';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {AppContainer, Loading} from '../../elements';
 import ItemAnimation from './items/ItemAnimation';
@@ -11,7 +18,11 @@ export default function DirectionMap() {
   const [showList, setStateShowList] = useState(false);
   const [nameScreen, setStateNameScreen] = useState('Menu Animation');
   const [isModalVisible, setModalVisible] = useState(false);
-  const [itemAnimationClick, setStateItemAnimationClick] = useState({});
+  const [itemMenuAnimationClick, setStateItemMenuAnimationClick] = useState({});
+  const [
+    itemAnimationRenderOnModal,
+    setStateItemAnimationRenderOnModal,
+  ] = useState({});
 
   //Tắt modal:
   const unVisibleModal = () => {
@@ -28,13 +39,14 @@ export default function DirectionMap() {
   //Hiển thị danh sách ItemAnimation:
   const pressShowListItemAnimation = (item) => () => {
     setStateShowList(true);
-    setStateNameScreen('List Animation');
-    setStateItemAnimationClick(item);
+    setStateNameScreen(`rn-${item.name.slice(13, item.name.length)}`);
+    setStateItemMenuAnimationClick(item);
   };
 
   //Hiển thị modal mô phỏng hiệu ứng.
-  const pressShowModalAnimation = () => {
+  const pressShowModalAnimation = (item, index) => () => {
     setModalVisible(true);
+    setStateItemAnimationRenderOnModal(item);
   };
 
   //Item Menu Animtaion:
@@ -58,7 +70,7 @@ export default function DirectionMap() {
   const renderItemAnimation = ({item, index}) => {
     return (
       <ItemAnimation
-        pressShowModalAnimation={pressShowModalAnimation}
+        pressShowModalAnimation={pressShowModalAnimation(item, index)}
         item={item}
         index={index}></ItemAnimation>
     );
@@ -68,22 +80,32 @@ export default function DirectionMap() {
   const renderModal = () => {
     return (
       <Modal
+        deviceWidth={SIZE.width(100)}
         isVisible={isModalVisible}
-        style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <TouchableOpacity
-          onPress={unVisibleModal}
-          style={{height: 100, width: 100, backgroundColor: 'red'}}>
-          <Text>I am the modal content!</Text>
-        </TouchableOpacity>
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View>
+          {itemAnimationRenderOnModal.component}
+          <TouchableOpacity
+            onPress={unVisibleModal}
+            style={{
+              height: SIZE.height(8),
+              width: SIZE.width(40),
+              backgroundColor: 'red',
+              marginLeft: SIZE.width(24),
+            }}></TouchableOpacity>
+        </View>
       </Modal>
     );
   };
 
   // Danh sách hiệu ứng:
-  const renderListAnimation = (itemAnimationClick) => {
+  const renderListAnimation = () => {
     return (
       <FlatList
-        data={itemAnimationClick.data}
+        data={itemMenuAnimationClick.data}
         renderItem={(item, index) => renderItemAnimation(item, index)}
         contentContainerStyle={{paddingBottom: SIZE.width(15)}}
         removeClippedSubviews={true}
@@ -103,7 +125,22 @@ export default function DirectionMap() {
                 height: SIZE.height(6),
                 width: SIZE.width(100),
                 backgroundColor: COLOR.BG_TRANSPARENT_20,
-              }}></TouchableOpacity>
+              }}>
+              <LinearGradient
+                style={{
+                  flex: 1,
+                  width: SIZE.width(100),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                start={{x: 0, y: 1}}
+                end={{x: 1, y: 1}}
+                colors={['#fe8c00', '#f83600']}>
+                <Text style={{fontSize: SIZE.H4, color: COLOR.COLOR_BLUE}}>
+                  Go back menu animation
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
           );
         }}
       />
@@ -116,7 +153,7 @@ export default function DirectionMap() {
         haveTitle
         nameScreen={nameScreen}
         style={{backgroundColor: COLOR.TRANSPARENT}}>
-        {renderListAnimation(itemAnimationClick)}
+        {renderListAnimation()}
         {renderModal()}
       </AppContainer>
     );
@@ -140,7 +177,6 @@ export default function DirectionMap() {
         onEndReachedThreshold={0.2}
         keyExtractor={(item, index) => `${index}`}
         onEndReached={() => {}}
-        // ListFooterComponent={() => <Loading />}
       />
     </AppContainer>
   );

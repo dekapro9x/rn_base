@@ -1,3 +1,9 @@
+import React from 'react';
+import AnimatedTiming from '../items/AnimatedTiming';
+import AnimationDecay from '../items/AnimationDecay';
+import AnimatedSpring from '../items/AnimatedSpring';
+import AnimatedValue from '../items/AnimatedValue';
+import AnimatedValueXY from '../items/AnimatedValueXY';
 const DataAnimation = [
   {
     id: 1,
@@ -5,19 +11,28 @@ const DataAnimation = [
     data: [
       {
         id: 1,
-        name: 'heheh',
+        name: 'Animated.timing()',
+        component: <AnimatedTiming />,
       },
       {
         id: 2,
-        name: 'ahhaa',
+        name: 'Animated.decay()',
+        component: <AnimationDecay />,
       },
       {
         id: 3,
-        name: 'huhu',
+        name: 'Animated.spring()',
+        component: <AnimatedSpring />,
       },
       {
         id: 4,
-        name: 'hihi',
+        name: 'Animated.Value()',
+        component: <AnimatedValue />,
+      },
+      {
+        id: 5,
+        name: 'Animated.ValueXY()',
+        component: <AnimatedValueXY />,
       },
     ],
   },

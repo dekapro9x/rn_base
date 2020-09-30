@@ -38,8 +38,12 @@ export default function ItemAnimation(props) {
           opacity: opacity_Animation_Object,
         },
       ]}>
-      <TouchableOpacity onPress={pressShowModalAnimation} style={{flex: 1}}>
-        <Text>{item.name}</Text>
+      <TouchableOpacity
+        onPress={pressShowModalAnimation}
+        style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={{textAlign: 'center', fontSize: SIZE.H4}}>
+          {item.name}
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   );
