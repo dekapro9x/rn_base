@@ -78,13 +78,28 @@ const DATA_MENU_HOME = [
       name: 'Direction Map',
       icon: '',
     },
-    {id: 8, type: 'none', screen: '', img: '', icon: ''},
+    {
+      id: 8,
+      type: 'icon',
+      screen: KEY_NAVIGATION.animation,
+      img: 'https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif',
+      name: 'Animation',
+      icon: '',
+    },
   ],
-  // [
-  //   {id: 9,  type: 'icon', screen: '', img: '', icon: ''},
-  //   {id: 10,  type: 'icon', screen: '', img: '', icon: ''},
-  //   {id: 11,  type: 'icon', screen: '', img: '', icon: ''},
-  // ],
+  [
+    {
+      id: 9,
+      type: 'icon',
+      screen: KEY_NAVIGATION.animation,
+      img:
+        'https://i.pinimg.com/originals/11/e0/71/11e071c9c0f8b83dbd54038e6b12e99a.gif',
+      name: 'Light',
+      icon: '',
+    },
+    {id: 10, type: 'nome', screen: '', img: '', icon: ''},
+    {id: 11, type: 'none', screen: '', img: '', icon: ''},
+  ],
   // [
   //   {id: 12,  type: 'icon', screen: '', img: '', icon: ''},
   //   {id: 13,  type: 'icon', screen: '', img: '', icon: ''},

@@ -17,5 +17,6 @@ const KEY_NAVIGATION = {
   notification_detail: 'NOTIFICATION_DETAIL',
   video_detail_android: 'VIDEO_DETAIL_ANDROID',
   direction_map: 'DIRECTION_MAP',
+  animation: 'ANIMATION',
 };
 export {KEY_NAVIGATION};

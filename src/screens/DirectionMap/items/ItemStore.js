@@ -12,7 +12,7 @@ import {
 import hexToRgba from 'hex-to-rgba';
 //Setup:
 
-import {SIZE, COLOR, FetchApi} from '../../../utils';
+import {SIZE, COLOR, FetchApi, KEY_NAVIGATION} from '../../../utils';
 
 //Component:
 import {AppText} from '../../../elements/AppText';
@@ -352,7 +352,7 @@ function ItemListStore(props) {
 
   //Đọc thông báo tờ rơi:
   const pressReadFlyer = () => {
-    // navigation.navigate(keyNavigation.WEBVIEW, {data: {url: fileUrl}});
+    navigation.navigate(KEY_NAVIGATION.WEBVIEW, {data: {url: fileUrl}});
   };
 
   //Catalog bảng phiếu giảm giá:

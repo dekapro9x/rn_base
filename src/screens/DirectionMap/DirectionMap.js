@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, RefreshControl, View} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 import {AppContainer, Loading} from '../../elements';
 import {COLOR, SIZE} from '../../utils';
 import DataStore from './items/DataStore';

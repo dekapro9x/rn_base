@@ -25,6 +25,7 @@ import QR from '../screens/QR/QR';
 import Video from '../screens/Video/Video';
 import NotificationDetail from '../screens/NotificationDetail/NotificationDetail';
 import DirectionMap from '../screens/DirectionMap/DirectionMap';
+import Animation from '../screens/Animations/Animation';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -79,6 +80,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.direction_map}
             component={DirectionMap}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.animation}
+            component={Animation}
           />
         </RootStack.Navigator>
       </NavigationContainer>
