@@ -7,11 +7,9 @@ import {useNavigation} from '@react-navigation/core';
 import {YouTubeStandaloneIOS} from 'react-native-youtube';
 import {getImageWithLinkYouTube, getIDWithLinkYouTube} from '../utils';
 import {
-  FetchApi,
   COLOR,
   isIos,
   SIZE,
-  ToastService,
   KEY_NAVIGATION,
 } from '../../../utils';
 import AntDesign from 'react-native-vector-icons/AntDesign';

@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  FlatList,
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {FlatList, Text, View, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import LinearGradient from 'react-native-linear-gradient';
 

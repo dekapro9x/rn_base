@@ -97,7 +97,15 @@ const DATA_MENU_HOME = [
       name: 'Light',
       icon: '',
     },
-    {id: 10, type: 'nome', screen: '', img: '', icon: ''},
+    {
+      id: 10,
+      type: 'icon',
+      screen: KEY_NAVIGATION.youtube_ads,
+      img:
+        'https://www.premieradvertising.com/wp-content/uploads/2019/05/Vidoe.gif',
+      name: 'Youtobe_Ads',
+      icon: '',
+    },
     {id: 11, type: 'none', screen: '', img: '', icon: ''},
   ],
   // [

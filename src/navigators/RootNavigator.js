@@ -26,6 +26,7 @@ import Video from '../screens/Video/Video';
 import NotificationDetail from '../screens/NotificationDetail/NotificationDetail';
 import DirectionMap from '../screens/DirectionMap/DirectionMap';
 import Animation from '../screens/Animations/Animation';
+import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -84,6 +85,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.animation}
             component={Animation}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.youtube_ads}
+            component={YoutobeAds}
           />
         </RootStack.Navigator>
       </NavigationContainer>
