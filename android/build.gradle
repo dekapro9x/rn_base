@@ -6,8 +6,9 @@ buildscript {
         minSdkVersion = 16
         compileSdkVersion = 29
         targetSdkVersion = 29
+        supportLibVersion = "29.0.0"
         // Cấu hình truy cập vị trí:
-        googlePlayServicesVersion = "17.0.0"
+        googlePlayServicesVisionVersion = "19.0.0"
 
     }
     repositories {

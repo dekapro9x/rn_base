@@ -33,6 +33,7 @@ function ItemVideo(props) {
       }
     }
   };
+
   const renderButtonReceiveCoupon = () => {
     setStatereceiveCoupon(true);
   };
@@ -43,6 +44,7 @@ function ItemVideo(props) {
     setStatePopupStartVideo(false);
     setStatereceiveCoupon(false);
   };
+  
   const playVideoNotHasCoupon = () => {
     setStatePopupStartVideo(true);
   };
@@ -62,7 +64,7 @@ function ItemVideo(props) {
             style={{
               height: '50%',
               width: '100%',
-              backgroundColor: COLOR.milk,
+              backgroundColor: COLOR.TRANSPARENT,
               alignItems: 'center',
             }}>
             <VideoIOS
@@ -85,7 +87,7 @@ function ItemVideo(props) {
                     margin: SIZE.width(4),
                     fontSize: SIZE.H4,
                   }}>
-                  閉じる
+                  Chúc mừng bạn nhận dc coupon mới
                 </AppText>
               </TouchableOpacity>
             ) : null}
@@ -155,28 +157,7 @@ function ItemVideo(props) {
       );
     }
   };
-  const renderPopupStartVideo = () => {
-    if (popupStartVideo) {
-      return (
-        <View
-          style={{
-            height: '100%',
-            width: '100%',
-            backgroundColor: COLOR.TRANSPARENT,
-            alignItems: 'center',
-            justifyContent: 'center',
-            position,
-          }}>
-          <View
-            style={{
-              height: SIZE.height(60),
-              width: SIZE.width(80),
-              backgroundColor: 'red',
-            }}></View>
-        </View>
-      );
-    }
-  };
+
 
   return (
     <TouchableOpacity onPress={onPressVideo} activeOpacity={0.8}>

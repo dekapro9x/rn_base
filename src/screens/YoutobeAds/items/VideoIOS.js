@@ -14,6 +14,7 @@ import YouTube, {
   YouTubeStandaloneIOS,
   YouTubeStandaloneAndroid,
 } from 'react-native-youtube';
+import {COLOR, SIZE} from '../../../utils';
 
 export default class RCTYouTubeExample extends React.Component {
   state = {
@@ -30,77 +31,9 @@ export default class RCTYouTubeExample extends React.Component {
     containerWidth: null,
   };
 
-  render() {
-    const {renderButtonReceiveCoupon} = this.props;
+  renderFeatureVideo = () => {
     return (
-      <ScrollView
-        style={styles.container}
-        onLayout={({
-          nativeEvent: {
-            layout: {width},
-          },
-        }) => {
-          if (!this.state.containerMounted)
-            this.setState({containerMounted: true});
-          if (this.state.containerWidth !== width)
-            this.setState({containerWidth: width});
-        }}>
-        {this.state.containerMounted && (
-          <YouTube
-            showinfo={false}
-            controls={0}
-            hidden={false}
-            loop={this.state.isLooping}
-            rel={false}
-            playsInline={false}
-            modestbranding={true}
-            showFullscreenButton={true}
-            fullscreen={false}
-            onChangeState={(e) => this.setState({status: e.state})}
-            onChangeQuality={(e) => this.setState({quality: e.quality})}
-            style={{
-              alignSelf: 'stretch',
-              height: Dimensions.get('window').height,
-            }}
-            ref={(component) => {
-              this._youTubeRef = component;
-            }}
-            // You must have an API Key for the player to load in Android
-            apiKey="YOUR_API_KEY"
-            // Un-comment one of videoId / videoIds / playlist.
-            // You can also edit these props while Hot-Loading in development mode to see how
-            // it affects the loaded native module
-            videoId="jgZkrA8E5do"
-            // videoIds={['HcXNPI-IPPM', 'XXlZfc1TrD0', 'czcjU1w-c6k', 'uMK0prafzw0']}
-            // playlistId="PLF797E961509B4EB5"
-            play={this.state.isPlaying}
-            style={[
-              {
-                height: PixelRatio.roundToNearestPixel(
-                  this.state.containerWidth / (16 / 9),
-                ),
-              },
-              styles.player,
-            ]}
-            onError={(e) => this.setState({error: e.error})}
-            onReady={(e) => this.setState({isReady: true})}
-            onChangeFullscreen={(e) =>
-              this.setState({fullscreen: e.isFullscreen})
-            }
-            onProgress={(e) => {
-              console.log(e);
-              if (e.currentTime >= 20) {
-                console.log('asndnasdasd');
-                renderButtonReceiveCoupon();
-              }
-              this.setState({
-                duration: e.duration,
-                currentTime: e.currentTime,
-              });
-            }}
-          />
-        )}
-
+      <View>
         {/* Playing / Looping */}
         <View style={styles.buttonGroup}>
           <TouchableOpacity
@@ -338,6 +271,79 @@ export default class RCTYouTubeExample extends React.Component {
         <Text style={styles.instructions}>
           {this.state.error ? 'Error: ' + this.state.error : ''}
         </Text>
+      </View>
+    );
+  };
+
+  render() {
+    const {renderButtonReceiveCoupon} = this.props;
+    return (
+      <ScrollView
+        style={styles.container}
+        onLayout={({
+          nativeEvent: {
+            layout: {width},
+          },
+        }) => {
+          if (!this.state.containerMounted)
+            this.setState({containerMounted: true});
+          if (this.state.containerWidth !== width)
+            this.setState({containerWidth: width});
+        }}>
+        {this.state.containerMounted && (
+          <YouTube
+            showinfo={false}
+            controls={0}
+            hidden={false}
+            loop={this.state.isLooping}
+            rel={false}
+            playsInline={false}
+            modestbranding={true}
+            showFullscreenButton={true}
+            fullscreen={false}
+            onChangeState={(e) => this.setState({status: e.state})}
+            onChangeQuality={(e) => this.setState({quality: e.quality})}
+            ref={(component) => {
+              this._youTubeRef = component;
+            }}
+            // You must have an API Key for the player to load in Android
+            apiKey="YOUR_API_KEY"
+            // Un-comment one of videoId / videoIds / playlist.
+            // You can also edit these props while Hot-Loading in development mode to see how
+            // it affects the loaded native module
+            videoId="jgZkrA8E5do"
+            // videoIds={['HcXNPI-IPPM', 'XXlZfc1TrD0', 'czcjU1w-c6k', 'uMK0prafzw0']}
+            // playlistId="PLF797E961509B4EB5"
+            play={this.state.isPlaying}
+            style={[
+              {
+                alignSelf: 'stretch',
+                height: SIZE.height(40),
+                width: SIZE.width(90),
+                // height: PixelRatio.roundToNearestPixel(
+                //   this.state.containerWidth / (16 / 9),
+                // ),
+              },
+              styles.player,
+            ]}
+            onError={(e) => this.setState({error: e.error})}
+            onReady={(e) => this.setState({isReady: true})}
+            onChangeFullscreen={(e) =>
+              this.setState({fullscreen: e.isFullscreen})
+            }
+            onProgress={(e) => {
+              console.log(e);
+              if (e.currentTime >= 20) {
+                console.log('asndnasdasd');
+                renderButtonReceiveCoupon();
+              }
+              this.setState({
+                duration: e.duration,
+                currentTime: e.currentTime,
+              });
+            }}
+          />
+        )}
       </ScrollView>
     );
   }
@@ -345,7 +351,7 @@ export default class RCTYouTubeExample extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: COLOR.TRANSPARENT,
   },
   welcome: {
     fontSize: 20,

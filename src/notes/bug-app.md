@@ -29,3 +29,5 @@ Xóa cache trong DriverData.
 Android:
 yarn start -- --reset-cache : Xóa cache
 cd android && ./gradlew clean : Xóa cache build
+
+# 65536 methods for dex. Lỗi nhiều hơn 64k phương thức trong 1 projects:

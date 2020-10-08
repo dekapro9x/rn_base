@@ -24,6 +24,8 @@ target 'rn_base' do
    # Cấu hình Youtobe:
    pod 'XCDYouTubeKit', '~> 2.8'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
   target 'rn_baseTests' do
     inherit! :complete
     # Pods for testing

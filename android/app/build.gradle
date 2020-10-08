@@ -80,8 +80,8 @@ import com.android.build.OutputFile
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
-
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -135,6 +135,8 @@ android {
         versionCode 1
         versionName "1.0"
         missingDimensionStrategy 'react-native-camera', 'general' //Thêm dòng này nếu cấu hình Camera
+        //Thêm cấu hình này để cấu hình projects 64k methods:
+        multiDexEnabled true
     }
     splits {
         abi {
