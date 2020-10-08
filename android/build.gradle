@@ -8,7 +8,8 @@ buildscript {
         targetSdkVersion = 29
         supportLibVersion = "29.0.0"
         // Cấu hình truy cập vị trí:
-        googlePlayServicesVisionVersion = "19.0.0"
+        googlePlayServicesVisionVersion = "+"
+        
 
     }
     repositories {
