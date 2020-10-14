@@ -114,3 +114,7 @@ yarn add react-native-image-zoom-viewer
 Link :https://github.com/react-native-community/react-native-linear-gradient
 
 yarn add react-native-linear-gradient
+
+# 15: react-native-cookies
+Link: https://github.com/joeferraro/react-native-cookies
+yarn add react-native-cookies

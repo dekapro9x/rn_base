@@ -31,3 +31,20 @@ yarn start -- --reset-cache : Xóa cache
 cd android && ./gradlew clean : Xóa cache build
 
 # 65536 methods for dex. Lỗi nhiều hơn 64k phương thức trong 1 projects:
+
+# Sửa lỗi react native cookie chạy debug được nhưng không thể build release Android:
+ Trong android/build/gradle: 
+ Thêm: 
+ //Sửa lỗi react native cookie chạy debug được nhưng không thể build release:
+ 
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion = 29
+                buildToolsVersion = "29.0.2"
+            }
+        }
+    }
+}
+
