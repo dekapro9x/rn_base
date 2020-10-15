@@ -19,7 +19,7 @@ const SliderHome = (props) => {
         <View
           key={`${index}`}
           style={{
-            height: (SIZE.device_width * 9) / 16,
+            height: (SIZE.device_width * 9) / 20,
             width: '100%',
           }}>
           <AppImage
@@ -27,11 +27,11 @@ const SliderHome = (props) => {
               uri: item.img,
             }}
             style={{
-              height: (SIZE.device_width * 9) / 16,
+              height: (SIZE.device_width * 9) / 20,
               width: '100%',
               alignSelf: 'center',
             }}
-            resizeMode="cover"
+            resizeMode="stretch"
           />
         </View>
       );
@@ -48,7 +48,7 @@ const SliderHome = (props) => {
           <View
             style={{
               flexDirection: 'row',
-              backgroundColor: COLOR.gray_light,
+              backgroundColor: COLOR.grey_300,
               justifyContent: 'center',
               alignItems: 'center',
               paddingVertical: 6,

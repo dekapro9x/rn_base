@@ -9,6 +9,7 @@ import {COLOR, SIZE} from '../../../utils';
 
 //Component:
 import MenuHome from './MenuHome';
+import MenuFireBase from './MenuFireBase';
 
 export default function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
@@ -23,10 +24,10 @@ export default function TabViewHome(props) {
         'https://i.pinimg.com/originals/84/28/02/84280285c99276db354c04caeead6302.png',
     },
     {
-      key: 'review',
-      title: 'Review',
+      key: 'firebase',
+      title: 'FireBase',
       img:
-        'https://www.iconfinder.com/data/icons/feedback-12/512/Online_feedback-512.png',
+        'https://www.gstatic.com/devrel-devsite/prod/v36e9b4a2fdc696650f09851e8c880b958655492821ded3455f80aaef87b6b52b/firebase/images/touchicon-180.png',
     },
     {
       key: 'map',
@@ -52,8 +53,8 @@ export default function TabViewHome(props) {
     switch (route.key) {
       case 'menu':
         return <MenuHome dataMenuHome={dataMenuHome}></MenuHome>;
-      case 'review':
-        return <View></View>;
+      case 'firebase':
+        return <MenuFireBase></MenuFireBase>;
       case 'map':
         return <View></View>;
       case 'find':

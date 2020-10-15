@@ -42,8 +42,7 @@ export default function Home({navigation}) {
       <View>
         <Image
           source={{
-            uri:
-              'https://znews-photo.zadn.vn/w660/Uploaded/mdf_eioxrd/2019_10_09/1.jpg',
+            uri: 'https://www.filepicker.io/api/file/4C6yPDywSUeWYLyg1h9G',
           }}
           style={{
             height: SIZE.height(25),
@@ -55,7 +54,7 @@ export default function Home({navigation}) {
         <View
           style={{
             height: SIZE.height(25),
-            marginTop: SIZE.height(18),
+            marginTop: SIZE.height(20),
             marginHorizontal: SIZE.width(5),
             borderRadius: 20,
             overflow: 'hidden',

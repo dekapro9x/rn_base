@@ -1,23 +1,20 @@
 const DATA_SLIDER_INTRO = [
   {
     id: 1,
-    img:
-      'https://static1.bestie.vn/Mlog/ImageContent/201712/cicf-14-20171213004150.jpg',
+    img: 'https://www.filepicker.io/api/file/4C6yPDywSUeWYLyg1h9G',
   },
   {
     id: 2,
-    img:
-      'https://khoanhkhacthanglong.vn/wp-content/uploads/2020/05/b4-e1588994466260.jpg',
+    img: 'https://miro.medium.com/max/4492/1*ZBSX06fzK-gFy_Cj3FwzUg.png',
   },
   {
     id: 3,
     img:
-      'https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2019/shushi4.jpg',
+      'https://photos5.appleinsider.com/gallery/36356-67551-34A9F521-4345-4AE1-8C31-B6109A94CF7B-xl.jpg',
   },
   {
     id: 4,
-    img:
-      'https://gkedu.vn/wp-content/uploads/2019/03/636044104859117199985990752_tacos.jpg',
+    img: 'https://i.ytimg.com/vi/gvF6sFIPfsQ/maxresdefault.jpg',
   },
 ];
 
