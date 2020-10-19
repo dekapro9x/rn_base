@@ -14,7 +14,7 @@ Còn sửa native cập nhật APK lên Apstore thì nhớ tăng version lên 1.
 
 # Android:
 
-# 1: Chuyển applicationIdSuffix trong build.gradle : (Cấu hình tạo file mới APK không ghi đè package)
+# 1: Chuyển applicationIdSuffix trong build.gradle : (Cấu hình tạo file mới APK không ghi đè package) thành .public
 
 buildTypes {
 debug {
@@ -46,7 +46,7 @@ export const SENDER_ID = "867275678656";
 <string name="app_name">クスリのアオキ公式アプリ</string>
 <string moduleConfig="true" name="CodePushDeploymentKey">QvwTX6bVUEdd3RIDjgA-nsrhDuPVRS3y-bXta</string>
 
-# 5:Giải nén google-services product và kiểm tra cấu hình của endpoint google-services:
+# 5:Giải nén google-services product và kiểm tra cấu hình của endpoint google-services: "package_name": jp.co.kusuriaoki.android.public
 
 "project_number": "867275678656",
 "firebase_url": "https://kusuriaoki-c1c22.firebaseio.com",
@@ -128,6 +128,8 @@ return `http://sdk-ads-analyze.com/app/api/notification/onClick?notificationId=$
 # 6: Kiểm tra lại certificate , quyền build và đẩy App .
 
 # 7: Login kiểm tra SDK.
+
+# 8: Chạy lệnh code push: appcenter codepush release-react -a Kusuri/Kusuri-iOS -d Production -m
 
 Tài khoản check Pro:  
 8090127700000400

@@ -135,6 +135,8 @@ return `http://sdk-ads-analyze.com/app/api/notification/onClick?notificationId=$
 
 # 7: Login kiểm tra SDK.
 
+# 8: Chạy lệnh đẩy code push: appcenter codepush release-react -a Yakuodo-Co./Yaukudo-IOS -d Production -m
+
 Tài khoản check Pro:  
 8090127700000400
 PIN : 7926
