@@ -1,6 +1,7 @@
 //Library:
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
+import {useNavigation} from '@react-navigation/core';
 import LinearGradient from 'react-native-linear-gradient';
 
 //Setup:
@@ -11,11 +12,12 @@ import {COLOR, SIZE} from '../utils';
 import {AppImageWithTextButton} from '../elements/AppImageWithTextButton';
 
 export default function BottomMenu() {
+  const navigation = useNavigation();
   if (DataBottomMenu.length == 0) {
     return null;
   }
   const pressMenu = (item) => () => {
-    console.log('hehehe', item);
+    navigation.navigate(item.screen);
   };
   //Item:
   const renderItem = () => {
@@ -39,10 +41,10 @@ export default function BottomMenu() {
   };
   return (
     <LinearGradient
-      locations={[0.9, 0.2]}
-      start={{x: 0.2, y: 0.1}}
-      end={{x: 0.5, y: 1.0}}
-      colors={['#fdfcfb', '#e2d1c3']}>
+      locations={[1.0, 0.0]}
+      start={{x: 1.0, y: 0.0}}
+      end={{x: 0.0, y: 1.0}}
+      colors={['crimson', 'lightsalmon']}>
       <Animatable.View
         useNativeDriver={true}
         animation={'fadeInUp'}

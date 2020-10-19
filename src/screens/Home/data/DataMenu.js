@@ -116,4 +116,4 @@ const DATA_MENU_HOME = [
   // [{id: 15,  type: 'icon', screen: '', img: '', icon: ''}],
 ];
 
-export {DATA_MENU_HOME};
+export default DATA_MENU_HOME;

@@ -19,5 +19,6 @@ const KEY_NAVIGATION = {
   direction_map: 'DIRECTION_MAP',
   animation: 'ANIMATION',
   youtube_ads: 'YOUTUBE_ADS',
+  firebase_auth: 'FIRE_BASE_AUTHENTICATION',
 };
 export {KEY_NAVIGATION};

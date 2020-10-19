@@ -19,7 +19,7 @@ const SliderHome = (props) => {
         <View
           key={`${index}`}
           style={{
-            height: (SIZE.device_width * 9) / 20,
+            height: (SIZE.device_width * 9) / 21,
             width: '100%',
           }}>
           <AppImage
@@ -27,7 +27,7 @@ const SliderHome = (props) => {
               uri: item.img,
             }}
             style={{
-              height: (SIZE.device_width * 9) / 20,
+              height: (SIZE.device_width * 9) / 21,
               width: '100%',
               alignSelf: 'center',
             }}

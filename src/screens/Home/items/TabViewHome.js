@@ -14,14 +14,13 @@ import MenuFireBase from './MenuFireBase';
 export default function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
   const [index, setIndex] = useState(0);
-  const {dataMenuHome} = props;
+  const {dataMenuHome, dataMenuFireBase} = props;
   //Routes số lượng tabview:
   const [routes] = useState([
     {
       key: 'menu',
       title: 'Menu',
-      img:
-        'https://i.pinimg.com/originals/84/28/02/84280285c99276db354c04caeead6302.png',
+      img: 'https://i.dlpng.com/static/png/6470996_preview.png',
     },
     {
       key: 'firebase',
@@ -54,7 +53,9 @@ export default function TabViewHome(props) {
       case 'menu':
         return <MenuHome dataMenuHome={dataMenuHome}></MenuHome>;
       case 'firebase':
-        return <MenuFireBase></MenuFireBase>;
+        return (
+          <MenuFireBase dataMenuFireBase={dataMenuFireBase}></MenuFireBase>
+        );
       case 'map':
         return <View></View>;
       case 'find':
