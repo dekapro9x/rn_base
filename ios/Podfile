@@ -1,7 +1,20 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+# Sửa lỗi [!] [Xcodeproj] Generated duplicate UUIDs:
+# inhibit_all_warnings!
+
+# [!] [Xcodeproj] Generated duplicate UUIDs:
+# @see http://stackoverflow.com/a/33440077/456536
+# A:
+#   export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES
+# B:
+#   install! 'cocoapods', :deterministic_uuids => false
+
+install! 'cocoapods', :deterministic_uuids => false
+
 platform :ios, '10.0'
+
 
 target 'rn_base' do
   config = use_native_modules!
@@ -20,6 +33,9 @@ target 'rn_base' do
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
+
+  # Cấu hình firebase:
+  pod 'Firebase/Analytics'
   
    # Cấu hình Youtobe:
    pod 'XCDYouTubeKit', '~> 2.8'
@@ -30,11 +46,13 @@ target 'rn_base' do
     inherit! :complete
     # Pods for testing
   end
+  
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
+  
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
@@ -49,3 +67,5 @@ target 'rn_base-tvOS' do
     # Pods for testing
   end
 end
+
+

@@ -67,3 +67,15 @@ Vào :
   }
   ...
   }
+
+# [!] [Xcodeproj] Generated duplicate UUIDs:
+
+PBXAggregateTarget -- 072CEA044D2EF26F03496D5996BBF59F
+PBXAggregateTarget -- 8D7F5D5DD528D21A72DC87ADA5B12E2D
+Lỗi này gặp phải khi cấu hình react-native-firebase cho IOS:
+
+Vào pod thêm:
+
+# Sửa lỗi [!] [Xcodeproj] Generated duplicate UUIDs:
+
+install! 'cocoapods', :deterministic_uuids => false
