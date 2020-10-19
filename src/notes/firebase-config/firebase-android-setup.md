@@ -69,7 +69,7 @@ Download file google-services.json cho vào thư mục: android/app/google-servi
 
 # Bước 3: Cấu hình các function để cắm các gói tin cho file google-services.json:
 
-# Bước 4 : Chạy thử ứng dụng android.
+# Bước 4 : Chạy thử ứng dụng android và kiểm tra kết nối.
 
 Phần cấu hình fire base tương ứng với package name sẽ liên quan đến phần applicationIdSuffix ".dev" tức là với package name được build ra sẽ có 1 đuôi .dev đính kèm.
 Vì thế mà file cấu hình tương ứng trong google services cũng phải có : "package_name": "com.rn_base.dev" tương ứng => Tương ứng bản pro :applicationIdSuffix ".public"

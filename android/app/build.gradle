@@ -138,7 +138,7 @@ android {
         versionCode 1
         versionName "1.0"
         missingDimensionStrategy 'react-native-camera', 'general' //Thêm dòng này nếu cấu hình Camera
-        //Thêm cấu hình này để cấu hình projects 64k methods:
+        //Thêm cấu hình này để cấu hình projects 64k methods: Android Enabling Multidex 64k methods 
         multiDexEnabled true
     }
     splits {
