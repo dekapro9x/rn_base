@@ -33,18 +33,37 @@ cd android && ./gradlew clean : Xóa cache build
 # 65536 methods for dex. Lỗi nhiều hơn 64k phương thức trong 1 projects:
 
 # Sửa lỗi react native cookie chạy debug được nhưng không thể build release Android:
- Trong android/build/gradle: 
- Thêm: 
- //Sửa lỗi react native cookie chạy debug được nhưng không thể build release:
- 
+
+Trong android/build/gradle:
+Thêm:
+//Sửa lỗi react native cookie chạy debug được nhưng không thể build release:
+
 subprojects {
-    afterEvaluate {project ->
-        if (project.hasProperty("android")) {
-            android {
-                compileSdkVersion = 29
-                buildToolsVersion = "29.0.2"
-            }
-        }
-    }
+afterEvaluate {project ->
+if (project.hasProperty("android")) {
+android {
+compileSdkVersion = 29
+buildToolsVersion = "29.0.2"
+}
+}
+}
 }
 
+# UIDatePicker IOS 14 hiển thị cách chọn ngày giờ khác:
+
+Thêm :
+if (@available(iOS 14, *)) {
+UIDatePicker *picker = [UIDatePicker appearance];
+picker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+}
+Vào :
+
+- (BOOL)application:(UIApplication _)application didFinishLaunchingWithOptions:(NSDictionary _)launchOptions
+  {
+  ...
+  if (@available(iOS 14, *)) {
+  UIDatePicker *picker = [UIDatePicker appearance];
+  picker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+  }
+  ...
+  }
