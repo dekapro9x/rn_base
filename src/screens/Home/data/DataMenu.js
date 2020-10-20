@@ -6,7 +6,8 @@ const DATA_MENU_HOME = [
       id: 1,
       type: 'icon',
       screen: KEY_NAVIGATION.webview,
-      img: '',
+      img:
+        'https://www.codester.com/static/uploads/items/000/005/5091/icon.png',
       icon: 'world',
       name: 'Webview',
       link: 'https://www.youtube.com/?gl=VN',
@@ -25,8 +26,8 @@ const DATA_MENU_HOME = [
       id: 3,
       type: 'icon',
       screen: KEY_NAVIGATION.location,
-      img: '',
-
+      img:
+        'https://repository-images.githubusercontent.com/253899740/93f8b780-7c50-11ea-848a-f7cefede435c',
       name: 'Location',
       link: '',
     },
@@ -44,7 +45,8 @@ const DATA_MENU_HOME = [
       id: 4,
       type: 'icon',
       screen: KEY_NAVIGATION.notification,
-      img: '',
+      img:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTR1Fi4TLGdXpJjaWe36jdFhrRPEEauy9IxGw&usqp=CAU',
       name: 'Notification',
       link: '',
     },
@@ -63,7 +65,8 @@ const DATA_MENU_HOME = [
       id: 6,
       type: 'icon',
       screen: KEY_NAVIGATION.video,
-      img: '',
+      img:
+        'https://c.pxhere.com/images/3a/14/ca29a5d7d752e3e53349f20d7b1f-1443433.jpg!d',
       name: 'Youtobe',
       icon: '',
     },
@@ -71,7 +74,8 @@ const DATA_MENU_HOME = [
       id: 7,
       type: 'icon',
       screen: KEY_NAVIGATION.direction_map,
-      img: '',
+      img:
+        'https://media.istockphoto.com/vectors/flat-street-map-with-direction-gps-navigation-on-road-town-with-pins-vector-id1209966637',
       name: 'Direction Map',
       icon: '',
     },
@@ -79,7 +83,8 @@ const DATA_MENU_HOME = [
       id: 8,
       type: 'icon',
       screen: KEY_NAVIGATION.animation,
-      img: '',
+      img:
+        'https://data.designervn.net/2019/04/8242_7646b4059b1cb3f488fc7e320f1f103e.jpg',
       name: 'Animation',
       icon: '',
     },
@@ -89,15 +94,16 @@ const DATA_MENU_HOME = [
       id: 9,
       type: 'icon',
       screen: KEY_NAVIGATION.animation,
-      img: '',
-      name: 'Light',
+      img:
+        'https://cdn3.vectorstock.com/i/1000x1000/71/47/mobile-phone-with-light-abstracted-screen-on-a-vector-18537147.jpg',
+      name: 'Light Screen',
       icon: '',
     },
     {
       id: 10,
       type: 'icon',
       screen: KEY_NAVIGATION.youtube_ads,
-      img: '',
+      img: 'https://adflex.vn/wp-content/uploads/2020/06/quang-cao-youtube.jpg',
       name: 'Youtobe_Ads',
       icon: '',
     },
