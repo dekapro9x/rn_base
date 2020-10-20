@@ -1,9 +1,9 @@
 export const DataVideo = [
   {
     id: 4,
-    name: 'TOULIVER x BINZ - "BIGCITYBOI" (Official Music Video)',
+    name: 'Video lỗi',
     description: null,
-    url: 'https://www.youtube.com/watch?v=jgZkrA8E5do',
+    url: 'https://www.youtube.com/watch?v=xWPddutu160',
     toNumberUser: 17,
     numberView: 0,
     numberViewUnique: 0,

@@ -1,13 +1,11 @@
 const DATA_SLIDER_INTRO = [
   {
     id: 1,
-    img:
-      'https://thuthuatnhanh.com/wp-content/uploads/2018/07/hinh-anh-thien-nhien-phong-canh-dep-nhat.jpg',
+    img: 'https://d1tvk6jrw60uvw.cloudfront.net/bucket/react-native.jpg',
   },
   {
     id: 2,
-    img:
-      'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-3.jpeg',
+    img: 'https://media.graphcms.com/output=format:jpg/92kCuDdpQI2pRMyHpFOX',
   },
   {
     id: 3,

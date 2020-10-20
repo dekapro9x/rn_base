@@ -44,7 +44,7 @@ function ItemVideo(props) {
     setStatePopupStartVideo(false);
     setStatereceiveCoupon(false);
   };
-  
+
   const playVideoNotHasCoupon = () => {
     setStatePopupStartVideo(true);
   };
@@ -68,7 +68,8 @@ function ItemVideo(props) {
               alignItems: 'center',
             }}>
             <VideoIOS
-              renderButtonReceiveCoupon={renderButtonReceiveCoupon}></VideoIOS>
+              renderButtonReceiveCoupon={renderButtonReceiveCoupon}
+              item={item}></VideoIOS>
             {receiveCoupon ? (
               <TouchableOpacity
                 onPress={unVisibleModal}
@@ -157,7 +158,6 @@ function ItemVideo(props) {
       );
     }
   };
-
 
   return (
     <TouchableOpacity onPress={onPressVideo} activeOpacity={0.8}>

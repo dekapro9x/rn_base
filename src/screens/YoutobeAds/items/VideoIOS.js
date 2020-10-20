@@ -275,6 +275,16 @@ export default class RCTYouTubeExample extends React.Component {
     );
   };
 
+  //Lấy id của Youtobe:
+  getIDWithLinkYouTube = (link) => {
+    let video_id = link.split('v=')[1];
+    const ampersandPosition = video_id.indexOf('&');
+    if (ampersandPosition != -1) {
+      video_id = video_id.substring(0, ampersandPosition);
+    }
+    return video_id;
+  };
+
   render() {
     const {renderButtonReceiveCoupon} = this.props;
     return (
@@ -292,6 +302,8 @@ export default class RCTYouTubeExample extends React.Component {
         }}>
         {this.state.containerMounted && (
           <YouTube
+            //Sửa lỗi video không thể mở IOS:
+            origin="http://www.youtube.com"
             showinfo={false}
             controls={0}
             hidden={false}
@@ -311,7 +323,7 @@ export default class RCTYouTubeExample extends React.Component {
             // Un-comment one of videoId / videoIds / playlist.
             // You can also edit these props while Hot-Loading in development mode to see how
             // it affects the loaded native module
-            videoId="jgZkrA8E5do"
+            videoId={getIDWithLinkYouTube(item.url)}
             // videoIds={['HcXNPI-IPPM', 'XXlZfc1TrD0', 'czcjU1w-c6k', 'uMK0prafzw0']}
             // playlistId="PLF797E961509B4EB5"
             play={this.state.isPlaying}
