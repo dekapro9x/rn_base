@@ -20,5 +20,6 @@ const KEY_NAVIGATION = {
   animation: 'ANIMATION',
   youtube_ads: 'YOUTUBE_ADS',
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',
+  download_img: 'DOWNLOAD_IMG',
 };
 export {KEY_NAVIGATION};

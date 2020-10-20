@@ -1,7 +1,7 @@
 const DATA_SLIDER_INTRO = [
   {
     id: 1,
-    img: 'https://d1tvk6jrw60uvw.cloudfront.net/bucket/react-native.jpg',
+    img: 'https://www.filepicker.io/api/file/4C6yPDywSUeWYLyg1h9G',
   },
   {
     id: 2,
@@ -10,16 +10,17 @@ const DATA_SLIDER_INTRO = [
   {
     id: 3,
     img:
-      'https://i.pinimg.com/originals/a8/45/76/a84576a04c1874304735604d9f47d5a4.jpg',
+      'https://cafedev.vn/wp-content/uploads/2019/11/cafedev_firebase_intruc.png',
   },
   {
     id: 4,
     img:
-      'https://thongtinz.com/wp-content/uploads/2020/08/hinh-nen-phong-canh-29.jpg',
+      'https://koenig-media.raywenderlich.com/uploads/2018/06/AndroidFirebase-feature-1.png',
   },
   {
     id: 5,
-    img: 'https://miro.medium.com/max/1200/0*CarnbI_4daltBlf5.jpg',
+    img:
+      'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/131448684/original/1555785e5820db55020d76acb8814c70f0780bf6/do-hybrid-app-development-in-react-native.jpg',
   },
 ];
 

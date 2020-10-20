@@ -58,6 +58,8 @@
 				</dict>
 			</dict>
 		</dict>
+
+
 		<key>NSCameraUsageDescription</key>
 		<string>Xin quyền Camera.</string>
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -66,7 +68,13 @@
 		<string>Xin quyền vị trí.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Xin quyền vị trí.</string>
+		<key>NSPhotoLibraryUsageDescriptionkhóa</key>
+		<string>Xin quyền truy cập vào thư mục ảnh</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>Xin quyền truy cập vào thư mục ảnh</string>
 		<key>UIAppFonts</key>
+
+
 		<array>
 			<string>AntDesign.ttf</string>
 			<string>Entypo.ttf</string>
