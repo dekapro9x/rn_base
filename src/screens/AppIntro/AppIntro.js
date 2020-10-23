@@ -1,12 +1,12 @@
 //Library:
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {SafeAreaView} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import AsyncStorage from '@react-native-community/async-storage';
 
 //Setup :
 import {getInfoDevices} from '../../utils/constants/System';
-import {COLOR, KEY_ASYNC_STORE} from '../../utils';
+import {COLOR, KEY_ASYNC_STORE, KEY_NAVIGATION} from '../../utils';
 
 //Component:
 // import SliderSwiper from './items/SliderSwiper';
@@ -17,7 +17,8 @@ import SliderTouch from './items/SliderTouch';
 import DATA_SLIDER_INTRO from './items/Data';
 import {FetchApi} from '../../utils/modules/FetchAPI';
 
-function AppIntroScreen() {
+function AppIntroScreen({navigation, route}) {
+  const renderSliderIntro = useRef(false);
   useEffect(() => {
     getInfoDevicesSystem();
     RNBootSplash.hide({duration: 2000});
@@ -26,6 +27,12 @@ function AppIntroScreen() {
   }, []);
   const onDidMount = async () => {
     RegistrationDeviceID();
+    if (!renderSliderIntro.current) {
+      navigation.navigate(KEY_NAVIGATION.auth_navigator, {
+        screen: KEY_NAVIGATION.entry,
+        params: {},
+      });
+    }
   };
 
   //API đăng kí ID của thiết bị:
@@ -48,17 +55,26 @@ function AppIntroScreen() {
     const getAPIPlatform = await getInfoDevices.getInfoDevicesApiLevelPlatform;
   };
 
+  const renderContent = () => {
+    if (renderSliderIntro.current) {
+      return (
+        //   <SliderSwiper
+        //     dataSlider={DATA_SLIDER_INTRO}
+        //     alwayShowSlider={true}></SliderSwiper>
+        // <SliderHandler
+        //     dataSlider={DATA_SLIDER_INTRO}
+        //     alwayShowSlider={true}></SliderHandler>
+        <SliderTouch
+          dataSlider={DATA_SLIDER_INTRO}
+          alwayShowSlider={true}></SliderTouch>
+      );
+    }
+    return null;
+  };
+
   return (
     <SafeAreaView style={{backgroundColor: COLOR.TRANSPARENT, flex: 1}}>
-      {/* <SliderSwiper
-        dataSlider={DATA_SLIDER_INTRO}
-        alwayShowSlider={true}></SliderSwiper> */}
-      {/* <SliderHandler
-        dataSlider={DATA_SLIDER_INTRO}
-        alwayShowSlider={true}></SliderHandler> */}
-      <SliderTouch
-        dataSlider={DATA_SLIDER_INTRO}
-        alwayShowSlider={true}></SliderTouch>
+      {renderContent()}
     </SafeAreaView>
   );
 }

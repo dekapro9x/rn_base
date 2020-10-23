@@ -4,7 +4,7 @@ import {SIZE} from '../../../utils';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function HeaderHome() {
+function HeaderHome() {
   return (
     <View
       style={{
@@ -34,3 +34,4 @@ export default function HeaderHome() {
     </View>
   );
 }
+export default React.memo(HeaderHome);

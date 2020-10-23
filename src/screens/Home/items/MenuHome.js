@@ -8,7 +8,7 @@ import {SIZE, COLOR, KEY_NAVIGATION} from '../../../utils';
 import {AppText, AppImage, Loading} from '../../../elements';
 //Component:
 
-export default function MenuHome(props) {
+function MenuHome(props) {
   const {dataMenuHome} = props;
   const navigation = useNavigation();
   const [loading, setStateLoading] = useState(true);
@@ -176,3 +176,5 @@ export default function MenuHome(props) {
     </View>
   );
 }
+
+export default React.memo(MenuHome);

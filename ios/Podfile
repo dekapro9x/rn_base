@@ -26,6 +26,7 @@ target 'rn_base' do
    pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
    pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
    pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"
+   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
    pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
 
   # Cấu hình Map:

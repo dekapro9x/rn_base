@@ -11,7 +11,7 @@ import {COLOR, SIZE} from '../../../utils';
 import MenuHome from './MenuHome';
 import MenuFireBase from './MenuFireBase';
 
-export default function TabViewHome(props) {
+function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
   const [index, setIndex] = useState(0);
   const {dataMenuHome, dataMenuFireBase} = props;
@@ -129,3 +129,4 @@ export default function TabViewHome(props) {
     </View>
   );
 }
+export default React.memo(TabViewHome);
