@@ -153,10 +153,12 @@ const AppContainer = (props) => {
             }}>
             <AppImage
               source={{
-                uri: logoApp,
+                uri:
+                  'https://reactnativecode.com/wp-content/uploads/2018/01/native_base_Thumb_2.png',
               }}
               style={{
-                height: SIZE.icon_button * 2,
+                marginTop: SIZE.height(1),
+                height: SIZE.height(3) * 2,
                 width: SIZE.width(60),
                 alignSelf: 'center',
               }}

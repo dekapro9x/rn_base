@@ -28,7 +28,7 @@ function AppIntroScreen({navigation, route}) {
   const onDidMount = async () => {
     RegistrationDeviceID();
     if (!renderSliderIntro.current) {
-      navigation.navigate(KEY_NAVIGATION.auth_navigator, {
+      navigation.replace(KEY_NAVIGATION.auth_navigator, {
         screen: KEY_NAVIGATION.entry,
         params: {},
       });
