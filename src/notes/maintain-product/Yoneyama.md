@@ -1,6 +1,6 @@
 # =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA =>>>>>>>> YONEYAMA
 
-# Các bước cấu hình Yone Product Yoneyama Android: (Bản 1.0.2)
+# Các bước cấu hình Yone Product Yoneyama Android: (Bản 1.0.3) Bản 5.
 
 # Chú ý:
 
@@ -12,14 +12,15 @@ Sau đó chạy lệnh code push.
 Chú ý: Nếu đẩy code push thì check lại version trên Server, chỉ đẩy phần sửa đổi JS.
 Còn sửa native cập nhật APK lên Apstore thì nhớ tăng version lên 1.Đẩy IOS lên testFlight, cập nhật thông tin bản vá.
 
-# Các bước cấu hình Yoneyama Product Android: (1.0.2)
+# Các bước cấu hình Yoneyama Product Android: (1.0.3)
 
 # Android:
 
 # 1:Cấu hình trong System.js:
 
-const versionApp = isIos ? ‘1.0.2’ : ‘1.0.2’;
 // Product:
+const versionApp = isIos ? ‘1.0.3’ : ‘1.0.3’;
+const versionCodePush = isIos ? '0' : '0';
 const APP_ID1 = '1593254256879';
 const APP_ID2 = '1593254268116';
 const URL_DOMAIN = 'https://app-cms-yoneyama.com';  
@@ -30,7 +31,7 @@ const COMPANY_ID = '1593254241992';
 <string name="app_name">ヨネヤマ公式</string>
 <string moduleConfig="true" name="CodePushDeploymentKey">Rhb1dKY33xwdKFbtIRDhBSj6t1y21qS9gonss</string>
 
-# 3: Đổi google-services:
+# 3: Đổi google-services (Con này key của Store giống như là keyStore bên Dev nên ko cần đổi)
 
 "project_number": "1063382257103",
 "firebase_url": "https://yoneyama-35ce8.firebaseio.com",
@@ -51,8 +52,8 @@ const COMPANY_ID = '1593254241992';
 
 # 5: Thay đổi versionCode và versionName trong app/build.gradle:
 
-versionCode 4
-versionName “1.0.2”
+versionCode 5
+versionName “1.0.3”
 
 # 6: Build 1 bản APK và chạy lệnh để đẩy code push: appcenter codepush release-react -a Yoneyama/Yoneyama-Android -d Production -m
 
@@ -74,8 +75,9 @@ AAAA95aFjc8:APA91bHPpzEbjhUgs9YtSivV4K\_\_Mz9V56vNSu2X42I9ObD3RU1wvBkGB94OC63Ca8
 
 # 1:Cấu hình trong System.js:
 
-const versionApp = isIos ? ‘1.0.2’ : ‘1.0.2’;
 //product:
+const versionApp = isIos ? ‘1.0.3’ : ‘1.0.3’;
+const versionCodePush = isIos ? '0' : '0';
 const APP_ID1 = '1593254256879';
 const APP_ID2 = '1593254268116';
 const URL_DOMAIN = 'https://app-cms-yoneyama.com';
@@ -85,7 +87,7 @@ const COMPANY_ID = '1593254241992';
 
 Đổi bundle : jp.co.yoneyama.ios.id.public
 Thay tên App : ヨネヤマ公式 .
-Tăng version App 1.0.2.  
+Tăng version App 1.0.3.  
 Reset bản build về 1.
 
 # 3: Đổi key Code push:
