@@ -76,7 +76,7 @@ AAAA95aFjc8:APA91bHPpzEbjhUgs9YtSivV4K\_\_Mz9V56vNSu2X42I9ObD3RU1wvBkGB94OC63Ca8
 # 1:Cấu hình trong System.js:
 
 //product:
-const versionApp = isIos ? ‘1.0.3’ : ‘1.0.3’;
+const versionApp = isIos ? ‘1.0.4’ : ‘1.0.4’;
 const versionCodePush = isIos ? '0' : '0';
 const APP_ID1 = '1593254256879';
 const APP_ID2 = '1593254268116';
@@ -87,7 +87,7 @@ const COMPANY_ID = '1593254241992';
 
 Đổi bundle : jp.co.yoneyama.ios.id.public
 Thay tên App : ヨネヤマ公式 .
-Tăng version App 1.0.3.  
+Tăng version App 1.0.4.  
 Reset bản build về 1.
 
 # 3: Đổi key Code push:
