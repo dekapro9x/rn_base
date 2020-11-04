@@ -54,7 +54,7 @@ const COMPANY_ID = '1593254241992';
 
 versionCode 6
 versionName “1.0.4”
-Comment lại applicationIdSuffix tránh nhầm với bản Pro tương ứng với cấu hình Firebase google-service.json.
+# Comment lại applicationIdSuffix tránh nhầm với bản Pro tương ứng với cấu hình Firebase google-service.json.
 applicationIdSuffix ".dev"
 
 # 6: Build 1 bản APK và chạy lệnh để đẩy code push: appcenter codepush release-react -a Yoneyama/Yoneyama-Android -d Production -m
