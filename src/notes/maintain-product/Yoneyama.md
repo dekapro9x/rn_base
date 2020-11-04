@@ -19,7 +19,7 @@ Còn sửa native cập nhật APK lên Apstore thì nhớ tăng version lên 1.
 # 1:Cấu hình trong System.js:
 
 // Product:
-const versionApp = isIos ? ‘1.0.3’ : ‘1.0.3’;
+const versionApp = isIos ? ‘1.0.4’ : ‘1.0.4’;
 const versionCodePush = isIos ? '0' : '0';
 const APP_ID1 = '1593254256879';
 const APP_ID2 = '1593254268116';
@@ -52,8 +52,10 @@ const COMPANY_ID = '1593254241992';
 
 # 5: Thay đổi versionCode và versionName trong app/build.gradle:
 
-versionCode 5
-versionName “1.0.3”
+versionCode 6
+versionName “1.0.4”
+Comment lại applicationIdSuffix tránh nhầm với bản Pro tương ứng với cấu hình Firebase google-service.json.
+applicationIdSuffix ".dev"
 
 # 6: Build 1 bản APK và chạy lệnh để đẩy code push: appcenter codepush release-react -a Yoneyama/Yoneyama-Android -d Production -m
 
