@@ -3,7 +3,7 @@ import {FlatList, Text, View, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {AppContainer, Loading} from '../../elements';
+import {AppContainer, AppText, Loading} from '../../elements';
 import ItemAnimation from './items/ItemAnimation';
 import {COLOR, SIZE} from '../../utils';
 import DataAnimation from './utils/DataAnimation';
@@ -89,7 +89,18 @@ export default function DirectionMap() {
               width: SIZE.width(40),
               backgroundColor: 'red',
               marginLeft: SIZE.width(24),
-            }}></TouchableOpacity>
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <AppText
+              style={{
+                fontSize: SIZE.H4,
+                color: COLOR.white,
+                fontWeight: 'bold',
+              }}>
+              GO BACK
+            </AppText>
+          </TouchableOpacity>
         </View>
       </Modal>
     );

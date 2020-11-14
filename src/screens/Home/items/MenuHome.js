@@ -171,6 +171,7 @@ function MenuHome(props) {
     <View
       style={{
         marginTop: SIZE.height(2),
+        paddingBottom: SIZE.height(4),
       }}>
       {renderRow()}
     </View>
