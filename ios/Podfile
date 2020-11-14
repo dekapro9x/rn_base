@@ -28,6 +28,7 @@ target 'rn_base' do
    pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"
    pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
    pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+   pod 'RCTSystemSetting', :path => '../node_modules/react-native-system-setting'
 
   # Cấu hình Map:
   rn_maps_path = '../node_modules/react-native-maps'

@@ -184,6 +184,8 @@ PODS:
     - RNPermissions
   - PromisesObjC (1.2.11)
   - RCTRequired (0.63.2)
+  - RCTSystemSetting (1.7.6):
+    - React
   - RCTTypeSafety (0.63.2):
     - FBLazyVector (= 0.63.2)
     - Folly (= 2020.01.13.00)
@@ -522,6 +524,7 @@ DEPENDENCIES:
   - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications.podspec`)
   - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
+  - RCTSystemSetting (from `../node_modules/react-native-system-setting`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - RCTYouTube (from `../node_modules/react-native-youtube`)
   - React (from `../node_modules/react-native/`)
@@ -634,6 +637,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions/ios/PhotoLibrary.podspec"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
+  RCTSystemSetting:
+    :path: "../node_modules/react-native-system-setting"
   RCTTypeSafety:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
   RCTYouTube:
@@ -767,6 +772,7 @@ SPEC CHECKSUMS:
   Permission-PhotoLibrary: 8227a6ed9f6a971537afe63742d54f5f23a38fe2
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   RCTRequired: f13f25e7b12f925f1f6a6a8c69d929a03c0129fe
+  RCTSystemSetting: 5107b7350d63b3f7b42a1277d07e4e5d9df879be
   RCTTypeSafety: 44982c5c8e43ff4141eb519a8ddc88059acd1f3a
   RCTYouTube: 4509d59a7de050dd0c7c6cb1f427d37678d63b5c
   React: e1c65dd41cb9db13b99f24608e47dd595f28ca9a
@@ -820,6 +826,6 @@ SPEC CHECKSUMS:
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: 2bb2a790a62554ee268bd66522d4bd21e1ac0218
+PODFILE CHECKSUM: fcc3d36ac83c4849766857eeed532a438fb1bc29
 
 COCOAPODS: 1.10.0

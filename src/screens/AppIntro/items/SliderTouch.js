@@ -129,7 +129,7 @@ export default function SliderTouch(props) {
         <View key={`${item.id}`}>
           <AppImage
             source={{uri: item.img}}
-            resizeMode={'cover'}
+            resizeMode={'stretch'}
             style={{
               width: SIZE.device_width,
               height: '100%',
