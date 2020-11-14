@@ -28,6 +28,7 @@ import DirectionMap from '../screens/DirectionMap/DirectionMap';
 import Animation from '../screens/Animations/Animation';
 import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
+import LightScreen from '../screens/LightScreen/LightScreen';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -94,6 +95,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.download_img}
             component={DownLoadImg}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.light_screen}
+            component={LightScreen}
           />
         </RootStack.Navigator>
       </NavigationContainer>

@@ -21,5 +21,6 @@ const KEY_NAVIGATION = {
   youtube_ads: 'YOUTUBE_ADS',
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',
   download_img: 'DOWNLOAD_IMG',
+  light_screen: 'LIGHT_SCREEN',
 };
 export {KEY_NAVIGATION};

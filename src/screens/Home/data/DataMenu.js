@@ -93,7 +93,7 @@ const DATA_MENU_HOME = [
     {
       id: 9,
       type: 'icon',
-      screen: KEY_NAVIGATION.animation,
+      screen: KEY_NAVIGATION.light_screen,
       img:
         'https://cdn3.vectorstock.com/i/1000x1000/71/47/mobile-phone-with-light-abstracted-screen-on-a-vector-18537147.jpg',
       name: 'Light Screen',
