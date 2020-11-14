@@ -52,10 +52,9 @@ const COMPANY_ID = '1593254241992';
 
 # 5: Thay đổi versionCode và versionName trong app/build.gradle:
 
-versionCode 6
+versionCode 7
 versionName “1.0.4”
-# Comment lại applicationIdSuffix tránh nhầm với bản Pro tương ứng với cấu hình Firebase google-service.json.
-applicationIdSuffix ".dev"
+applicationIdSuffix ".dev" => (Comment lại applicationIdSuffix tránh nhầm với bản Pro tương ứng với cấu hình Firebase google-service.json.)
 
 # 6: Build 1 bản APK và chạy lệnh để đẩy code push: appcenter codepush release-react -a Yoneyama/Yoneyama-Android -d Production -m
 
@@ -90,7 +89,7 @@ const COMPANY_ID = '1593254241992';
 Đổi bundle : jp.co.yoneyama.ios.id.public
 Thay tên App : ヨネヤマ公式 .
 Tăng version App 1.0.4.  
-Reset bản build về 1.
+Reset bản build về 6.
 
 # 3: Đổi key Code push:
 
