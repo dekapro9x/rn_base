@@ -124,7 +124,7 @@ function TabViewHome(props) {
         initialLayout={SIZE.width(100)}
         style={{width: SIZE.width(100)}}
         tabBarPosition={'top'}
-        renderPager={(props) => <ScrollPager {...props}></ScrollPager>}
+        // renderPager={(props) => <ScrollPager {...props}></ScrollPager>}
       />
     </View>
   );

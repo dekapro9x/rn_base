@@ -117,12 +117,34 @@ const DATA_MENU_HOME = [
       icon: '',
     },
   ],
-  // [
-  //   {id: 12,  type: 'icon', screen: '', img: '', icon: ''},
-  //   {id: 13,  type: 'icon', screen: '', img: '', icon: ''},
-  //   {id: 14,  type: 'icon', screen: '', img: '', icon: ''},
-  // ],
-  // [{id: 15,  type: 'icon', screen: '', img: '', icon: ''}],
+  [
+    {
+      id: 12,
+      type: 'icon',
+      screen: KEY_NAVIGATION.upload_images,
+      img:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhEK0nHmYil-y_U2VdSNHluYo8Bqs8C2B2A&usqp=CAU',
+      name: 'Upload Images',
+      icon: '',
+    },
+    // {
+    //   id: 10,
+    //   type: 'icon',
+    //   screen: KEY_NAVIGATION.youtube_ads,
+    //   img: 'https://adflex.vn/wp-content/uploads/2020/06/quang-cao-youtube.jpg',
+    //   name: 'Youtobe_Ads',
+    //   icon: '',
+    // },
+    // {
+    //   id: 11,
+    //   type: 'icon',
+    //   screen: KEY_NAVIGATION.download_img,
+    //   img:
+    //     'https://khanhnguyen.vn/wp-content/uploads/2019/10/bigstock-Download-glossy-button-32202518.jpg',
+    //   name: 'Download Image',
+    //   icon: '',
+    // },
+  ],
 ];
 
 export default DATA_MENU_HOME;

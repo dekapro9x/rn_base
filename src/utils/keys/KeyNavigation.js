@@ -22,5 +22,6 @@ const KEY_NAVIGATION = {
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',
   download_img: 'DOWNLOAD_IMG',
   light_screen: 'LIGHT_SCREEN',
+  upload_images: 'UPLOAD_IMAGES',
 };
 export {KEY_NAVIGATION};

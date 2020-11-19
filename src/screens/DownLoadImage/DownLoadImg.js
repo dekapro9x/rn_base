@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   TextInput,
@@ -6,16 +6,18 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import CameraRoll from '@react-native-community/cameraroll';
-import {check, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
-import {AppContainer, AppImage} from '../../elements';
+import {AppContainer, AppImage, AppText} from '../../elements';
 import {COLOR, isIos, SIZE} from '../../utils';
 
 function DownLoadImg() {
   const [linkImage, setStateLinkImg] = useState('');
+  const setLinkImgDownLoad = useRef('');
   const [heightImg, setStateHeightImg] = useState(0);
   const [renderButtonDownLoadImg, setStateButtonDownLoadImg] = useState(false);
   const [error, setStateError] = useState(false);
@@ -23,6 +25,7 @@ function DownLoadImg() {
   //Lấy đường link ảnh:
   const onChangeTextinkImg = (link) => {
     setStateLinkImg(link);
+    setLinkImgDownLoad.current = link;
   };
 
   useEffect(() => {
@@ -66,35 +69,102 @@ function DownLoadImg() {
     }
   };
 
+  //Thông báo muốn lưu ảnh không?
+  const alertSaveImages = () => {
+    return Alert.alert(
+      'Bạn có muốn tải ảnh này vào anbum ảnh ko？',
+      '',
+      [
+        {
+          text: 'Hủy bỏ',
+          onPress: () => {},
+        },
+        {text: 'OK', onPress: downLoadImage, style: 'destructive'},
+      ],
+      {cancelable: false},
+    );
+  };
+
+  //Thực hiện tải ảnh:
+  const downLoadImage = async () => {
+    try {
+      var date = new Date();
+      let image_URL = encodeURI(setLinkImgDownLoad.current); //Chuyển đổi các kí tự đặc biệt sang kí tự hợp lệ:
+      console.log('image_URL', image_URL);
+      var ext = getExtention(image_URL);
+      ext = '.' + ext[0];
+      const {config, fs} = RNFetchBlob;
+      let PictureDir = fs.dirs.PictureDir;
+      let options = {
+        fileCache: true,
+        addAndroidDownloads: {
+          useDownloadManager: true,
+          notification: true,
+          path:
+            PictureDir +
+            '/image_' +
+            Math.floor(date.getTime() + date.getSeconds() / 2) +
+            ext,
+          description: 'Image',
+        },
+      };
+      const response = await config(options).fetch('GET', image_URL);
+      if (response && response.respInfo && response.respInfo.status == 200) {
+        const tag = response.respInfo.redirects;
+        let urlImg = tag[0];
+        if (tag && Array.isArray(tag)) {
+          const imageSaved = await CameraRoll.save(`${urlImg}`, 'photo');
+          Alert.alert('Lưu ảnh thành công!');
+        }
+      }
+    } catch (error) {
+      console.log('Lỗi cmnr', error);
+      Alert.alert('Có lỗi trong quá trình tải ảnh!');
+    } finally {
+    }
+  };
+
+  //So sánh chuỗi được lưu
+  const getExtention = (filename) => {
+    console.log(/[.]/.exec(filename) ? /[^.]+$/.exec(filename) : undefined);
+    return /[.]/.exec(filename) ? /[^.]+$/.exec(filename) : undefined;
+  };
+
   // Kiểm tra quyền ghi ảnh IOS:
-  // checkPermissionIosSavePhotoIOS = () => {
-  //   Permissions.request('photo').then((response) => {
-  //     if (response === 'authorized') {
-  //       this.alertSaveImages();
-  //     } else {
-  //       this.alertOpenSettingPermissionAnbumImagesIOS();
-  //       this.setState({showButtonDownLoad: false});
-  //     }
-  //   });
-  // };
+  const checkPermissionIosSavePhotoIOS = () => {
+    request(PERMISSIONS.IOS.PHOTO_LIBRARY).then((result) => {
+      console.log('Hỏi quyền xin lưu trữ ảnh trong anbum', result);
+      if (result === 'granted') {
+        alertSaveImages();
+      } else {
+        // this.alertOpenSettingPermissionAnbumImagesIOS();
+        setStateButtonDownLoadImg(false);
+      }
+    });
+  };
 
   //Lấy size ảnh:
   const getSizeImg = () => {
-    if (linkImage) {
-      Image.getSize(
-        linkImage,
-        (width, height) => {
-          console.log('width, height', width, height);
-          const heightImg = (height / width) * SIZE.width(100);
-          setStateHeightImg(heightImg);
-          setStateButtonDownLoadImg(true);
-          setStateError(false);
-        },
-        (error) => {
-          setStateError(true);
-          setStateButtonDownLoadImg(false);
-        },
-      );
+    if (setLinkImgDownLoad.current) {
+      try {
+        Image.getSize(
+          setLinkImgDownLoad.current,
+          (width, height) => {
+            console.log('width, height', width, height);
+            const heightImg = (height / width) * SIZE.width(100);
+            setStateHeightImg(heightImg);
+            setStateButtonDownLoadImg(true);
+            setStateError(false);
+          },
+          (error) => {
+            setStateError(true);
+            setStateButtonDownLoadImg(false);
+          },
+        );
+      } catch (error) {
+        setStateError(true);
+        setStateButtonDownLoadImg(false);
+      }
     } else {
       setStateError(false);
     }
@@ -116,32 +186,70 @@ function DownLoadImg() {
     }
     return null;
   };
+  //Lấy link ảnh mặc định:
+  const getLinkDefault = () => {
+    setLinkImgDownLoad.current =
+      'https://kenh14cdn.com/2018/5/29/306041951895727784346372303616811700060160n-1527605319565851621152.jpg';
+    setTimeout(() => {
+      getSizeImg();
+    }, 1000);
+    setStateLinkImg(
+      'https://kenh14cdn.com/2018/5/29/306041951895727784346372303616811700060160n-1527605319565851621152.jpg',
+    );
+  };
 
   //Nhập link ảnh:
   const inputLinkImg = () => {
     return (
       <View>
-        <Text
+        <View
           style={{
-            padding: SIZE.width(2),
-            fontSize: SIZE.H4,
-            fontWeight: 'bold',
-            color: COLOR.COLOR_GREEN,
-            textAlign: 'center',
+            flexDirection: 'row',
+            width: SIZE.width(100),
+            justifyContent: 'center',
+            padding: SIZE.width(3),
           }}>
-          Pase link ảnh vào đây:
-        </Text>
+          <Text
+            style={{
+              padding: SIZE.width(2),
+              fontSize: SIZE.H4,
+              fontWeight: 'bold',
+              color: COLOR.COLOR_GREEN,
+              textAlign: 'center',
+            }}>
+            Pase link ảnh vào đây:
+          </Text>
+          <TouchableOpacity
+            onPress={getLinkDefault}
+            style={{
+              justifyContent: 'center',
+              backgroundColor: 'red',
+              borderRadius: SIZE.width(2),
+            }}>
+            <AppText
+              style={{
+                paddingHorizontal: SIZE.width(4),
+                fontWeight: 'bold',
+                fontSize: SIZE.H4,
+                color: COLOR.white,
+              }}>
+              Get Link
+            </AppText>
+          </TouchableOpacity>
+        </View>
         <TextInput
           onBlur={getSizeImg}
           onChangeText={onChangeTextinkImg}
           style={{
-            height: SIZE.height(5),
+            minHeight: SIZE.height(10),
             borderWidth: 2,
             borderColor: COLOR.grey,
             borderRadius: 5,
             paddingHorizontal: SIZE.width(3),
             marginHorizontal: SIZE.width(3),
-          }}></TextInput>
+          }}>
+          {linkImage}
+        </TextInput>
         {error ? (
           <Text
             style={{
@@ -168,7 +276,7 @@ function DownLoadImg() {
         {renderImage()}
         {renderButtonDownLoadImg ? (
           <TouchableOpacity
-            // onPress ={}
+            onPress={checkPermissionIosSavePhotoIOS}
             style={{
               height: SIZE.height(7.5),
               width: SIZE.width(65),
@@ -178,6 +286,7 @@ function DownLoadImg() {
               alignItems: 'center',
               marginLeft: SIZE.width(17.5),
               justifyContent: 'center',
+              marginBottom: SIZE.width(4),
             }}>
             <Text style={{fontSize: SIZE.H2, color: COLOR.COLOR_VIOLET}}>
               DownLoad Image

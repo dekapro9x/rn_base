@@ -18,7 +18,7 @@ import DATA_SLIDER_INTRO from './items/Data';
 import {FetchApi} from '../../utils/modules/FetchAPI';
 
 function AppIntroScreen({navigation, route}) {
-  const renderSliderIntro = useRef(true);
+  const renderSliderIntro = useRef(false);
   useEffect(() => {
     getInfoDevicesSystem();
     RNBootSplash.hide({duration: 2000});

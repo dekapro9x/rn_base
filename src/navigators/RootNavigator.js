@@ -29,6 +29,7 @@ import Animation from '../screens/Animations/Animation';
 import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
+import UploadImage from '../screens/UploadImage/UploadImg';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -99,6 +100,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.light_screen}
             component={LightScreen}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.upload_images}
+            component={UploadImage}
           />
         </RootStack.Navigator>
       </NavigationContainer>
