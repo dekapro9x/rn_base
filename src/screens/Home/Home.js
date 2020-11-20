@@ -7,7 +7,10 @@ import {
   RefreshControl,
   Image,
 } from 'react-native';
+
+//Setup:
 import {COLOR, SIZE} from '../../utils';
+import ConfigPushnotification from '../../utils/services/ConfigPushnotification';
 
 //Component:
 import HeaderHome from './items/HeaderHome';
@@ -25,6 +28,7 @@ import {BottomService} from '../../utils/services/BottomService';
 export default function Home({navigation}) {
   const [isRefresh, setStateIsRefresh] = useState(false);
   const onRefreshHome = () => {
+    ConfigPushnotification();
     setStateIsRefresh(true);
     setTimeout(() => {
       setStateIsRefresh(false);
