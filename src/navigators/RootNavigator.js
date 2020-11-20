@@ -16,6 +16,7 @@ import MainNavigator from './MainNavigator';
 import AuthNavigator from './AuthNavigatior';
 
 //Các màn hình không cần xác thực dùng cho toàn App:
+//TabView Menu:
 import AppIntro from '../screens/AppIntro/AppIntro';
 import Webview from '../screens/Webview/Webview';
 import Location from '../screens/Location/Location';
@@ -30,6 +31,9 @@ import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
+
+// TabView Library:
+import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -104,6 +108,11 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.upload_images}
             component={UploadImage}
+          />
+          {/* TABVIEW_LIBRARY */}
+          <RootStack.Screen
+            name={KEY_NAVIGATION.library_push_local}
+            component={PushLocalScheduled}
           />
         </RootStack.Navigator>
       </NavigationContainer>

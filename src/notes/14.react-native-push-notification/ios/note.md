@@ -76,3 +76,8 @@ message: "không tìm thấy chuỗi cấp quyền “aps-environment” hợp l
 Vào tài khoản Apple tạo chứng chỉ push:
 Các bước đăng kí trong phần ảnh cấu hình push.
 Sau khi đăng kí thành công có : aps(Pushservices).cer
+Mở file .cer ra kiểm tra key PushServices trong Mac.
+=> Export ra file P12 để cấu hình push.
+
+Mở Xcode lên đăng kí chức năng push cho ứng dụng => Reset lại máy.
+Test Push bằng push try ở môi trường SandBox (Debug) => Production (Release)

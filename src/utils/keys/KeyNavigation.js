@@ -1,4 +1,5 @@
 const KEY_NAVIGATION = {
+  //TAB_VIEW_HOME_MENU:
   auth_navigator: 'AUTH_NAVIGATOR',
   main_navigator: 'MAIN_NAVIGATOR',
   app_intro: 'APP_INTRO',
@@ -23,5 +24,7 @@ const KEY_NAVIGATION = {
   download_img: 'DOWNLOAD_IMG',
   light_screen: 'LIGHT_SCREEN',
   upload_images: 'UPLOAD_IMAGES',
+  //TAB_VIEW_LIBRARY:
+  library_push_local: 'PUSH_LOCAL_SCHEDULED',
 };
 export {KEY_NAVIGATION};

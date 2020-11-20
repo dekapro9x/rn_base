@@ -10,11 +10,12 @@ import {COLOR, SIZE} from '../../../utils';
 //Component:
 import MenuHome from './MenuHome';
 import MenuFireBase from './MenuFireBase';
+import MenuLibrary from './MenuLibrary';
 
 function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
   const [index, setIndex] = useState(0);
-  const {dataMenuHome, dataMenuFireBase} = props;
+  const {dataMenuHome, dataMenuFireBase, dataMenuLibrary} = props;
   //Routes số lượng tabview:
   const [routes] = useState([
     {
@@ -59,7 +60,7 @@ function TabViewHome(props) {
       case 'chart':
         return <View></View>;
       case 'library':
-        return <View></View>;
+        return <MenuLibrary dataMenuLibrary={dataMenuLibrary}></MenuLibrary>;
       default:
         return <View></View>;
     }

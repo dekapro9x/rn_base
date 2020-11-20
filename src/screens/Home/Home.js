@@ -21,6 +21,7 @@ import TabViewHome from './items/TabViewHome';
 import DATA_SLIDER_HOME from './data/DataSlider';
 import DATA_MENU_HOME from './data/DataMenu';
 import DATA_MENU_FIREBASE from './data/DataMenuFireBase';
+import DATA_MENU_LIBRARY from './data/DataMenuLibrary';
 
 //Services:
 import {BottomService} from '../../utils/services/BottomService';
@@ -73,7 +74,8 @@ export default function Home({navigation}) {
           }}>
           <TabViewHome
             dataMenuHome={DATA_MENU_HOME}
-            dataMenuFireBase={DATA_MENU_FIREBASE}></TabViewHome>
+            dataMenuFireBase={DATA_MENU_FIREBASE}
+            dataMenuLibrary={DATA_MENU_LIBRARY}></TabViewHome>
         </ImageBackground>
       </View>
     </ScrollView>
