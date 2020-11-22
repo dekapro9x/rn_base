@@ -1,6 +1,6 @@
 import {KEY_NAVIGATION} from '../../../utils';
 
-const DATA_MENU_LIBRARY = [
+const DATA_MENU_30_DAY_EXAMPLE = [
   [
     {
       id: 1,
@@ -34,4 +34,4 @@ const DATA_MENU_LIBRARY = [
   ],
 ];
 
-export default DATA_MENU_LIBRARY;
+export default DATA_MENU_30_DAY_EXAMPLE;

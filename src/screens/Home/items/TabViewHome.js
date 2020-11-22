@@ -10,12 +10,12 @@ import {COLOR, SIZE} from '../../../utils';
 //Component:
 import MenuHome from './MenuHome';
 import MenuFireBase from './MenuFireBase';
-import MenuLibrary from './MenuLibrary';
+import Menu30DayExample from './Menu30DayExample';
 
 function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
   const [index, setIndex] = useState(0);
-  const {dataMenuHome, dataMenuFireBase, dataMenuLibrary} = props;
+  const {dataMenuHome, dataMenuFireBase, dataMenu30DayExample} = props;
   //Routes số lượng tabview:
   const [routes] = useState([
     {
@@ -36,8 +36,8 @@ function TabViewHome(props) {
         'https://jovis.edu.vn/wp-content/uploads/2020/08/81084d04dbcadec0b75a7d494b253d7d.gif',
     },
     {
-      key: 'library',
-      title: 'Library',
+      key: 'example',
+      title: '30 Day',
       img:
         'https://d2uusema5elisf.cloudfront.net/n/20191101192125417_twitter.jpg',
     },
@@ -59,8 +59,11 @@ function TabViewHome(props) {
         );
       case 'chart':
         return <View></View>;
-      case 'library':
-        return <MenuLibrary dataMenuLibrary={dataMenuLibrary}></MenuLibrary>;
+      case 'example':
+        return (
+          <Menu30DayExample
+            dataMenu30DayExample={dataMenu30DayExample}></Menu30DayExample>
+        );
       default:
         return <View></View>;
     }

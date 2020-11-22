@@ -8,8 +8,8 @@ import {SIZE, COLOR, KEY_NAVIGATION} from '../../../utils';
 import {AppText, AppImage, Loading} from '../../../elements';
 //Component:
 
-function MenuLibrary(props) {
-  const {dataMenuLibrary} = props;
+function Menu30DayExample(props) {
+  const {dataMenu30DayExample} = props;
   const navigation = useNavigation();
   const [loading, setStateLoading] = useState(true);
   const itemAnimation = useRef(new Animated.Value(0.01)).current;
@@ -47,7 +47,7 @@ function MenuLibrary(props) {
 
   //Then số lượng dòng menu:
   const renderRow = () => {
-    const row = dataMenuLibrary.map((listItemMenu, index) => {
+    const row = dataMenu30DayExample.map((listItemMenu, index) => {
       return (
         <View
           key={`${index}`}
@@ -178,4 +178,4 @@ function MenuLibrary(props) {
   );
 }
 
-export default React.memo(MenuLibrary);
+export default React.memo(Menu30DayExample);
