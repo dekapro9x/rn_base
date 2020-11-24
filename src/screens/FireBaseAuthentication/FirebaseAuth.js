@@ -1,18 +1,22 @@
 //Library:
-import React, {useEffect, useRef, useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {ScrollView, View, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 //Setup:
 import {ContextContainer} from '../../contexts/AppContext';
-import {AppContainer, AppImage, AppText} from '../../elements';
+import {AppContainer, AppImage} from '../../elements';
 import {COLOR, SIZE} from '../../utils';
 //Component:
 
 import AuMailAndPass from './items/AuMailAndPass';
+import AuFacebook from './items/AuFacebook';
 
 export default function FirebaseAuth() {
-  const [isModalVisible, setModalVisible] = useState(false);
   const {colorApp} = useContext(ContextContainer);
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [itemOnActive, setStateItemActive] = useState('');
+
   const listAuthentication = [
     {
       id: 1,
@@ -23,8 +27,9 @@ export default function FirebaseAuth() {
     {
       id: 2,
       name: 'LoginWithFacebook',
-      active: <AuMailAndPass></AuMailAndPass>,
-      img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
+      active: <AuFacebook></AuFacebook>,
+      img:
+        'https://c.wallhere.com/photos/28/6f/1600x1000_px_facebook_facebook_3d_facebook_logo-808920.jpg!d',
     },
     {
       id: 3,
@@ -45,25 +50,40 @@ export default function FirebaseAuth() {
       img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
     },
   ];
+
   //Hiển thị modal:
-  const showModal = () => {
+  const showModal = (item) => () => {
     setModalVisible(true);
+    setStateItemActive(item.id);
   };
+
   //Tắt modal:
   const unShowModal = () => {
     setModalVisible(false);
   };
+  const renderChildComponentItemActive = () => {
+    switch (itemOnActive) {
+      case 1:
+        return <AuMailAndPass unShowModal={unShowModal} />;
+      case 2:
+        return <AuFacebook unShowModal={unShowModal}></AuFacebook>;
+      default:
+        break;
+    }
+  };
+
   //Danh sách kiểu xác thực:
   const listTypeAuthentication = () => {
     return listAuthentication.map((item) => {
       return (
         <TouchableOpacity
-          onPress={showModal}
+          onPress={showModal(item)}
           key={item.id}
           style={{
-            height: 100,
+            minHeight: SIZE.height(5),
             width: SIZE.width(100),
             alignItems: 'center',
+            justifyContent: 'center',
             borderBottomColor: COLOR.black,
             borderBottomWidth: SIZE.width(0.3),
           }}>
@@ -71,9 +91,10 @@ export default function FirebaseAuth() {
             source={{
               uri: item.img,
             }}
+            resizeMode={'stretch'}
             style={{
-              height: SIZE.height(12),
-              width: SIZE.width(40),
+              height: SIZE.height(15),
+              width: SIZE.width(100),
             }}></AppImage>
         </TouchableOpacity>
       );
@@ -101,7 +122,7 @@ export default function FirebaseAuth() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <AuMailAndPass unShowModal={unShowModal}></AuMailAndPass>
+          {renderChildComponentItemActive()}
         </Modal>
       </ScrollView>
     </AppContainer>
