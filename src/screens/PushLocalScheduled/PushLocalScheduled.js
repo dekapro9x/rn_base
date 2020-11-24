@@ -10,7 +10,7 @@ import PushNotification from 'react-native-push-notification';
 import {AppContainer, AppText} from '../../elements';
 import {COLOR, SIZE} from '../../utils';
 export default function PushLocalScheduled() {
-  const [secondsPush, setStateSecondPush] = useState(10);
+  const [secondsPush, setStateSecondPush] = useState(0);
   const [titlePush, setStateTitlePush] = useState('');
   const [messPush, setStateMessPush] = useState('');
 
@@ -48,10 +48,10 @@ export default function PushLocalScheduled() {
       date: new Date(Date.now() + secondsPush * 1000),
       allowWhileIdle: false,
     });
+    Alert.alert('Đặt lịch thành công');
     setStateSecondPush(0);
     setStateTitlePush('');
     setStateMessPush('');
-    Alert.alert('Đặt lịch thành công');
   };
 
   //Ấn vào nút đặt lịch:

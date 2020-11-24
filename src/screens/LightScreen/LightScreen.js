@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {View, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState, useRef} from 'react';
+import {View, TouchableOpacity, Alert} from 'react-native';
 import SystemSetting from 'react-native-system-setting';
 import {AppText} from '../../elements';
 import {COLOR, SIZE} from '../../utils';
 
 export default function LightScreen() {
   const [getLight, setStateGetLight] = useState(0);
-  const [saveLight, setStateSaveLight] = useState(false);
+  const saveLight = useRef(false);
+
+  const getLightDefault = useRef(0);
+  const getLightCurrent = useRef(0);
   const arrayBright = [
     {
       id: 1,
@@ -39,29 +42,18 @@ export default function LightScreen() {
   ];
   useEffect(() => {
     //get the current brightness
-    SystemSetting.getBrightness().then((brightness) => {
+    SystemSetting.getBrightness(getLight).then((brightness) => {
       setStateGetLight(brightness);
+      getLightDefault.current = brightness;
     });
     return () => {
-      // if (!saveLight) {
-      //   SystemSetting.setBrightnessForce(getLight).then((success) => {
-      //     if (!success) {
-      //       Alert.alert(
-      //         'Permission Deny',
-      //         'You have no permission changing settings',
-      //         [
-      //           {text: 'Ok', style: 'cancel'},
-      //           {
-      //             text: 'Open Setting',
-      //             onPress: () => SystemSetting.grantWriteSettingPermission(),
-      //           },
-      //         ],
-      //       );
-      //     }
-      //   });
-      // } else {
-      //   SystemSetting.getBrightness().then((brightness) => {});
-      // }
+      if (saveLight.current) {
+        SystemSetting.setBrightnessForce(
+          getLightCurrent.current,
+        ).then((success) => {});
+      } else {
+        SystemSetting.setBrightnessForce(getLightDefault.current);
+      }
     };
   }, []);
   const activeBrightScreen = (item) => () => {
@@ -81,11 +73,13 @@ export default function LightScreen() {
         );
       } else {
         setStateGetLight(item.active);
+        getLightCurrent.current = item.active;
       }
     });
   };
   const saveBrightScreen = () => {
-    setStateSaveLight(true);
+    saveLight.current = true;
+    Alert.alert('Lưu thành công!');
   };
   return (
     <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>

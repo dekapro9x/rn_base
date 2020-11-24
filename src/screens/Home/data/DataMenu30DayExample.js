@@ -5,7 +5,7 @@ const DATA_MENU_30_DAY_EXAMPLE = [
     {
       id: 1,
       type: 'icon',
-      screen: KEY_NAVIGATION.library_push_local,
+      screen: KEY_NAVIGATION.push_local,
       img:
         'https://play-lh.googleusercontent.com/GeNnotQ_alnRZJC8Vg6bZaOIaA512D2nos3Fj-kJjWiwg8wNb0Xf-dji354wIDWwMETG',
       icon: 'world',
@@ -14,13 +14,12 @@ const DATA_MENU_30_DAY_EXAMPLE = [
     },
     {
       id: 2,
-      type: 'none',
-      screen: KEY_NAVIGATION.webview,
-      img: 'https://image.flaticon.com/icons/png/512/337/337946.png',
-
-      name: 'PDF',
-      link:
-        'https://s3-ap-northeast-1.amazonaws.com/komeda/pdf/08fe3486-0e81-49f9-92de-6215ad6593c5sample3.pdf',
+      type: 'icon',
+      screen: KEY_NAVIGATION.weather_information,
+      img:
+        'https://dnmtechs.com/wp-content/uploads/2018/02/icon-openweathermap-1.png',
+      name: 'Weather Information',
+      link: '',
     },
     {
       id: 3,

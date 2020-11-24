@@ -24,7 +24,8 @@ const KEY_NAVIGATION = {
   download_img: 'DOWNLOAD_IMG',
   light_screen: 'LIGHT_SCREEN',
   upload_images: 'UPLOAD_IMAGES',
-  //TAB_VIEW_LIBRARY:
-  library_push_local: 'PUSH_LOCAL_SCHEDULED',
+  //TAB_VIEW_30DAY_EXAMPLE:
+  push_local: 'PUSH_LOCAL_SCHEDULED',
+  weather_information: 'WEATHER_INFORMATION',
 };
 export {KEY_NAVIGATION};

@@ -32,8 +32,9 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 
-// TabView Library:
+// TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
+import WeatherInformation from '../screens/WeatherInformation/WeatherInformation';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -109,10 +110,14 @@ function RootNavigator() {
             name={KEY_NAVIGATION.upload_images}
             component={UploadImage}
           />
-          {/* TABVIEW_LIBRARY */}
+          {/* TABVIEW_30DAY_EXAMPLE */}
           <RootStack.Screen
-            name={KEY_NAVIGATION.library_push_local}
+            name={KEY_NAVIGATION.push_local}
             component={PushLocalScheduled}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.weather_information}
+            component={WeatherInformation}
           />
         </RootStack.Navigator>
       </NavigationContainer>
