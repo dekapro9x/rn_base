@@ -18,12 +18,11 @@ Thêm :
 #import <Firebase.h>
 
 - (BOOL)application:(UIApplication _)application didFinishLaunchingWithOptions:(NSDictionary _)launchOptions {
-  // Add me --- \/
+  //Khai báo cấu hình FireBase:
   if ([FIRApp defaultApp] == nil) {
   [FIRApp configure];
   }
-  // Add me --- /\
-   // ...
+  ...
   }
 
 # Bước 4: Cấu hình pod thêm mã khởi tạo:

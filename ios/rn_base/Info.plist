@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<!-- Cấu hình tương ứng hiển thị Xcode-->
 		<key>CFBundleDevelopmentRegion</key>
 		<string>en</string>
 		<key>CFBundleDisplayName</key>
@@ -22,12 +23,42 @@
 		<string>????</string>
 		<key>CFBundleVersion</key>
 		<string>$(CURRENT_PROJECT_VERSION)</string>
+
+		<!--File đâu tiên được chạy để lấy ảnh nền ứng dụng(giá trị string)-->
+		<key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
+
+		<!--Các tính năng liên quan đến thiết bị mà ứng dụng của bạn yêu cầu để chạy(giá trị là mảng)-->
+		<key>UIRequiredDeviceCapabilities</key>
+		<array>
+			<string>armv7</string>
+		</array>
+
+		<!--Các hướng giao diện được ứng dụng của bạn hỗ trợ.(giá trị là mảng)-->
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+
+		<!--Cho biết liệu giao diện thanh trạng thái có dựa trên kiểu được ưu tiên cho bộ điều khiển chế độ xem hiện tại hay không.(giá trị là Boolean)-->
+		<key>UIViewControllerBasedStatusBarAppearance</key>
+		<false/>
+
+		<!-- Key Code Push-->
 		<key>CodePushDeploymentKey</key>
 		<string>6he918zK2LBUBdDiMVoXp-9s99gqLks4MFViy</string>
+
+		<!-- Auto Missing-->
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
+
+		<!--Yêu cầu ứng dụng có bắt buộc chạy trên hệ điều hành IOS hay không?-->
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+
+		<!--Mô tả các thay đổi được thực hiện đối với bảo mật mặc định cho các kết nối HTTP.-->
 		<key>NSAppTransportSecurity</key>
 		<dict>
 			<key>NSAllowsArbitraryLoads</key>
@@ -42,6 +73,7 @@
 					<true/>
 				</dict>
 			</dict>
+			<!-- Các cấu hình tùy chỉnh cho các miền có tên App Transport Security.-->
 			<key>NSExceptionMinimumTLSVersion</key>
 			<string>TLSv1.2</string>
 			<key>NSExceptionRequiresForwardSecrecy</key>
@@ -57,18 +89,25 @@
 			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 			<true/>
 		</dict>
+
+		<!--Danh sách quyền ứng dụng-->
+		<!--Quyền Camera-->
 		<key>NSCameraUsageDescription</key>
 		<string>Xin quyền Camera.</string>
+		<!--Quyền vị trí IOS 13 trở lên có 3 lựa chọn tương ứng-->
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Xin quyền vị trí.</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>Xin quyền vị trí.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Xin quyền vị trí.</string>
+		<!--Quyền truy cập vào thư mục ảnh đọc và ghi-->
 		<key>NSPhotoLibraryAddUsageDescription</key>
 		<string>Xin quyền truy cập vào thư mục ảnh</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Xin quyền truy cập vào thư mục ảnh</string>
+
+		<!--Cấu hình font chữ-->
 		<key>UIAppFonts</key>
 		<array>
 			<string>AntDesign.ttf</string>
@@ -88,19 +127,43 @@
 			<string>Zocial.ttf</string>
 			<string>Fontisto.ttf</string>
 		</array>
-		<key>UILaunchStoryboardName</key>
-		<string>LaunchScreen</string>
-		<key>UIRequiredDeviceCapabilities</key>
+
+		<!--Cấu hình Key FaceBook-SDK-->
+		<key>LSApplicationQueriesSchemes</key>
 		<array>
-			<string>armv7</string>
+			<string>fbapi</string>
+			<string>fbapi20130214</string>
+			<string>fbapi20130410</string>
+			<string>fbapi20130702</string>
+			<string>fbapi20131010</string>
+			<string>fbapi20131219</string>
+			<string>fbapi20140410</string>
+			<string>fbapi20140116</string>
+			<string>fbapi20150313</string>
+			<string>fbapi20150629</string>
+			<string>fbapi20160328</string>
+			<string>fbauth</string>
+			<string>fb-messenger-share-api</string>
+			<string>fbauth2</string>
+			<string>fbshareextension</string>
 		</array>
-		<key>UISupportedInterfaceOrientations</key>
+
+		<!--Cấu hình FaceBook-SDK-->
+		<key>CFBundleURLTypes</key>
 		<array>
-			<string>UIInterfaceOrientationPortrait</string>
-			<string>UIInterfaceOrientationLandscapeLeft</string>
-			<string>UIInterfaceOrientationLandscapeRight</string>
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>fb921259178281044</string>
+				</array>
+			</dict>
 		</array>
-		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<key>FacebookAppID</key>
+		<string>921259178281044</string>
+		<key>FacebookDisplayName</key>
+		<string>rn_base</string>
+
+
+
 	</dict>
 </plist>

@@ -1,13 +1,17 @@
 #import "AppDelegate.h"
-#import <CodePush/CodePush.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import "RNBootSplash.h"
-#import <GoogleMaps/GoogleMaps.h>
+
+//Các thư viện cắm thêm cấu hình:
 #import <Firebase.h>
+#import <CodePush/CodePush.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #ifdef FB_SONARKIT_ENABLED 
 #import <FlipperKit/FlipperClient.h>
@@ -29,24 +33,30 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
 @implementation AppDelegate
-
+//Kết quả trả về sau khi chạy xong màn hình ảnh splash (Các cấu hình bên trong đúng thì bắt đầu chạy core App:)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+  //Khai báo cấu hình FireBase:
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
+
+  //Khai báo cấu hình Facebook-sdk:
+   [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+
+ //Khai báo key của Map:
     [GMSServices provideAPIKey:@"AIzaSyBXHSKE791ah1TTBaS9SP9uthF35nXsq1g"];
+
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
-
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"rn_base"
                                             initialProperties:nil];
-
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
@@ -56,36 +66,47 @@ static void InitializeFlipper(UIApplication *application) {
   // Thêm 2 dòng này để cấu hình push noti IOS:
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
-  // Thêm 2 dòng này để cấu hình push noti IOS:
+
+  // Ảnh splash được chạy từ file LaunchScreen(phải tương thích với cấu hình trong infoSplit.):
  [RNBootSplash initWithStoryboard:@"LaunchScreen" rootView:rootView];
 return YES;
 }
 
-
-// Phần thêm để cấu hình Push Notification:
-//Called when a notification is delivered to a foreground app.
+// Khai báo cấu hình Push Notification:
+//Được gọi khi thông báo được gửi khi App ở chế độ nền:
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
 {
   completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
 }
-
-// Required for the register event.
+//Bắt sự kiên đăng kí push như sinh ra Token:
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
  [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
-// Required for the notification event. You must call the completion handler after handling the remote notification.
+// Xử lý hoàn thành thông báo push từ xa.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   [RNCPushNotificationIOS didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
-// Required for the registrationError event.
+// Sự kiện đăng kí lỗi:
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
  [RNCPushNotificationIOS didFailToRegisterForRemoteNotificationsWithError:error];
 }
-// Required for localNotification event
+// Bắt buộc cho sự kiện thông báo local.
+
+
+//Chạy fb-sdk cho IOS 13 trở xuống:
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                 openURL:url
+                                                 options:options];
+
+//Nếu dùng IOS 13 trở lên dùng fb-sdk thì thêm đoạn này:
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler
@@ -93,15 +114,14 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   [RNCPushNotificationIOS didReceiveNotificationResponse:response];
 }
 
-
-
+//Cầu nối core React-NativeIOS:
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
   // return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-  // Chuyển đoạn sau để cấu hình codepush:
+  // Chuyển thành đoạn sau để cấu hình codepush (Nếu có bundle JS mới được đẩy lên Code push sẽ cập nhật để chạy App.)
   return [CodePush bundleURL];
 #endif
 }

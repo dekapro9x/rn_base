@@ -23,7 +23,7 @@ target 'rn_base' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-  
+
    # Cấu hình Permission:
    permissions_path = '../node_modules/react-native-permissions/ios'
    pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
@@ -33,25 +33,32 @@ target 'rn_base' do
    pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
    pod 'RCTSystemSetting', :path => '../node_modules/react-native-system-setting'
 
+  # Cấu hình firebase:
+  pod 'Firebase/Analytics'
+
   # Cấu hình Map:
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
-
-  # Cấu hình firebase:
-  pod 'Firebase/Analytics'
   
-   # Cấu hình Youtobe:
+  # Cấu hình Youtobe:
    pod 'XCDYouTubeKit', '~> 2.8'
 
+  # Cấu hình code Push:
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
-
+ 
+  # Cấu hình FB-sdk:
+  pod 'FBSDKCoreKit', :modular_headers => true
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  platform :ios, '10.0'
   target 'rn_baseTests' do
     inherit! :complete
     # Pods for testing
   end
-  
+
+
 
   # Enables Flipper.
   #
@@ -72,5 +79,4 @@ target 'rn_base-tvOS' do
     # Pods for testing
   end
 end
-
 

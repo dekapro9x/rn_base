@@ -34,19 +34,19 @@ export default function FirebaseAuth() {
     {
       id: 3,
       name: 'LoginWithTwitter',
-      active: null,
+      active: <AuFacebook></AuFacebook>,
       img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
     },
     {
       id: 4,
       name: 'LoginWithGoogle',
-      active: null,
+      active: <AuFacebook></AuFacebook>,
       img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
     },
     {
       id: 5,
       name: 'LoginWithNumberPhone ',
-      active: null,
+      active: <AuFacebook></AuFacebook>,
       img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
     },
   ];
