@@ -1,7 +1,7 @@
 # Thêm dòng này để cấu hình SDK Firebase:
 $FirebaseSDKVersion = '7.0.0'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -9,7 +9,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'rn_base' do
-  # Từ bản 0.62 sẽ cập nhật Trình gỡ lỗi Flipper:
+# Từ bản 0.62 sẽ cập nhật Trình gỡ lỗi Flipper:
 # https://fbflipper.com/docs/getting-started/react-native-ios
 # https://reactnative.thenativebits.com/courses/upgrading-react-native/upgrade-to-react-native-0.62/
 # Flipper là công cụ gỡ lỗi mã nguồn mở của Facebook cho các ứng dụng di động.
@@ -47,7 +47,8 @@ target 'rn_base' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec', :modular_headers => false
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec', :modular_headers => false
-
+  pod 'react-native-flipper', :path => '../node_modules/react-native-flipper/react-native-flipper.podspec', :configuration => 'Debug'
+  
    # Cấu hình FB-sdk:
   pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
   pod 'FBSDKCoreKit', :modular_headers => true

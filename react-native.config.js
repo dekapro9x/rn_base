@@ -1,5 +1,10 @@
 module.exports = {
   dependencies: {
+    'react-native-flipper': {
+      platforms: {
+        ios: null,
+      },
+    },
     'react-native-code-push': {
       platforms: {
         android: {
