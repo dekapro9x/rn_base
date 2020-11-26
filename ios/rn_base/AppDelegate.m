@@ -36,11 +36,8 @@ static void InitializeFlipper(UIApplication *application) {
 //Kết quả trả về sau khi chạy xong màn hình ảnh splash (Các cấu hình bên trong đúng thì bắt đầu chạy core App:)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-  //Khai báo cấu hình FireBase:
-  if ([FIRApp defaultApp] == nil) {
-    [FIRApp configure];
-  }
+  //Thêm cấu hình :FlipperKit (https://fbflipper.com/docs/getting-started/react-native-ios)
+   [self initializeFlipper:application];
 
   //Khai báo cấu hình Facebook-sdk:
    [[FBSDKApplicationDelegate sharedInstance] application:application

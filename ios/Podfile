@@ -1,27 +1,21 @@
 # Thêm dòng này để cấu hình SDK Firebase:
 $FirebaseSDKVersion = '7.0.0'
 
+platform :ios, '10.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-# Sửa lỗi [!] [Xcodeproj] Generated duplicate UUIDs:
-# inhibit_all_warnings!
-
-# [!] [Xcodeproj] Generated duplicate UUIDs:
-# @see http://stackoverflow.com/a/33440077/456536
-# A:
-#   export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES
-# B:
-#   install! 'cocoapods', :deterministic_uuids => false
-
+# [!BUG] [Xcodeproj] Generated duplicate UUIDs: http://stackoverflow.com/a/33440077/456536
 install! 'cocoapods', :deterministic_uuids => false
 
-platform :ios, '10.0'
-
-
 target 'rn_base' do
+  # Từ bản 0.62 sẽ cập nhật Trình gỡ lỗi Flipper:
+# https://fbflipper.com/docs/getting-started/react-native-ios
+# https://reactnative.thenativebits.com/courses/upgrading-react-native/upgrade-to-react-native-0.62/
+# Flipper là công cụ gỡ lỗi mã nguồn mở của Facebook cho các ứng dụng di động.
+# Nó có nhiều tính năng hữu ích như trình kiểm tra mạng, kiểm tra bố cục, trình xem nhật ký và tích hợp với metro để cho phép tải lại ứng dụng của bạn mà không làm rung thiết bị của bạn.
+# Flipper được hỗ trợ trong React Native 0.61, tuy nhiên, việc thiết lập cho iOS sẽ hơi khó khăn vì xung đột với các phiên bản của Yoga Cocoapod đã được sử dụng ( Yoga là công cụ bố cục flexbox của React Native).
   config = use_native_modules!
-
   use_react_native!(:path => config["reactNativePath"])
 
    # Cấu hình Permission:
@@ -41,31 +35,34 @@ target 'rn_base' do
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
-  
+
   # Cấu hình Youtobe:
    pod 'XCDYouTubeKit', '~> 2.8'
 
   # Cấu hình code Push:
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
- 
-  # Cấu hình FB-sdk:
+
+  # Các cấu hình thư viện khác:
+  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga', :modular_headers => true
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec', :modular_headers => false
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec', :modular_headers => false
+
+   # Cấu hình FB-sdk:
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
   pod 'FBSDKCoreKit', :modular_headers => true
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
-  platform :ios, '10.0'
+  pod 'FBSDKLoginKit', :modular_headers => true
+  pod 'FBSDKShareKit', :modular_headers => true
+  pod 'GoogleSignIn', :modular_headers => true
+
+  use_modular_headers!
   target 'rn_baseTests' do
+    # use_framework!
     inherit! :complete
-    # Pods for testing
   end
 
-
-
-  # Enables Flipper.
-  #
-  # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable these next few lines.
-  
-  use_flipper!
+use_native_modules!
+ use_flipper!('Flipper' => '0.58.0') # should match the version of your Flipper client app
   post_install do |installer|
     flipper_post_install(installer)
   end
@@ -79,4 +76,3 @@ target 'rn_base-tvOS' do
     # Pods for testing
   end
 end
-
