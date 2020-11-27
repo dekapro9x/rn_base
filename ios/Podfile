@@ -47,7 +47,6 @@ target 'rn_base' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec', :modular_headers => false
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec', :modular_headers => false
-  pod 'react-native-flipper', :path => '../node_modules/react-native-flipper/react-native-flipper.podspec', :configuration => 'Debug'
   
    # Cấu hình FB-sdk:
   pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
@@ -57,23 +56,9 @@ target 'rn_base' do
   pod 'GoogleSignIn', :modular_headers => true
 
   use_modular_headers!
+  use_native_modules!
+
   target 'rn_baseTests' do
-    # use_framework!
     inherit! :complete
-  end
-
-use_native_modules!
- use_flipper!('Flipper' => '0.58.0') # should match the version of your Flipper client app
-  post_install do |installer|
-    flipper_post_install(installer)
-  end
-end
-
-target 'rn_base-tvOS' do
-  # Pods for rn_base-tvOS
-
-  target 'rn_base-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end
