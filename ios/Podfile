@@ -45,6 +45,7 @@ target 'rn_base' do
    # Cấu hình Youtobe:
    pod 'XCDYouTubeKit', '~> 2.8'
 
+   # Cấu hình Codepush:
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
 
   target 'rn_baseTests' do
