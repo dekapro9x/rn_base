@@ -13,10 +13,8 @@ import AuFacebook from './items/AuFacebook';
 
 export default function FirebaseAuth() {
   const {colorApp} = useContext(ContextContainer);
-
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemOnActive, setStateItemActive] = useState('');
-
   const listAuthentication = [
     {
       id: 1,
@@ -30,24 +28,6 @@ export default function FirebaseAuth() {
       active: <AuFacebook></AuFacebook>,
       img:
         'https://c.wallhere.com/photos/28/6f/1600x1000_px_facebook_facebook_3d_facebook_logo-808920.jpg!d',
-    },
-    {
-      id: 3,
-      name: 'LoginWithTwitter',
-      active: <AuFacebook></AuFacebook>,
-      img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
-    },
-    {
-      id: 4,
-      name: 'LoginWithGoogle',
-      active: <AuFacebook></AuFacebook>,
-      img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
-    },
-    {
-      id: 5,
-      name: 'LoginWithNumberPhone ',
-      active: <AuFacebook></AuFacebook>,
-      img: 'https://pbs.twimg.com/media/Ejo1wQoX0AADXUf.png',
     },
   ];
 

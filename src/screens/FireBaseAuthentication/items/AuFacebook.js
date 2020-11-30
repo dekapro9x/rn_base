@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import auth from '@react-native-firebase/auth';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {LoginButton, AccessToken} from 'react-native-fbsdk';
 
 import {View, TouchableOpacity, TextInput, Alert} from 'react-native';
 import {AppImage, AppText} from '../../../elements';
@@ -246,29 +247,21 @@ export default function AuMailAndPass(props) {
                 }}>
                 Login
               </AppText>
-            
             </TouchableOpacity>
-            <TouchableOpacity
-                onPress={pressLogin}
-                style={{
-                  height: SIZE.height(8),
-                  width: SIZE.width(60),
-                  backgroundColor: COLOR.blue_light_3,
-                  marginTop: SIZE.width(3),
-                  borderRadius: SIZE.width(4),
-                  marginLeft: SIZE.width(20),
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <AppText
-                  style={{
-                    fontSize: SIZE.H4 * 1.25,
-                    fontWeight: 'bold',
-                    color: 'white',
-                  }}>
-                  Login With Facebook
-                </AppText>
-              </TouchableOpacity>
+            <LoginButton
+              onLoginFinished={(error, result) => {
+                if (error) {
+                  console.log('login has error: ' + result.error);
+                } else if (result.isCancelled) {
+                  console.log('login is cancelled.');
+                } else {
+                  AccessToken.getCurrentAccessToken().then((data) => {
+                    console.log(data.accessToken.toString());
+                  });
+                }
+              }}
+              onLogoutFinished={() => console.log('logout.')}
+            />
           </View>
         </>
       );
