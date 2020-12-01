@@ -8,8 +8,8 @@ import {AppContainer, AppImage} from '../../elements';
 import {COLOR, SIZE} from '../../utils';
 //Component:
 
-import AuMailAndPass from './items/AuMailAndPass';
-import AuFacebook from './items/AuFacebook';
+import AuMailAndPass from './component/AuMailAndPass';
+import AuFacebook from './component/AuFacebook';
 
 export default function FirebaseAuth() {
   const {colorApp} = useContext(ContextContainer);
@@ -48,7 +48,7 @@ export default function FirebaseAuth() {
       case 2:
         return <AuFacebook unShowModal={unShowModal}></AuFacebook>;
       default:
-        break;
+        return <AuMailAndPass unShowModal={unShowModal} />;
     }
   };
 
