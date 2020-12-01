@@ -403,7 +403,7 @@ PODS:
   - react-native-fbsdk/Share (3.0.0):
     - FBSDKShareKit (~> 8.1)
     - React
-  - react-native-geolocation-service (5.0.0):
+  - react-native-geolocation-service (5.1.1):
     - React
   - react-native-google-maps (0.27.1):
     - Google-Maps-iOS-Utils (= 2.1.0)
@@ -491,7 +491,7 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNCPushNotificationIOS (1.7.4):
+  - RNCPushNotificationIOS (1.8.0):
     - React-Core
   - RNDeviceInfo (6.2.1):
     - React-Core
@@ -499,10 +499,10 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBApp (10.0.0):
+  - RNFBApp (10.1.0):
     - Firebase/CoreOnly (= 7.0.0)
     - React-Core
-  - RNFBAuth (10.0.0):
+  - RNFBAuth (10.1.0):
     - Firebase/Auth (= 7.0.0)
     - React-Core
     - RNFBApp
@@ -849,7 +849,7 @@ SPEC CHECKSUMS:
   react-native-cameraroll: 60ba0068826eab1c8d43146191bafd4363ea58a7
   react-native-cookies: 854d59c4135c70b92a02ca4930e68e4e2eb58150
   react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
-  react-native-geolocation-service: 141e33bdb179bcba10b216ee13962611e21f2be4
+  react-native-geolocation-service: f33626f1ae12381ca2ae60f98b2f5edd676bf95a
   react-native-google-maps: 0a989abda71059db2caa98b9dacca7a8f38a47d0
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-pdf: 4b5a9e4465a6a3b399e91dc4838eb44ddf716d1f
@@ -872,11 +872,11 @@ SPEC CHECKSUMS:
   RNBootSplash: 14d30c2e1de7247d334540cb2c2d7f3c2acc6150
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNCPushNotificationIOS: 8fdfa22a6ecb1dfcc2316939f73335bfd6470044
+  RNCPushNotificationIOS: 61a7c72bd1ebad3568025957d001e0f0e7b32191
   RNDeviceInfo: 9b6aba9ffaed69ecb72bd13c7bcb0debf277bc9f
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBApp: 9683952c0d5b846f4d3a3756c1da06ef4adaa9f2
-  RNFBAuth: e61f03d83d6d21551170b3083a54d2d0e935b3b0
+  RNFBApp: 5355ee727773d5650bdcf678e533de7583369e1d
+  RNFBAuth: 0b76dd3034de206bfb548f3679a1b4d75ccae349
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
@@ -891,6 +891,6 @@ SPEC CHECKSUMS:
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: c7a2bdd60f83753f4b921ea5108f13041de9d8ee
+PODFILE CHECKSUM: 37fce0e9b0e889ab6452b6c25387bf9406123a4f
 
 COCOAPODS: 1.10.0
