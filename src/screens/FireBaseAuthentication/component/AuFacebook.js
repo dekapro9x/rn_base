@@ -1,13 +1,21 @@
 //Library:
-import React, {useState, useEffect, useRef} from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
+import {
+  LoginButton,
+  AccessToken,
+  LoginManager,
+  GraphRequestManager,
+  GraphRequest,
+} from 'react-native-fbsdk';
+import auth from '@react-native-firebase/auth';
+import {View, TouchableOpacity, Alert, Linking, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 
 //Setup:
-import {View, TouchableOpacity, Alert} from 'react-native';
 import {AppImage, AppText} from '../../../elements';
-import {COLOR, SIZE} from '../../../utils';
+import {COLOR, KEY_NAVIGATION, SIZE} from '../../../utils';
+import DetailInfoAccountFaceBook from '../items/DetailInfoAccountFaceBook';
 
 //API cung cấp thông tin người dùng: https://developers.facebook.com/docs/graph-api/reference/user/?locale=vi_VN
 //Bộ công cụ Tets API FB: https://developers.facebook.com/tools/explorer/?method=GET&path=me%3Ffields%3Did%2Cfirst_name&version=v9.0
@@ -16,35 +24,41 @@ import {COLOR, SIZE} from '../../../utils';
 export default function AuMailAndPass(props) {
   const [userLogin, setStateUserLogin] = useState(false);
   const [infoUserLogin, setStateInfoUserLogin] = useState({});
-  const [
-    getAllInfomationAccount,
-    setStateGetAllInformationAccount,
-  ] = useState();
+  const [getAllInfomationAccount, setStateGetAllInformationAccount] = useState(
+    false,
+  );
+  const [dataDetailInfoAccount, setStateDataDetailInfoAccount] = useState({});
+  const navigation = useNavigation();
   const {unShowModal} = props;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    console.log('subscriber', subscriber);
+  }, []);
+  // Handle user state changes
+  const onAuthStateChanged = (user) => {
+    if (user) {
+      console.log('User', user);
+    }
+  };
 
-  //Lấy thông tin ảnh đại diện:
-  const getInfoAccount = async () => {
+  //Lấy tất cả thông tin chi tiết :
+  const getDetailInfoAccount = async () => {
     const token = infoUserLogin.accessToken;
+    const stringPermission =
+      'name,birthday,hometown,location,likes,events,photos,videos,friends,posts,gender,link,age_range,email';
     fetch(
-      'https://graph.facebook.com/v2.5/me?fields=picture,email,name,friends,albums&access_token=' +
+      `https://graph.facebook.com/v2.5/me?fields=${stringPermission}&access_token=` +
         token,
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log('%c json', 'color:green', json);
-        let user = {};
-        user.name = json.name;
-        user.id = json.id;
-        user.user_friends = json.friends;
-        user.email = json.email;
-        user.username = json.name;
-        user.loading = false;
-        user.loggedIn = true;
-        user.avatar = json.id;
+        console.log(`%c Json :${stringPermission}`, 'color:yellow', json);
+        setStateDataDetailInfoAccount(json);
+        setStateGetAllInformationAccount(true);
       })
       .catch((error) => {
+        console.log('%c Lỗi', 'color:red', error);
         Alert.alert('Có lỗi sảy ra vui lòng thử lại!');
       });
     return <>{renderTextContent('userID', infoUserLogin.userID)}</>;
@@ -102,13 +116,16 @@ export default function AuMailAndPass(props) {
           } else {
             AccessToken.getCurrentAccessToken().then((data) => {
               setStateInfoUserLogin(data);
-              setStateUserLogin(true);
+              if (data && data.accessToken) {
+                setStateUserLogin(true);
+              }
             });
           }
         }}
         onLogoutFinished={() => {
           setStateUserLogin(false);
           setStateInfoUserLogin({});
+          setStateGetAllInformationAccount(false);
         }}
       />
     );
@@ -169,7 +186,7 @@ export default function AuMailAndPass(props) {
         activeAllPermissionAccountFB();
         break;
       case 'get_all_info_account':
-        getInfoAccount();
+        getDetailInfoAccount();
         break;
       default:
         break;
@@ -198,7 +215,7 @@ export default function AuMailAndPass(props) {
     );
   };
 
-  //Hiển thị thông tin người đăng nhập:
+  //Hiển thị thông tin người đăng nhập cơ bản:accessToken,permissions...
   const renderInfoUser = () => {
     if (infoUserLogin && infoUserLogin.accessToken) {
       return (
@@ -226,6 +243,7 @@ export default function AuMailAndPass(props) {
             infoUserLogin.permissions,
           )}
           {renderListPermissionWaitFbCensorship(infoUserLogin.permissions)}
+          {renderPermissionCanUseGetData()}
         </View>
       );
     }
@@ -242,6 +260,7 @@ export default function AuMailAndPass(props) {
         if (index == listPermission.length - 1) {
           return (
             <AppText
+              key={`${index}`}
               style={{
                 fontSize: SIZE.H5 * 0.6,
                 fontWeight: 'bold',
@@ -253,6 +272,7 @@ export default function AuMailAndPass(props) {
         } else {
           return (
             <AppText
+              key={`${index}`}
               style={{
                 fontSize: SIZE.H5 * 0.6,
                 fontWeight: 'bold',
@@ -293,6 +313,33 @@ export default function AuMailAndPass(props) {
     return null;
   };
 
+  //Hiển thị danh sách các quyền sử dụng được để lấy thông tin:
+  const renderPermissionCanUseGetData = () => {
+    const permissionCanUseGetData = [
+      'birthday',
+      'hometown',
+      'location',
+      'likes',
+      'events',
+      'photos',
+      'videos',
+      'friends',
+      'posts',
+      'gender',
+      'link',
+      'age_range',
+      'email',
+    ];
+    return (
+      <>
+        {renderListPermission(
+          'Danh sách quyền được phép truy cập lấy dữ liệu:',
+          permissionCanUseGetData,
+        )}
+      </>
+    );
+  };
+
   //Hiển thị danh sách quyền đang đợi FB duyệt:
   const renderListPermissionWaitFbCensorship = (listPermissionActive) => {
     const listAllPermission = [
@@ -330,24 +377,114 @@ export default function AuMailAndPass(props) {
     );
   };
 
+  //Hiển thị thêm thông tin chi tiết người dùng:
+  const renderDetailInformationMember = () => {
+    if (getAllInfomationAccount) {
+      return (
+        <DetailInfoAccountFaceBook
+          dataDetailInfoAccount={
+            dataDetailInfoAccount
+          }></DetailInfoAccountFaceBook>
+      );
+    }
+    return null;
+  };
+
+  //Đăng nhập bằng nút custome:
+  const buttonLoginCustom = () => {
+    return (
+      <TouchableOpacity
+        onPress={loginHasAccessTokenFireBase}
+        style={{
+          height: SIZE.height(7.5),
+          width: SIZE.width(65),
+          backgroundColor: 'blue',
+        }}>
+        <AppText>Login button custom</AppText>
+      </TouchableOpacity>
+    );
+  };
+
+  //Đăng nhập sử dụng fireBase:
+  const loginHasAccessTokenFireBase = async () => {
+    try {
+      // Attempt login with permissions
+      const result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+
+      if (result.isCancelled) {
+        throw 'User cancelled the login process';
+      }
+
+      // Once signed in, get the users AccesToken
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw 'Something went wrong obtaining access token';
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data.accessToken,
+      );
+
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(facebookCredential);
+    } catch (error) {
+      console.log('Lỗi', error);
+    }
+  };
+
+  //Đăng xuất và xóa cache:
+  const logoutAccountAndResetCache = async () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
+
+  //Nút đăng xuất tất cả tài khoản ra khỏi thiết bị và xóa cache:
+  const buttonLogoutAndResetCacheAccountFB = () => {
+    return (
+      <TouchableOpacity
+        onPress={logoutAccountAndResetCache}
+        style={{
+          height: SIZE.height(7.5),
+          width: SIZE.width(60),
+          backgroundColor: 'red',
+        }}>
+        <AppText>Đăng xuất</AppText>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View>
       {headerButtonModal()}
       <View
         style={{
-          minHeight: SIZE.height(85),
+          height: SIZE.height(85),
           width: SIZE.width(100),
           backgroundColor: COLOR.white,
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <ScrollView style={{marginTop: SIZE.height(1)}}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{marginTop: SIZE.height(1), marginBottom: SIZE.width(5)}}>
           <View style={{width: SIZE.width(100), alignItems: 'center'}}>
             {/* Hiển thị thông tin người đăng nhập: */}
             {renderInfoUser()}
+            {/* Hiển thị toàn bộ chi tiết thông tin: */}
+            {renderDetailInformationMember()}
             {/* Nút đăng nhập Fb */}
             {renderButtonLoginWithFb()}
-            {/* Lấy thông tin ảnh: */}
+            {/* Nút đăng nhập Custom */}
+            {buttonLoginCustom()}
+            {/* Nút đăng xuất tất cả tài khoản và xóa cache ra khỏi thiết bị */}
+            {buttonLogoutAndResetCacheAccountFB()}
+            {/* Cấp quyền truy cập thông tin*/}
             {renderButtonActiveAction(
               'Cấp quyền truy cập thông tin cá nhân',
               'all_permission',

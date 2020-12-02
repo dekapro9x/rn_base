@@ -24,6 +24,7 @@ const KEY_NAVIGATION = {
   download_img: 'DOWNLOAD_IMG',
   light_screen: 'LIGHT_SCREEN',
   upload_images: 'UPLOAD_IMAGES',
+  react_query: 'REACT_QUERY',
 
   //TAB_VIEW_30DAY_EXAMPLE:
   push_local: 'PUSH_LOCAL_SCHEDULED',

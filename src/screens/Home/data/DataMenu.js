@@ -129,10 +129,10 @@ const DATA_MENU_HOME = [
     },
     {
       id: 10,
-      type: 'none',
-      screen: KEY_NAVIGATION.youtube_ads,
-      img: 'https://adflex.vn/wp-content/uploads/2020/06/quang-cao-youtube.jpg',
-      name: 'Youtobe_Ads',
+      type: 'icon',
+      screen: KEY_NAVIGATION.react_query,
+      img: 'https://miro.medium.com/max/5146/1*g1XNcwAMkwNuUb8ADJmkZw.png',
+      name: 'ReactQuery',
       icon: '',
     },
     {

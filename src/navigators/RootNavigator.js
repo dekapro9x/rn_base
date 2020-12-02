@@ -31,6 +31,7 @@ import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
+import ReactQuery from '../screens/ReactQuery/ReactQuery';
 
 // TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
@@ -118,6 +119,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.weather_information}
             component={WeatherInformation}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.react_query}
+            component={ReactQuery}
           />
         </RootStack.Navigator>
       </NavigationContainer>

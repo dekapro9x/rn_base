@@ -60,7 +60,7 @@ export default function FirebaseAuth() {
           onPress={showModal(item)}
           key={item.id}
           style={{
-            minHeight: SIZE.height(5),
+            minHeight: SIZE.height(15),
             width: SIZE.width(100),
             alignItems: 'center',
             justifyContent: 'center',
@@ -73,8 +73,8 @@ export default function FirebaseAuth() {
             }}
             resizeMode={'stretch'}
             style={{
-              height: SIZE.height(15),
-              width: SIZE.width(100),
+              height: SIZE.height(8),
+              width: SIZE.width(30),
             }}></AppImage>
         </TouchableOpacity>
       );
