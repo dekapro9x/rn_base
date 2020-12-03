@@ -1,10 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Linking} from 'react-native';
 import {AppText} from '../../../elements';
-import {SIZE} from '../../../utils';
+import {COLOR, SIZE} from '../../../utils';
 
 export default function DetailInfoAccountFaceBook(props) {
   const {dataDetailInfoAccount} = props;
+  const [showMoreListPostStatus, setStateShowMoreListPostStatus] = useState(
+    false,
+  );
+
+  //Danh sách bài chia sẻ cá nhân:
+  const renderListActionPostStatus = () => {
+    if (dataDetailInfoAccount.posts && dataDetailInfoAccount.posts.data) {
+      let arrPostMessStatus = [];
+      dataDetailInfoAccount.posts.data.forEach((element) => {
+        if (element.message) {
+          arrPostMessStatus.push(element);
+        }
+      });
+      console.log('arrPostMessStatus', arrPostMessStatus);
+      let listStatus = null;
+      if (!showMoreListPostStatus) {
+        listStatus = arrPostMessStatus.map((item, index) => {
+          return (
+            <AppText
+              style={{fontSize: SIZE.H4, fontWeight: 'bold', color: 'red'}}
+              key={`${index}`}>
+              STT{index + 1}.
+              <AppText
+                style={{
+                  fontSize: SIZE.H5,
+                  fontWeight: '400',
+                  color: COLOR.black,
+                }}>
+                {item.message}
+              </AppText>
+            </AppText>
+          );
+        });
+      } else {
+        return (
+          <View>
+            <AppText
+              style={{fontSize: SIZE.H4, fontWeight: 'bold', color: 'red'}}>
+              STT{1}.
+              <AppText
+                style={{
+                  fontSize: SIZE.H5,
+                  fontWeight: '400',
+                  color: COLOR.black,
+                }}>
+                {arrPostMessStatus[0].message}
+              </AppText>
+            </AppText>
+          </View>
+        );
+      }
+      return <>{listStatus}</>;
+    }
+    return null;
+  };
+
+  //Hiển thị các thông tin cơ bản:
   const renderInfoBasic = (title, analystic, type) => {
     if (type == 'link') {
       return (
@@ -42,6 +99,11 @@ export default function DetailInfoAccountFaceBook(props) {
       </AppText>
     );
   };
+
+  // Hiển thị danh sách bài post gần nhất:
+  const showMorePostSTT = () => {
+    setStateShowMoreListPostStatus(!showMoreListPostStatus);
+  };
   return (
     <View
       style={{
@@ -49,7 +111,12 @@ export default function DetailInfoAccountFaceBook(props) {
         width: SIZE.width(100),
         alignItems: 'center',
       }}>
-      <AppText style={{fontSize: SIZE.H5, color: 'red', fontWeight: 'bold'}}>
+      <AppText
+        style={{
+          fontSize: SIZE.H5,
+          color: COLOR.color_bottom_app2,
+          fontWeight: 'bold',
+        }}>
         Thông tin chi tiết cá nhân :
       </AppText>
       {/* Hiển thị tên */}
@@ -76,6 +143,20 @@ export default function DetailInfoAccountFaceBook(props) {
         'Địa chỉ hiện tại',
         dataDetailInfoAccount.location?.name,
       )}
+      {renderInfoBasic(
+        'Tổng số danh sách bạn bè',
+        dataDetailInfoAccount.friends.summary?.total_count,
+      )}
+      <AppText
+        onPress={showMorePostSTT}
+        style={{
+          fontSize: SIZE.H5,
+          color: COLOR.color_bottom_app2,
+          fontWeight: 'bold',
+        }}>
+        Chi tiết hoạt động gần nhất :
+      </AppText>
+      {renderListActionPostStatus()}
     </View>
   );
 }

@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
-import auth from '@react-native-firebase/auth';
 import {View, TouchableOpacity, Alert, ScrollView} from 'react-native';
 
 //Setup:
@@ -15,33 +14,37 @@ import DetailInfoAccountFaceBook from '../items/DetailInfoAccountFaceBook';
 //Cách sử dụng graph-API: https://developers.facebook.com/docs/graph-api/using-graph-api/
 
 export default function AuFacebookSdk(props) {
+  const {unShowModal} = props;
+
   const [userLogin, setStateUserLogin] = useState(false);
   const [infoUserLogin, setStateInfoUserLogin] = useState({});
-  const [getAllInfomationAccount, setStateGetAllInformationAccount] = useState(
+  const [getAllInformationAccount, setStateGetAllInformationAccount] = useState(
     false,
   );
   const [dataDetailInfoAccount, setStateDataDetailInfoAccount] = useState({});
-  const {unShowModal} = props;
-
+  const [avatar, setStateAvatar] = useState(
+    'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png',
+  );
   useEffect(() => {}, []);
 
   //Lấy tất cả thông tin chi tiết :
   const getDetailInfoAccount = async () => {
     const token = infoUserLogin.accessToken;
     const stringPermission =
-      'name,birthday,hometown,location,likes,events,photos,videos,friends,posts,gender,link,age_range,email';
+      'name,birthday,hometown,location,likes,events,photos,videos,friends,posts,gender,link,age_range,email,picture';
     fetch(
       `https://graph.facebook.com/v2.5/me?fields=${stringPermission}&access_token=` +
         token,
     )
       .then((response) => response.json())
-      .then((json) => {
-        console.log(`%c Json :${stringPermission}`, 'color:yellow', json);
-        setStateDataDetailInfoAccount(json);
+      .then((data) => {
+        if (data && data.picture) {
+          setStateAvatar(data.picture.data.url);
+        }
+        setStateDataDetailInfoAccount(data);
         setStateGetAllInformationAccount(true);
       })
       .catch((error) => {
-        console.log('%c Lỗi', 'color:red', error);
         Alert.alert('Có lỗi sảy ra vui lòng thử lại!');
       });
     return <>{renderTextContent('userID', infoUserLogin.userID)}</>;
@@ -73,6 +76,7 @@ export default function AuFacebookSdk(props) {
           console.log('Hủy bỏ cấp quyền!');
         } else {
           console.log('%c Result:', 'color:red', result.grantedPermissions);
+
           Alert.alert('Cấp quyền thành công!');
         }
       },
@@ -99,6 +103,7 @@ export default function AuFacebookSdk(props) {
           } else {
             AccessToken.getCurrentAccessToken().then((data) => {
               setStateInfoUserLogin(data);
+              console.log('data', data);
               if (data && data.accessToken) {
                 setStateUserLogin(true);
               }
@@ -205,8 +210,7 @@ export default function AuFacebookSdk(props) {
         <View style={{marginBottom: SIZE.height(0.5), alignItems: 'center'}}>
           <AppImage
             source={{
-              uri:
-                'https://s.memehay.com/files/posts/20200812/f135e0fedad300cf07b43a47b0e72c95toan-bo-loi-ran-day-cua-huan-hoa-hong-huan-rose.png',
+              uri: avatar,
             }}
             resizeMode={'stretch'}
             style={{
@@ -222,7 +226,7 @@ export default function AuFacebookSdk(props) {
           )}
           {renderTextContent('userID', infoUserLogin.userID)}
           {renderListPermission(
-            'Danh sách quyền được truy cập:',
+            'Danh sách quyền đã được cấp:',
             infoUserLogin.permissions,
           )}
           {renderListPermissionWaitFbCensorship(infoUserLogin.permissions)}
@@ -316,7 +320,7 @@ export default function AuFacebookSdk(props) {
     return (
       <>
         {renderListPermission(
-          'Danh sách quyền được phép truy cập lấy dữ liệu:',
+          'Danh sách thông số được phép truy cập lấy dữ liệu API:',
           permissionCanUseGetData,
         )}
       </>
@@ -362,7 +366,7 @@ export default function AuFacebookSdk(props) {
 
   //Hiển thị thêm thông tin chi tiết người dùng:
   const renderDetailInformationMember = () => {
-    if (getAllInfomationAccount) {
+    if (getAllInformationAccount) {
       return (
         <DetailInfoAccountFaceBook
           dataDetailInfoAccount={

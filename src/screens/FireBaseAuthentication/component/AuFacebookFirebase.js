@@ -1,34 +1,23 @@
 //Library:
 import React, {useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
+import {AccessToken, LoginManager} from 'react-native-fbsdk';
 import auth from '@react-native-firebase/auth';
 import {View, TouchableOpacity, Alert, ScrollView} from 'react-native';
-import {useNavigation} from '@react-navigation/core';
 
 //Setup:
-import {AppImage, AppText} from '../../../elements';
+import {AppText} from '../../../elements';
 import {COLOR, SIZE} from '../../../utils';
-import DetailInfoAccountFaceBook from '../items/DetailInfoAccountFaceBook';
-
-//API cung cấp thông tin người dùng: https://developers.facebook.com/docs/graph-api/reference/user/?locale=vi_VN
-//Bộ công cụ Tets API FB: https://developers.facebook.com/tools/explorer/?method=GET&path=me%3Ffields%3Did%2Cfirst_name&version=v9.0
-//Cách sử dụng graph-API: https://developers.facebook.com/docs/graph-api/using-graph-api/
 
 export default function AuFacebookSdk(props) {
   const [userLogin, setStateUserLogin] = useState(false);
-  const [infoUserLogin, setStateInfoUserLogin] = useState({});
-  const [getAllInfomationAccount, setStateGetAllInformationAccount] = useState(
-    false,
-  );
-  const [dataDetailInfoAccount, setStateDataDetailInfoAccount] = useState({});
-  const navigation = useNavigation();
   const {unShowModal} = props;
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
+
   // Handle user state changes
   const onAuthStateChanged = (user) => {
     if (user) {
@@ -49,7 +38,6 @@ export default function AuFacebookSdk(props) {
           }}>
           <AntDesign
             name={'closesquare'}
-            a
             color={COLOR.grey_300}
             size={45}></AntDesign>
         </TouchableOpacity>
@@ -138,6 +126,11 @@ export default function AuFacebookSdk(props) {
           justifyContent: 'center',
         }}>
         <ScrollView
+          onLayout={(event) => {
+            console.log('eventScoll', event);
+            let {x, y, width, height} = event.nativeEvent.layout;
+            console.log('x, y, width, height', x, y, width, height);
+          }}
           showsVerticalScrollIndicator={false}
           style={{marginTop: SIZE.height(1), marginBottom: SIZE.width(5)}}>
           <View style={{width: SIZE.width(100), alignItems: 'center'}}>
