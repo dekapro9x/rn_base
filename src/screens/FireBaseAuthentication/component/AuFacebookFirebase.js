@@ -11,6 +11,9 @@ import {COLOR, SIZE} from '../../../utils';
 
 export default function AuFacebookSdk(props) {
   const [userLogin, setStateUserLogin] = useState(false);
+  const [dataCredential, setStateDataCredential] = useState(null);
+  const [dataAccessToken, setStateDataAccessToken] = useState({});
+
   const {unShowModal} = props;
 
   useEffect(() => {
@@ -20,6 +23,7 @@ export default function AuFacebookSdk(props) {
 
   // Handle user state changes
   const onAuthStateChanged = (user) => {
+    console.log(user);
     if (user) {
       console.log('User', user);
       setStateUserLogin(user);
@@ -47,6 +51,9 @@ export default function AuFacebookSdk(props) {
 
   //Đăng nhập bằng nút custome:
   const buttonLoginCustom = () => {
+    if (userLogin) {
+      return null;
+    }
     return (
       <TouchableOpacity
         onPress={loginHasAccessTokenFireBase}
@@ -54,8 +61,13 @@ export default function AuFacebookSdk(props) {
           height: SIZE.height(7.5),
           width: SIZE.width(65),
           backgroundColor: 'blue',
+          marginTop: SIZE.height(40),
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
-        <AppText>Login button custom</AppText>
+        <AppText style={{color: COLOR.white, fontWeight: 'bold'}}>
+          Đăng nhập
+        </AppText>
       </TouchableOpacity>
     );
   };
@@ -63,28 +75,27 @@ export default function AuFacebookSdk(props) {
   //Đăng nhập sử dụng fireBase:
   const loginHasAccessTokenFireBase = async () => {
     try {
-      // Attempt login with permissions
+      // Mở popup xin quyền đăng nhập với Fb.
       const result = await LoginManager.logInWithPermissions([
         'public_profile',
-        'email',
+        'user_photos',
       ]);
 
       if (result.isCancelled) {
-        throw 'User cancelled the login process';
+        throw 'Người dùng ấn huỷ bỏ';
       }
-
-      // Once signed in, get the users AccesToken
+      // Lấy Token hiện tại của FB.
       const data = await AccessToken.getCurrentAccessToken();
-
       if (!data) {
         throw 'Something went wrong obtaining access token';
       }
-
-      // Create a Firebase credential with the AccessToken
+      setStateDataAccessToken(data);
+      // Lấy chứng chỉ đăng nhập và token:
       const facebookCredential = auth.FacebookAuthProvider.credential(
         data.accessToken,
       );
-
+      setStateDataCredential(data);
+      console.log('facebookCredential', facebookCredential);
       // Sign-in the user with the credential
       return auth().signInWithCredential(facebookCredential);
     } catch (error) {
@@ -94,24 +105,56 @@ export default function AuFacebookSdk(props) {
 
   //Đăng xuất và xóa cache:
   const logoutAccountAndResetCache = async () => {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
+    try {
+      auth()
+        .signOut()
+        .then(() => Alert.alert('Đăng xuất thành công!'));
+      setStateUserLogin(null);
+    } catch (error) {}
   };
 
   //Nút đăng xuất tất cả tài khoản ra khỏi thiết bị và xóa cache:
   const buttonLogoutAndResetCacheAccountFB = () => {
-    return (
-      <TouchableOpacity
-        onPress={logoutAccountAndResetCache}
-        style={{
-          height: SIZE.height(7.5),
-          width: SIZE.width(60),
-          backgroundColor: 'red',
-        }}>
-        <AppText>Đăng xuất</AppText>
-      </TouchableOpacity>
-    );
+    if (userLogin) {
+      return (
+        <TouchableOpacity
+          onPress={logoutAccountAndResetCache}
+          style={{
+            marginTop: userLogin ? SIZE.height(5) : SIZE.width(2),
+            height: SIZE.height(7.5),
+            width: SIZE.width(65),
+            backgroundColor: 'red',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <AppText style={{color: COLOR.white, fontWeight: 'bold'}}>
+            Đăng xuất
+          </AppText>
+        </TouchableOpacity>
+      );
+    }
+    return null;
+  };
+
+  //Hiển thị thông tin Login:
+  const renderInfoLogin = () => {
+    if (dataAccessToken && userLogin) {
+      return (
+        <View
+          style={{
+            minHeight: 100,
+            width: SIZE.width(100),
+          }}>
+          <AppText style={{color: COLOR.red}}>
+            accessToken:
+            <AppText style={{color: COLOR.black}}>
+              {dataAccessToken.accessToken}
+            </AppText>
+          </AppText>
+        </View>
+      );
+    }
+    return null;
   };
 
   return (
@@ -134,6 +177,9 @@ export default function AuFacebookSdk(props) {
           showsVerticalScrollIndicator={false}
           style={{marginTop: SIZE.height(1), marginBottom: SIZE.width(5)}}>
           <View style={{width: SIZE.width(100), alignItems: 'center'}}>
+            {/* Thông tin đăng nhập */}
+            {renderInfoLogin()}
+            {/* Nút đăng nhập */}
             {buttonLoginCustom()}
             {/* Nút đăng xuất tất cả tài khoản và xóa cache ra khỏi thiết bị */}
             {buttonLogoutAndResetCacheAccountFB()}

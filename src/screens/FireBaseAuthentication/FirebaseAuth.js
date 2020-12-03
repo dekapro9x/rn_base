@@ -122,7 +122,7 @@ export default function FirebaseAuth() {
       <ScrollView style={{flex: 1}}>
         <View
           style={{
-            minHeight: SIZE.height(90),
+            minHeight: SIZE.height(60),
             width: SIZE.width(100),
             backgroundColor: '#203047',
           }}>
