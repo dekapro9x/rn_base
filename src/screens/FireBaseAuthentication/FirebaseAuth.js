@@ -2,6 +2,7 @@
 import React, {useState, useContext} from 'react';
 import {ScrollView, View, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
+
 //Setup:
 import {ContextContainer} from '../../contexts/AppContext';
 import {AppContainer, AppImage, AppText} from '../../elements';

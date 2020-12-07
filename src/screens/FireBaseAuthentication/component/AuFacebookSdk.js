@@ -110,7 +110,8 @@ export default function AuFacebookSdk(props) {
             });
           }
         }}
-        onLogoutFinished={() => {
+        onLogoutFinished={async () => {
+          await LoginManager.logOut();
           setStateUserLogin(false);
           setStateInfoUserLogin({});
           setStateGetAllInformationAccount(false);
