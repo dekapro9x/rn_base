@@ -8,7 +8,6 @@ import {COLOR, KEY_NAVIGATION} from '../utils';
 //Screen:
 
 import Home from '../screens/Home/Home';
-import FirebaseAuth from '../screens/FireBaseAuthentication/FirebaseAuth';
 
 //Component:
 import BottomMenu from './BottomMenu';
@@ -42,10 +41,6 @@ function MainNavigator() {
             ...TransitionPresets.SlideFromRightIOS,
           }}>
           <MainStack.Screen name={KEY_NAVIGATION.home} component={Home} />
-          <MainStack.Screen
-            name={KEY_NAVIGATION.firebase_auth}
-            component={FirebaseAuth}
-          />
         </MainStack.Navigator>
         {bottom && <BottomMenu />}
       </View>
