@@ -1,6 +1,6 @@
 # =>>>>>>>> KUSURI =>>>>>>>> KUSURI =>>>>>>>> KUSURI =>>>>>>>> KUSURI =>>>>>>>> KUSURI =>>>>>>>> KUSURI
 
-# Các bước cấu hình Yone Product Yoneyama Android: (Bản 2.1.6)
+# Các bước cấu hình KUSURI Product KUSURI Android: (Bản 2.1.6)
 
 # Chú ý:
 

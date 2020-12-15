@@ -31,6 +31,10 @@ import YoutobeAds from '../screens/YoutobeAds/YoutobeAds';
 import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
+import ReactQuery from '../screens/ReactQuery/ReactQuery';
+import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
+import FirebaseRealTimeDataBase from '../screens/FireBaseRealtimeDataBase/FirebaseRealTimeDataBase';
+import FirebaseAuth from '../screens/FireBaseAuthentication/FirebaseAuth';
 
 // TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
@@ -98,6 +102,7 @@ function RootNavigator() {
             name={KEY_NAVIGATION.youtube_ads}
             component={YoutobeAds}
           />
+
           <RootStack.Screen
             name={KEY_NAVIGATION.download_img}
             component={DownLoadImg}
@@ -110,6 +115,19 @@ function RootNavigator() {
             name={KEY_NAVIGATION.upload_images}
             component={UploadImage}
           />
+          {/* FIRE_BASE */}
+          <RootStack.Screen
+            name={KEY_NAVIGATION.fire_base_real_time_db}
+            component={FirebaseRealTimeDataBase}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.fire_base_crashlytic}
+            component={FireBaseCrashlytic}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.firebase_auth}
+            component={FirebaseAuth}
+          />
           {/* TABVIEW_30DAY_EXAMPLE */}
           <RootStack.Screen
             name={KEY_NAVIGATION.push_local}
@@ -118,6 +136,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.weather_information}
             component={WeatherInformation}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.react_query}
+            component={ReactQuery}
           />
         </RootStack.Navigator>
       </NavigationContainer>

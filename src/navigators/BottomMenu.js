@@ -10,6 +10,7 @@ import {COLOR, SIZE} from '../utils';
 
 //Component:
 import {AppImageWithTextButton} from '../elements/AppImageWithTextButton';
+import ServicesActiveTabViewBottomMenu from '../utils/services/ServicesActiveTabViewBottomMenu';
 
 export default function BottomMenu() {
   const navigation = useNavigation();
@@ -17,7 +18,10 @@ export default function BottomMenu() {
     return null;
   }
   const pressMenu = (item) => () => {
-    navigation.navigate(item.screen);
+    ServicesActiveTabViewBottomMenu.set({
+      key: 'ACTIVE_TAB_VIEW',
+      setIndex: item.tabActive,
+    });
   };
   //Item:
   const renderItem = () => {

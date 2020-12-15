@@ -1,5 +1,5 @@
 //Library:
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {TabView, TabBar, ScrollPager} from 'react-native-tab-view';
 
@@ -11,11 +11,20 @@ import {COLOR, SIZE} from '../../../utils';
 import MenuHome from './MenuHome';
 import MenuFireBase from './MenuFireBase';
 import Menu30DayExample from './Menu30DayExample';
+import ServicesActiveTabViewBottomMenu from '../../../utils/services/ServicesActiveTabViewBottomMenu';
 
 function TabViewHome(props) {
   //Index: Vị trí tabview đầu tiên được active:
   const [index, setIndex] = useState(0);
   const {dataMenuHome, dataMenuFireBase, dataMenu30DayExample} = props;
+  useEffect(() => {
+    ServicesActiveTabViewBottomMenu.onChange('TabviewHome', (event) => {
+      if (event && event.key == 'ACTIVE_TAB_VIEW') {
+        setIndex(event.setIndex);
+      }
+    });
+    return () => {};
+  }, []);
   //Routes số lượng tabview:
   const [routes] = useState([
     {

@@ -113,7 +113,11 @@ return `http://sdk-ads-analyze.com/app/api/notification/onClick?notificationId=$
 
 # 5:Kiểm tra lại certificate , quyền build và đẩy App :
 
-# 6: Chạy lệnh Code push: appcenter codepush release-react -a Yoneyama/Yoneyama-IOS -d Production
+# 6: Chạy lệnh Code push:
+
+# appcenter codepush release-react -a Yoneyama/Yoneyama-IOS -d Production -m
+
+# appcenter codepush release-react -a Yoneyama/Yoneyama-Android -d Production -m
 
 Tài khoản test Pro:
 08032065556 shinto10
