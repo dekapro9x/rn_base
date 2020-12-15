@@ -1,5 +1,6 @@
 const COLOR = {
   TRANSPARENT: 'transparent',
+  backgroundColor: '#FFFFFF',
   milk: '#F9F0F0',
   white: '#FFFFFF',
   COLOR_WHITE: '#FFFFFF',

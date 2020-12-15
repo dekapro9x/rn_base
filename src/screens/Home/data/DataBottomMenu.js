@@ -2,38 +2,30 @@ import {KEY_NAVIGATION} from '../../../utils/keys/KeyNavigation';
 const DataBottomMenu = [
   {
     id: 1,
-    name: 'Home',
-    screen: KEY_NAVIGATION.home,
-    iconUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Go-home.svg/1024px-Go-home.svg.png',
+    name: 'Menu',
+    tabActive: 0,
+    iconUrl: 'https://i.dlpng.com/static/png/6470996_preview.png',
   },
   {
     id: 2,
-    name: 'Home',
-    screen: KEY_NAVIGATION.home,
+    name: 'FireBase',
+    tabActive: 1,
     iconUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Go-home.svg/1024px-Go-home.svg.png',
+      'https://www.gstatic.com/devrel-devsite/prod/v36e9b4a2fdc696650f09851e8c880b958655492821ded3455f80aaef87b6b52b/firebase/images/touchicon-180.png',
   },
   {
     id: 3,
-    name: 'Home',
-    screen: KEY_NAVIGATION.home,
+    name: 'Chart',
+    tabActive: 2,
     iconUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Go-home.svg/1024px-Go-home.svg.png',
+      'https://jovis.edu.vn/wp-content/uploads/2020/08/81084d04dbcadec0b75a7d494b253d7d.gif',
   },
   {
     id: 4,
-    name: 'Home',
-    screen: KEY_NAVIGATION.home,
+    name: '30 Day',
+    tabActive: 3,
     iconUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Go-home.svg/1024px-Go-home.svg.png',
-  },
-  {
-    id: 5,
-    name: 'Home',
-    screen: KEY_NAVIGATION.home,
-    iconUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Go-home.svg/1024px-Go-home.svg.png',
+      'https://d2uusema5elisf.cloudfront.net/n/20191101192125417_twitter.jpg',
   },
 ];
 export {DataBottomMenu};

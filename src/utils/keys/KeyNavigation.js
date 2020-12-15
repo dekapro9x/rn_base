@@ -20,11 +20,15 @@ const KEY_NAVIGATION = {
   direction_map: 'DIRECTION_MAP',
   animation: 'ANIMATION',
   youtube_ads: 'YOUTUBE_ADS',
-  firebase_auth: 'FIRE_BASE_AUTHENTICATION',
   download_img: 'DOWNLOAD_IMG',
   light_screen: 'LIGHT_SCREEN',
   upload_images: 'UPLOAD_IMAGES',
   react_query: 'REACT_QUERY',
+
+  //FIRE_BASE:
+  firebase_auth: 'FIRE_BASE_AUTHENTICATION',
+  fire_base_real_time_db: 'FIRE_BASE_REAL_TIME_DB',
+  fire_base_crashlytic: 'FIRE_BASE_CRASHLYTIC',
 
   //TAB_VIEW_30DAY_EXAMPLE:
   push_local: 'PUSH_LOCAL_SCHEDULED',

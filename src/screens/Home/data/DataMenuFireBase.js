@@ -14,21 +14,23 @@ const DATA_MENU_FIREBASE = [
     },
     {
       id: 2,
-      type: 'none',
-      screen: KEY_NAVIGATION.webview,
-      img: 'https://image.flaticon.com/icons/png/512/337/337946.png',
+      type: 'icon',
+      screen: KEY_NAVIGATION.fire_base_real_time_db,
+      img:
+        'https://2.bp.blogspot.com/--ETu633x5aI/XYKxmw_1hvI/AAAAAAAAEIA/IPAiXzFQQkwfC_8v1fli5hGD5K9_EttpQCLcBGAsYHQ/s1600/Firebase%2BRealtime%2BDatabase%2B%25281-%2BIcon%252C%2BLight%2529.png',
 
-      name: 'PDF',
+      name: 'RealTime DB',
       link:
         'https://s3-ap-northeast-1.amazonaws.com/komeda/pdf/08fe3486-0e81-49f9-92de-6215ad6593c5sample3.pdf',
     },
     {
       id: 3,
-      type: 'none',
-      screen: KEY_NAVIGATION.location,
-      img: 'https://media1.giphy.com/media/SWWLF8WluVJ5vJjMln/giphy.gif',
+      type: 'icon',
+      screen: KEY_NAVIGATION.fire_base_crashlytic,
+      img:
+        'https://static.javatpoint.com/tutorial/firebase/images/firebase-crashlytics.png',
 
-      name: 'Location',
+      name: 'Crashlytic',
       link: '',
     },
   ],
