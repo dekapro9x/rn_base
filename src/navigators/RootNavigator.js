@@ -32,9 +32,12 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
+
+//FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
 import FirebaseRealTimeDataBase from '../screens/FireBaseRealtimeDataBase/FirebaseRealTimeDataBase';
 import FirebaseAuth from '../screens/FireBaseAuthentication/FirebaseAuth';
+import FireBasePhoneAuth from '../screens/FireBasePhoneAuth/FireBasePhoneAuth';
 
 // TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
@@ -127,6 +130,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.firebase_auth}
             component={FirebaseAuth}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.fire_base_phone_auth}
+            component={FireBasePhoneAuth}
           />
           {/* TABVIEW_30DAY_EXAMPLE */}
           <RootStack.Screen

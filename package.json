@@ -16,8 +16,9 @@
     "@react-native-community/progress-bar-android": "^1.0.3",
     "@react-native-community/progress-view": "^1.1.1",
     "@react-native-community/push-notification-ios": "^1.7.3",
-    "@react-native-firebase/app": "^10.0.0",
-    "@react-native-firebase/auth": "^10.0.0",
+    "@react-native-firebase/app": "^10.2.0",
+    "@react-native-firebase/auth": "^10.2.0",
+    "@react-native-firebase/crashlytics": "^10.2.0",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "hex-to-rgba": "^2.0.1",
@@ -52,9 +53,9 @@
     "react-native-system-setting": "^1.7.6",
     "react-native-tab-view": "^2.15.1",
     "react-native-vector-icons": "^7.1.0",
-    "react-native-webview": "^10.9.0",
+    "react-native-webview": "^11.0.2",
     "react-native-youtube": "^2.0.1",
-    "react-query": "^2.26.3",
+    "react-query": "^3.2.0",
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {

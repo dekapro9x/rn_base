@@ -29,6 +29,7 @@ const KEY_NAVIGATION = {
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',
   fire_base_real_time_db: 'FIRE_BASE_REAL_TIME_DB',
   fire_base_crashlytic: 'FIRE_BASE_CRASHLYTIC',
+  fire_base_phone_auth: 'FIRE_BASE_PHONE_AUTH',
 
   //TAB_VIEW_30DAY_EXAMPLE:
   push_local: 'PUSH_LOCAL_SCHEDULED',
