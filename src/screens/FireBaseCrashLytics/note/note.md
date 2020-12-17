@@ -2,6 +2,7 @@ Cài đặt:
 yarn add @react-native-firebase/app
 yarn add @react-native-firebase/crashlytics
 cd ios/ && pod install
+https://rnfirebase.io/crashlytics/usage
 
 Vào https://console.firebase.google.com/ => https://console.firebase.google.com/u/0/project/rn-base-f142e/crashlytics/app/android:com.rn_base.dev/issues
 
