@@ -30,6 +30,7 @@
     "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
     "react-native-code-push": "^6.3.0",
     "react-native-cookies": "^3.3.0",
+    "react-native-create-library": "^3.1.2",
     "react-native-device-info": "^6.0.2",
     "react-native-fast-image": "^8.3.2",
     "react-native-fbsdk": "^3.0.0",
