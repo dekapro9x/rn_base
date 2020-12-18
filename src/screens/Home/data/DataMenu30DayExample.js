@@ -18,16 +18,16 @@ const DATA_MENU_30_DAY_EXAMPLE = [
       screen: KEY_NAVIGATION.weather_information,
       img:
         'https://dnmtechs.com/wp-content/uploads/2018/02/icon-openweathermap-1.png',
-      name: 'Weather Information',
+      name: 'Weather Now',
       link: '',
     },
     {
       id: 3,
-      type: 'none',
-      screen: KEY_NAVIGATION.location,
-      img: 'https://media1.giphy.com/media/SWWLF8WluVJ5vJjMln/giphy.gif',
-
-      name: 'Location',
+      type: 'icon',
+      screen: KEY_NAVIGATION.keyboard_module_native,
+      img:
+        'https://cdn.iconscout.com/icon/free/png-256/keyboard-1356362-1235306.png',
+      name: 'Keyboard Native',
       link: '',
     },
   ],

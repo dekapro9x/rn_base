@@ -1,5 +1,5 @@
 //Library:
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {ScrollView, View, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -13,10 +13,21 @@ import AuMailAndPass from './component/AuMailAndPass';
 import AuFacebookSdk from './component/AuFacebookSdk';
 import AuFacebookFirebase from './component/AuFacebookFirebase';
 
-export default function FirebaseAuth() {
+export default function FirebaseAuth({navigation, route}) {
+  console.log('route', route);
+  const {params} = route;
   const {colorApp} = useContext(ContextContainer);
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemOnActive, setStateItemActive] = useState('');
+
+  useEffect(() => {
+    if (params && params.param == 'LOGIN_GOOGLE') {
+      setModalVisible(true);
+      setStateItemActive(1);
+    }
+    return () => {};
+  }, []);
+
   const listAuthentication = [
     {
       id: 1,
@@ -41,6 +52,7 @@ export default function FirebaseAuth() {
 
   //Hiển thị modal:
   const showModal = (item) => () => {
+    console.log('item', item);
     setModalVisible(true);
     setStateItemActive(item.id);
   };

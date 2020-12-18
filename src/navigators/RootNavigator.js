@@ -42,6 +42,7 @@ import FireBasePhoneAuth from '../screens/FireBasePhoneAuth/FireBasePhoneAuth';
 // TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
 import WeatherInformation from '../screens/WeatherInformation/WeatherInformation';
+import KeyBoardModuleNative from '../screens/KeyboardModuleNative/KeyBoardModuleNative';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -139,6 +140,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.push_local}
             component={PushLocalScheduled}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.keyboard_module_native}
+            component={KeyBoardModuleNative}
           />
           <RootStack.Screen
             name={KEY_NAVIGATION.weather_information}

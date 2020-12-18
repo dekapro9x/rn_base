@@ -36,5 +36,6 @@ const KEY_NAVIGATION = {
   //TAB_VIEW_30DAY_EXAMPLE:
   push_local: 'PUSH_LOCAL_SCHEDULED',
   weather_information: 'WEATHER_INFORMATION',
+  keyboard_module_native: 'KEYBOARD_MODULE_NATIVE',
 };
 export {KEY_NAVIGATION};
