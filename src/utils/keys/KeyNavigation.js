@@ -37,5 +37,6 @@ const KEY_NAVIGATION = {
   push_local: 'PUSH_LOCAL_SCHEDULED',
   weather_information: 'WEATHER_INFORMATION',
   keyboard_module_native: 'KEYBOARD_MODULE_NATIVE',
+  native_module: 'NATIVE_MODULE',
 };
 export {KEY_NAVIGATION};

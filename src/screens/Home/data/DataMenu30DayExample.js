@@ -24,10 +24,10 @@ const DATA_MENU_30_DAY_EXAMPLE = [
     {
       id: 3,
       type: 'icon',
-      screen: KEY_NAVIGATION.keyboard_module_native,
+      screen: KEY_NAVIGATION.native_module,
       img:
-        'https://cdn.iconscout.com/icon/free/png-256/keyboard-1356362-1235306.png',
-      name: 'Keyboard Native',
+        'https://www.mindinventory.com/blog/wp-content/uploads/2018/11/ios-android-development-using-react-native.png',
+      name: 'Native Module',
       link: '',
     },
   ],

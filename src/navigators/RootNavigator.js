@@ -32,7 +32,6 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
-import NativeModule from '../screens/NativeModule/NativeModule';
 
 //FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
@@ -44,6 +43,7 @@ import FireBasePhoneAuth from '../screens/FireBasePhoneAuth/FireBasePhoneAuth';
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
 import WeatherInformation from '../screens/WeatherInformation/WeatherInformation';
 import KeyBoardModuleNative from '../screens/KeyboardModuleNative/KeyBoardModuleNative';
+import NativeModule from '../screens/NativeModule/NativeModule';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -112,6 +112,7 @@ function RootNavigator() {
             name={KEY_NAVIGATION.download_img}
             component={DownLoadImg}
           />
+
           <RootStack.Screen
             name={KEY_NAVIGATION.light_screen}
             component={LightScreen}
@@ -153,6 +154,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.react_query}
             component={ReactQuery}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.native_module}
+            component={NativeModule}
           />
         </RootStack.Navigator>
       </NavigationContainer>
