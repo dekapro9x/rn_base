@@ -18,16 +18,16 @@ const DATA_MENU_30_DAY_EXAMPLE = [
       screen: KEY_NAVIGATION.weather_information,
       img:
         'https://dnmtechs.com/wp-content/uploads/2018/02/icon-openweathermap-1.png',
-      name: 'Weather Information',
+      name: 'Weather Now',
       link: '',
     },
     {
       id: 3,
-      type: 'none',
-      screen: KEY_NAVIGATION.location,
-      img: 'https://media1.giphy.com/media/SWWLF8WluVJ5vJjMln/giphy.gif',
-
-      name: 'Location',
+      type: 'icon',
+      screen: KEY_NAVIGATION.native_module,
+      img:
+        'https://www.mindinventory.com/blog/wp-content/uploads/2018/11/ios-android-development-using-react-native.png',
+      name: 'Native Module',
       link: '',
     },
   ],

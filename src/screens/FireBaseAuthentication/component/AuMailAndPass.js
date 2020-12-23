@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react';
 import auth from '@react-native-firebase/auth';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {View, TouchableOpacity, TextInput, Alert} from 'react-native';
 import {AppImage, AppText} from '../../../elements';
-import {COLOR, SIZE} from '../../../utils';
+import {COLOR, KEY_ASYNC_STORE, SIZE} from '../../../utils';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function AuMailAndPass(props) {
@@ -25,10 +26,7 @@ export default function AuMailAndPass(props) {
 
   // Handle user state changes
   const onAuthStateChanged = (user) => {
-    if (user) {
-      setUserLogin(user);
-      console.log('user', user);
-    }
+    setUserLogin(user);
   };
 
   const onChangeUserName = (text) => {
@@ -61,6 +59,13 @@ export default function AuMailAndPass(props) {
         .then(function (result) {
           console.log('result', result);
           if (result) {
+            const ojbLogin = {};
+            ojbLogin.userID = userLogin._user.uid;
+            ojbLogin.email = userLogin._user.email;
+            AsyncStorage.setItem(
+              KEY_ASYNC_STORE.account_login_firebase,
+              JSON.stringify(ojbLogin),
+            );
             Alert.alert('Login thành công!');
             setStateUserNameDemo('');
             setStatePassWordDemo('');

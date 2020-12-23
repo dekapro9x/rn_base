@@ -32,13 +32,18 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
+
+//FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
 import FirebaseRealTimeDataBase from '../screens/FireBaseRealtimeDataBase/FirebaseRealTimeDataBase';
 import FirebaseAuth from '../screens/FireBaseAuthentication/FirebaseAuth';
+import FireBasePhoneAuth from '../screens/FireBasePhoneAuth/FireBasePhoneAuth';
 
 // TabView 30Day Example:
 import PushLocalScheduled from '../screens/PushLocalScheduled/PushLocalScheduled';
 import WeatherInformation from '../screens/WeatherInformation/WeatherInformation';
+import KeyBoardModuleNative from '../screens/KeyboardModuleNative/KeyBoardModuleNative';
+import NativeModule from '../screens/NativeModule/NativeModule';
 
 //Services:
 import CurrentScreenServices from '../utils/services/CurrentScreenServices';
@@ -107,6 +112,7 @@ function RootNavigator() {
             name={KEY_NAVIGATION.download_img}
             component={DownLoadImg}
           />
+
           <RootStack.Screen
             name={KEY_NAVIGATION.light_screen}
             component={LightScreen}
@@ -128,10 +134,18 @@ function RootNavigator() {
             name={KEY_NAVIGATION.firebase_auth}
             component={FirebaseAuth}
           />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.fire_base_phone_auth}
+            component={FireBasePhoneAuth}
+          />
           {/* TABVIEW_30DAY_EXAMPLE */}
           <RootStack.Screen
             name={KEY_NAVIGATION.push_local}
             component={PushLocalScheduled}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.keyboard_module_native}
+            component={KeyBoardModuleNative}
           />
           <RootStack.Screen
             name={KEY_NAVIGATION.weather_information}
@@ -140,6 +154,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.react_query}
             component={ReactQuery}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.native_module}
+            component={NativeModule}
           />
         </RootStack.Navigator>
       </NavigationContainer>

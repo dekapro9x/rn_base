@@ -22,6 +22,10 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        //Thêm dòng này cấu hình firebase-crashlytics:
+        // classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0' (Lỗi hạ xuống 2.0.0)
+        //https://github.com/invertase/react-native-firebase/issues/4253
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0'
     }
 }
 

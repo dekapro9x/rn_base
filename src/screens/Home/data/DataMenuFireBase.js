@@ -34,6 +34,37 @@ const DATA_MENU_FIREBASE = [
       link: '',
     },
   ],
+  [
+    {
+      id: 1,
+      type: 'icon',
+      screen: KEY_NAVIGATION.fire_base_phone_auth,
+      img: 'https://miro.medium.com/max/300/1*eyc7tRpZsMrUrEfXBIv8VQ.png',
+      icon: 'world',
+      name: 'Phone Auth',
+      link: 'https://www.youtube.com/?gl=VN',
+    },
+    {
+      id: 2,
+      type: 'icon',
+      screen: KEY_NAVIGATION.fire_base_analytics,
+      img:
+        'https://lh3.googleusercontent.com/proxy/pAnmYpr27e7_EL7TSF4PoBpipW8yAAhEX-P7YkiVDREMLvvBcFy8D9D2_bw7GCRtGCgCHp_VkcW0wxC1uGh_9W2d5i8U7YM9RNlWzp04UJILi0MDq2HIrQ',
+
+      name: 'Analytic',
+      link:
+        'https://s3-ap-northeast-1.amazonaws.com/komeda/pdf/08fe3486-0e81-49f9-92de-6215ad6593c5sample3.pdf',
+    },
+    {
+      id: 3,
+      type: 'icon',
+      screen: KEY_NAVIGATION.fire_base_performance,
+      img: 'https://static.invertase.io/assets/social/firebase-logo.png',
+
+      name: 'Performance',
+      link: '',
+    },
+  ],
 ];
 
 export default DATA_MENU_FIREBASE;
