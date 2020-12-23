@@ -1,47 +1,38 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {useEffect} from 'react';
+import {View, Text, TextInput} from 'react-native';
+import {Platform, NativeModules} from 'react-native';
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+export default function KeyBoardModuleNative() {
+  useEffect(() => {
+    const deviceLanguage =
+      Platform.OS === 'ios'
+        ? NativeModules.SettingsManager.settings.AppleLocale ||
+          NativeModules.SettingsManager.settings.AppleLanguages[0] //iOS 13
+        : NativeModules.I18nManager.localeIdentifier;
 
-// We are importing the native Java module here
-import {NativeModules} from 'react-native';
-var HelloWorld = NativeModules.HelloWorld;
+    console.log(deviceLanguage); //en_US
+    return () => {};
+  }, []);
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <TextInput
+        secureTextEntry
+        textContentType="oneTimeCode"
+        onKeyPress={(e) => console.log(e.nativeEvent.key)}
+        style={{height: 30, width: 200, borderWidth: 1}}></TextInput>
+      <Text>KeyBoardModuleNative</Text>
 
-type Props = {};
-export default class App extends Component<Props> {
-  // async function to call the Java native method
-  async sayHiFromJava() {
-    console.log('?????');
-    HelloWorld.sayHi(
-      (err) => {
-        console.log(err);
-      },
-      (msg) => {
-        console.log(msg);
-      },
-    );
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this.sayHiFromJava}>
-          <Text>Invoke native Java code</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+      <TextInput
+        secureTextEntry
+        textContentType="oneTimeCode"
+        onKeyPress={(e) => console.log(e.nativeEvent.key)}
+        style={{height: 30, width: 200, borderWidth: 1}}></TextInput>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});

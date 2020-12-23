@@ -14,6 +14,13 @@ Vào https://console.firebase.google.com/ => https://console.firebase.google.com
 
 Add Firebase SDK for Android (version 17.1.1 or later) or Unity plug-in (version 6.15.0 or later), then build, run and crash your app
 Consult the SDK documents. We will monitor the communications recorded between your application and our servers.
+https://rnfirebase.io/crashlytics/android-setup
+//Thêm dòng này cấu hình firebase-crashlytics:
+implementation 'com.google.firebase:firebase-crashlytics-ndk:17.2.1'
+//Thêm dòng này cấu hình firebase-crashlytics:
+// classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0' (Lỗi hạ xuống 2.0.0)
+//https://github.com/invertase/react-native-firebase/issues/4253
+classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0'
 
 # IOS:
 
