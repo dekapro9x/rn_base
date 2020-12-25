@@ -5,6 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 import com.android.build.OutputFile
+//import com.facebook.FacebookSdk
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -208,6 +209,8 @@ android {
 }
 
 dependencies {
+    //Thay compile 'com.facebook.android:facebook-android-sdk:[4,5)' thành:
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     //Thêm dòng này cấu hình firebase-crashlytics:
     implementation 'com.google.firebase:firebase-crashlytics-ndk:17.2.1'
 

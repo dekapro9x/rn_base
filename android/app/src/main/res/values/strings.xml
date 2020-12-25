@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">rn_base</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">yVEKBX2Pz-AFTMYUMMh-dUsQt2bPzTCz5MQqD</string>
+    <string name="facebook_app_id">921259178281044</string>
 </resources>

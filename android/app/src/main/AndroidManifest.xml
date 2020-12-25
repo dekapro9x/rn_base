@@ -24,6 +24,8 @@
 
     <!--Thêm đoạn này để cấu hình Map: key này lấy từ projects:  react-native base -->
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCvTGmxbx2YUcaLHA8XYY_sKuOycyNL1P0"/>
+    <!--Thêm đoạn này để cấu hình FB-SDK: https://developers.facebook.com/quickstarts/921259178281044/?platform=android -->
+    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     <!-- You will also only need to add this uses-library tag -->
     <uses-library android:name="org.apache.http.legacy" android:required="false"/>
   </application>

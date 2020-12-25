@@ -67,3 +67,6 @@ Khởi tạo File :
 //
 
 import Foundation
+
+Vào trình khám phá đồ thị lấy API:
+https://developers.facebook.com/tools/explorer/
