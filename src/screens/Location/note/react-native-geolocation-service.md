@@ -20,5 +20,4 @@ compileSdkVersion = 29
 targetSdkVersion = 29
 // Cấu hình truy cập vị trí:
 googlePlayServicesVersion = "+"
-
-    }
+}

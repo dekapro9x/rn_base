@@ -1,8 +1,9 @@
-Link: https://github.com/wonday/react-native-pdf
+# Link: https://github.com/wonday/react-native-pdf
+
 yarn add react-native-pdf rn-fetch-blob @react-native-community/progress-bar-android @react-native-community/progress-view
 
-android/app/build.gradle:
-Thêm : Vào dòng: 172
+# Trong android/app/build.gradle:
+
 packagingOptions {
 pickFirst "lib/armeabi-v7a/libc++\_shared.so"
 pickFirst "lib/arm64-v8a/libc++\_shared.so"

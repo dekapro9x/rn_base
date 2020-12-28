@@ -15,10 +15,10 @@ const DataBottomMenu = [
   },
   {
     id: 3,
-    name: 'Chart',
+    name: 'Native',
     tabActive: 2,
     iconUrl:
-      'https://jovis.edu.vn/wp-content/uploads/2020/08/81084d04dbcadec0b75a7d494b253d7d.gif',
+      'https://www.mindinventory.com/blog/wp-content/uploads/2018/11/ios-android-development-using-react-native.png',
   },
   {
     id: 4,

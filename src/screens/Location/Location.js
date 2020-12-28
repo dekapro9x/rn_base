@@ -4,17 +4,29 @@ import {Text, View} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
 //Setup:
-import {checkPermissionsLocation} from './utils/CheckPermissionLocation';
+import {checkPermissionsLocationPlatform} from './utils/CheckPermissionLocationPlatform';
 
 //Component:
 import {Loading} from '../../elements/Loading';
 import {COLOR, SIZE} from '../../utils/resource';
+import {isIos} from '../../utils/constants/System';
 
 export default function Location() {
   const [loading, setStateLoading] = useState(true);
   const [currentLocation, setStateCurrentLocation] = useState({});
+
+  useEffect(() => {
+    let timeCount = setTimeout(() => {
+      onDidMount();
+    }, 500);
+    return () => {
+      clearTimeout(timeCount);
+    };
+  }, []);
+
   const onDidMount = async () => {
-    let location = await checkPermissionsLocation();
+    let location = await checkPermissionsLocationPlatform();
+    console.log('location', location);
     if (location == 'GRANTED') {
       //Lấy vị trí hiện tại người dùng:
       Geolocation.getCurrentPosition(
@@ -26,7 +38,13 @@ export default function Location() {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude,
               accuracy: position.coords.accuracy,
-              altitudeAccuracy: position.coords.altitudeAccuracy,
+              altitudeAccuracy: isIos
+                ? position.coords.altitudeAccuracy
+                : position.coords.accuracy,
+              heading: position.coords.heading,
+              speed: position.coords.speed,
+              timestamp: position.timestamp,
+              mocked: position.mocked,
             });
           }
         },
@@ -47,10 +65,7 @@ export default function Location() {
       );
     }
   };
-  useEffect(() => {
-    onDidMount();
-    return () => {};
-  }, []);
+
   if (loading) {
     return (
       <View
@@ -73,6 +88,10 @@ export default function Location() {
       <Text>Longitude: {currentLocation.longitude}</Text>
       <Text>Accuracy: {currentLocation.accuracy}</Text>
       <Text>AltitudeAccuracy: {currentLocation.altitudeAccuracy}</Text>
+      <Text>timestamp: {currentLocation.timestamp}</Text>
+      <Text>speed: {currentLocation.speed}</Text>
+      <Text>heading: {currentLocation.heading}</Text>
+      <Text>mocked:{`${currentLocation.mocked}`}</Text>
     </View>
   );
 }

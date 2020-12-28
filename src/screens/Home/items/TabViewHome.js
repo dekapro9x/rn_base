@@ -39,10 +39,10 @@ function TabViewHome(props) {
         'https://www.gstatic.com/devrel-devsite/prod/v36e9b4a2fdc696650f09851e8c880b958655492821ded3455f80aaef87b6b52b/firebase/images/touchicon-180.png',
     },
     {
-      key: 'chart',
-      title: 'Chart',
+      key: 'native',
+      title: 'Native',
       img:
-        'https://jovis.edu.vn/wp-content/uploads/2020/08/81084d04dbcadec0b75a7d494b253d7d.gif',
+        'https://www.mindinventory.com/blog/wp-content/uploads/2018/11/ios-android-development-using-react-native.png',
     },
     {
       key: 'example',
@@ -66,7 +66,7 @@ function TabViewHome(props) {
         return (
           <MenuFireBase dataMenuFireBase={dataMenuFireBase}></MenuFireBase>
         );
-      case 'chart':
+      case 'native':
         return <View></View>;
       case 'example':
         return (

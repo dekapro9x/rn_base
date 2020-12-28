@@ -29,7 +29,6 @@ const DATA_MENU_FIREBASE = [
       screen: KEY_NAVIGATION.fire_base_crashlytic,
       img:
         'https://static.javatpoint.com/tutorial/firebase/images/firebase-crashlytics.png',
-
       name: 'Crashlytic',
       link: '',
     },
@@ -48,8 +47,7 @@ const DATA_MENU_FIREBASE = [
       id: 2,
       type: 'icon',
       screen: KEY_NAVIGATION.fire_base_analytics,
-      img:
-        'https://lh3.googleusercontent.com/proxy/pAnmYpr27e7_EL7TSF4PoBpipW8yAAhEX-P7YkiVDREMLvvBcFy8D9D2_bw7GCRtGCgCHp_VkcW0wxC1uGh_9W2d5i8U7YM9RNlWzp04UJILi0MDq2HIrQ',
+      img: 'https://static.invertase.io/assets/social/firebase-logo.png',
 
       name: 'Analytic',
       link:
@@ -60,7 +58,6 @@ const DATA_MENU_FIREBASE = [
       type: 'icon',
       screen: KEY_NAVIGATION.fire_base_performance,
       img: 'https://static.invertase.io/assets/social/firebase-logo.png',
-
       name: 'Performance',
       link: '',
     },
