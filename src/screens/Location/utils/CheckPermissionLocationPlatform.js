@@ -33,6 +33,7 @@ const checkPermissionsLocationPlatform = async () => {
     checkPermissionLocationBackground = await checkPermissionLocationBackgroundAndroid();
     if (checkPermissionLocation == 'granted') {
       return 'GRANTED';
+    } else {
     }
   }
 };
@@ -194,13 +195,54 @@ const checkPermissionLocationBackgroundAndroid = async () => {
     });
   return checkPermission;
 };
+
 //Thực hiện request xin quyền vị trí:
 const requestLocation = () => {
-  request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((result) => {});
+  request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((result) => {
+    switch (result) {
+      case RESULTS.BLOCKED:
+        checkPermission = RESULTS.BLOCKED;
+        alertPermissionsLocation();
+        break;
+      case RESULTS.UNAVAILABLE:
+        checkPermission = RESULTS.UNAVAILABLE;
+        alertPermissionsLocation();
+        break;
+      case RESULTS.DENIED:
+        checkPermission = RESULTS.DENIED;
+        alertPermissionsLocation();
+        break;
+      case RESULTS.LIMITED:
+        checkPermission = RESULTS.LIMITED;
+        requestLocationBackground();
+        break;
+      case RESULTS.GRANTED:
+        requestLocationBackground();
+        break;
+    }
+  });
 };
+
 //Thực hiện request xin quyền vị trí background:
 const requestLocationBackground = () => {
-  request(PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION).then((result) => {});
+  request(PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION).then((result) => {
+    switch (result) {
+      case RESULTS.BLOCKED:
+        checkPermission = RESULTS.BLOCKED;
+        break;
+      case RESULTS.UNAVAILABLE:
+        checkPermission = RESULTS.UNAVAILABLE;
+        break;
+      case RESULTS.DENIED:
+        checkPermission = RESULTS.DENIED;
+        break;
+      case RESULTS.LIMITED:
+        checkPermission = RESULTS.LIMITED;
+        break;
+      case RESULTS.GRANTED:
+        break;
+    }
+  });
 };
 
 export {checkPermissionsLocationPlatform};

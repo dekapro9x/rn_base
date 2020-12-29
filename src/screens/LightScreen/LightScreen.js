@@ -142,7 +142,7 @@ export default function LightScreen() {
           justifyContent: 'center',
           margin: SIZE.width(1),
         }}>
-        <AppText style={{fontSize: SIZE.H3, color: COLOR.white}}>
+        <AppText style={{fontSize: SIZE.H4, color: COLOR.white}}>
           SAVE BRIGHT
         </AppText>
       </TouchableOpacity>

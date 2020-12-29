@@ -29,33 +29,23 @@ function DownLoadImg() {
   };
 
   useEffect(() => {
-    checkPermisssionPhotoSave();
+    checkPermissionAlbumPlatform();
     return () => {};
   }, []);
 
   //Kiểm tra quyền truy cập vào tệp và thư viện:
-  const checkPermisssionPhotoSave = async () => {
+  const checkPermissionAlbumPlatform = async () => {
     if (isIos) {
       check(PERMISSIONS.IOS.PHOTO_LIBRARY)
         .then((result) => {
           switch (result) {
             case RESULTS.UNAVAILABLE:
-              console.log(
-                'This feature is not available (on this device / in this context)',
-              );
               break;
             case RESULTS.DENIED:
-              console.log(
-                'The permission has not been requested / is denied but requestable',
-              );
               break;
             case RESULTS.GRANTED:
-              console.log('The permission is granted');
               break;
             case RESULTS.BLOCKED:
-              console.log(
-                'The permission is denied and not requestable anymore',
-              );
               break;
           }
         })
@@ -113,12 +103,11 @@ function DownLoadImg() {
         const tag = response.respInfo.redirects;
         let urlImg = tag[0];
         if (tag && Array.isArray(tag)) {
-          const imageSaved = await CameraRoll.save(`${urlImg}`, 'photo');
+          await CameraRoll.save(`${urlImg}`, 'photo');
           Alert.alert('Lưu ảnh thành công!');
         }
       }
     } catch (error) {
-      console.log('Lỗi cmnr', error);
       Alert.alert('Có lỗi trong quá trình tải ảnh!');
     } finally {
     }
@@ -131,16 +120,18 @@ function DownLoadImg() {
   };
 
   // Kiểm tra quyền ghi ảnh IOS:
-  const checkPermissionIosSavePhotoIOS = () => {
-    request(PERMISSIONS.IOS.PHOTO_LIBRARY).then((result) => {
-      console.log('Hỏi quyền xin lưu trữ ảnh trong anbum', result);
-      if (result === 'granted') {
-        alertSaveImages();
-      } else {
-        // this.alertOpenSettingPermissionAnbumImagesIOS();
-        setStateButtonDownLoadImg(false);
-      }
-    });
+  const savePhoto = () => {
+    if (isIos) {
+      request(PERMISSIONS.IOS.PHOTO_LIBRARY).then((result) => {
+        if (result === 'granted') {
+          alertSaveImages();
+        } else {
+          setStateButtonDownLoadImg(false);
+        }
+      });
+    } else {
+      alertSaveImages();
+    }
   };
 
   //Lấy size ảnh:
@@ -276,7 +267,7 @@ function DownLoadImg() {
         {renderImage()}
         {renderButtonDownLoadImg ? (
           <TouchableOpacity
-            onPress={checkPermissionIosSavePhotoIOS}
+            onPress={savePhoto}
             style={{
               height: SIZE.height(7.5),
               width: SIZE.width(65),

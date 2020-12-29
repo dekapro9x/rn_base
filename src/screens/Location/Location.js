@@ -44,7 +44,7 @@ export default function Location() {
               heading: position.coords.heading,
               speed: position.coords.speed,
               timestamp: position.timestamp,
-              mocked: position.mocked,
+              mocked: position.mocked ? position.mocked : false,
             });
           }
         },
