@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["./src/components"],
+      "@fetchApi": ["./src/utils/modules/FetchApi"],
+      "@resources": ["./src/utils/resources"],
+      "@container": ["./src/components/Container"],
+      "@src/*": ["./src/*"],
+      "@screen/*" : ["./src/screen/*"] 
+
+    },
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-native",
+    "pretty": true
+  },
+  "exclude": ["node_modules", "*/node_modules/**"],
+  "typeAcquisition": {
+    "enable": true
+  }
+}
