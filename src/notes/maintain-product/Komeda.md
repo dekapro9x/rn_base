@@ -15,8 +15,8 @@ Sau đó chạy lệnh code push.
 # 1: VersionApp đổi chiếu update ( đối chiếu với server) trong System.js:
 
 // Product
-System.js : const versionApp = isIos ? ‘1.0.2’ : ‘1.0.2’
-const versionCodePush = isIos ? '0' : '0';
+System.js : const versionApp = isIos ? ‘1.0.3’ : ‘1.0.3’
+const versionCodePush = isIos ? '' : '';
 const APP_ID = '1596690646035';
 const URL_DOMAIN = 'https://komeda.shop-analyze.com';
 const COMPANY_ID = '1596690640174';
@@ -46,8 +46,8 @@ const COMPANY_ID = '1596690640174';
 
 # 5: Thay đổi versionCode và versionName trong app/build.gradle:
 
-versionCode 4
-versionName "1.0.2"
+versionCode 5
+versionName "1.0.3"
 
 # Nhớ comment lại phần này // applicationIdSuffix ".dev"
 

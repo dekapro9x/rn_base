@@ -137,11 +137,10 @@ const DATA_MENU_HOME = [
     },
     {
       id: 11,
-      type: 'none',
-      screen: KEY_NAVIGATION.download_img,
-      img:
-        'https://khanhnguyen.vn/wp-content/uploads/2019/10/bigstock-Download-glossy-button-32202518.jpg',
-      name: 'Download Image',
+      type: 'icon',
+      screen: KEY_NAVIGATION.popup_ref,
+      img: 'https://ootbmarket.com/Images/Blog/popup5.png',
+      name: 'Popup Ref',
       icon: '',
     },
   ],

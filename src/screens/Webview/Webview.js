@@ -11,10 +11,12 @@ import {COLOR, SIZE, isIos} from '../../utils';
 import HeaderWebView from './items/HeaderWebView';
 
 const WebViewScreen = ({route}) => {
+
   const [errorPDF, setStateErrorPDF] = useState(false);
   const webViewRef = useRef(null);
   const headerRef = useRef(null);
   const {data} = route.params;
+
   useEffect(() => {}, []);
 
   const renderContent = () => {
@@ -24,7 +26,7 @@ const WebViewScreen = ({route}) => {
         cache: true,
       };
       if (errorPDF) {
-        // return <NetworkError title={STRING.network_error_try_again_later} />;
+       Alert.alert("Lỗi file PDF")
       }
       return (
         <View

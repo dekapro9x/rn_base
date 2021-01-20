@@ -1,8 +1,15 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {View, TouchableOpacity, Alert} from 'react-native';
 import SystemSetting from 'react-native-system-setting';
+import {
+  check,
+  request,
+  PERMISSIONS,
+  RESULTS,
+  openSettings,
+} from 'react-native-permissions';
 import {AppText} from '../../elements';
-import {COLOR, SIZE} from '../../utils';
+import {COLOR, isIos, SIZE} from '../../utils';
 
 export default function LightScreen() {
   const [getLight, setStateGetLight] = useState(0);
@@ -41,11 +48,16 @@ export default function LightScreen() {
     },
   ];
   useEffect(() => {
-    //get the current brightness
-    SystemSetting.getBrightness(getLight).then((brightness) => {
-      setStateGetLight(brightness);
-      getLightDefault.current = brightness;
-    });
+    if (isIos) {
+      //get the current brightness
+      SystemSetting.getBrightness(getLight).then((brightness) => {
+        setStateGetLight(brightness);
+        getLightDefault.current = brightness;
+      });
+    } else {
+      checkPermissionSystemSettingAndroid();
+    }
+
     return () => {
       if (saveLight.current) {
         SystemSetting.setBrightnessForce(
@@ -57,30 +69,65 @@ export default function LightScreen() {
     };
   }, []);
   const activeBrightScreen = (item) => () => {
-    //change the brightness & check permission
-    SystemSetting.setBrightnessForce(item.active).then((success) => {
-      if (!success) {
-        Alert.alert(
-          'Permission Deny',
-          'You have no permission changing settings',
-          [
-            {text: 'Ok', style: 'cancel'},
-            {
-              text: 'Open Setting',
-              onPress: () => SystemSetting.grantWriteSettingPermission(),
-            },
-          ],
-        );
-      } else {
-        setStateGetLight(item.active);
-        getLightCurrent.current = item.active;
-      }
-    });
+    //change the brightness & check permission IOS:
+    if (isIos) {
+      SystemSetting.setBrightnessForce(item.active).then((success) => {
+        if (!success) {
+          Alert.alert(
+            'Permission Deny',
+            'You have no permission changing settings',
+            [
+              {text: 'Ok', style: 'cancel'},
+              {
+                text: 'Open Setting',
+                onPress: () => SystemSetting.grantWriteSettingPermission(),
+              },
+            ],
+          );
+        } else {
+          setStateGetLight(item.active);
+          getLightCurrent.current = item.active;
+        }
+      });
+    } else {
+      // const checkSystem = await checkPermissionSystemSettingAndroid();
+      console.log('checkSystem');
+      setStateGetLight(item.active);
+      getLightCurrent.current = item.active;
+    }
+  };
+
+  //Quyền sửa đổi system android:
+  const checkPermissionSystemSettingAndroid = async () => {
+    let checkPermissionSystem = '';
+    await check(PERMISSIONS.ANDROID.WRITE_SETTINGS)
+      .then((result) => {
+        switch (result) {
+          case RESULTS.UNAVAILABLE:
+            checkPermissionSystem = 'unavailable';
+            break;
+          case RESULTS.DENIED:
+            checkPermissionSystem = 'denied';
+            break;
+          case RESULTS.GRANTED:
+            checkPermissionSystem = 'granted';
+            break;
+          case RESULTS.BLOCKED:
+            checkPermissionSystem = 'blocked';
+            break;
+        }
+      })
+      .catch((error) => {
+        console.log('errorerror', error);
+      });
+    console.log('checkPermissionSystem', checkPermissionSystem);
+    return checkPermissionSystem;
   };
   const saveBrightScreen = () => {
     saveLight.current = true;
     Alert.alert('Lưu thành công!');
   };
+
   return (
     <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
       <AppText

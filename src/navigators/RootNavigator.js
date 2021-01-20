@@ -32,6 +32,7 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
+import PopupRef from '../screens/PopupRef/RefPopup';
 
 //FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
@@ -120,6 +121,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.upload_images}
             component={UploadImage}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.popup_ref}
+            component={PopupRef}
           />
           {/* FIRE_BASE */}
           <RootStack.Screen

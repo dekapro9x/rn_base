@@ -5,8 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import {AppContainer, AppText, Loading} from '../../elements';
 import ItemAnimation from './items/ItemAnimation';
-import {COLOR, SIZE} from '../../utils';
 import DataAnimation from './utils/DataAnimation';
+import {COLOR, SIZE} from '@src/utils';
 
 export default function DirectionMap() {
   const [showList, setStateShowList] = useState(false);
