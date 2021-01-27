@@ -115,7 +115,6 @@ function DownLoadImg() {
 
   //So sánh chuỗi được lưu
   const getExtention = (filename) => {
-    console.log(/[.]/.exec(filename) ? /[^.]+$/.exec(filename) : undefined);
     return /[.]/.exec(filename) ? /[^.]+$/.exec(filename) : undefined;
   };
 
