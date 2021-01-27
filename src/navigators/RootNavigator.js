@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {
   createStackNavigator,
   TransitionPresets,
-  CardStyleInterpolators,
+  // CardStyleInterpolators,
 } from '@react-navigation/stack';
 
 import {KEY_NAVIGATION} from '../utils/keys/KeyNavigation';
@@ -32,6 +32,8 @@ import DownLoadImg from '../screens/DownLoadImage/DownLoadImg';
 import LightScreen from '../screens/LightScreen/LightScreen';
 import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
+import VideoFullScreenAndroid from '../screens/VideoDetailAndroid/VideoFullScreenAndroid';
+import UpviewAndroid from '../screens/UpViewYoutube/UpviewAndroid';
 
 //FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
@@ -83,6 +85,10 @@ function RootNavigator() {
             name={KEY_NAVIGATION.location}
             component={Location}
           />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.video_detail_android}
+            component={VideoFullScreenAndroid}
+          />
           <RootStack.Screen name={KEY_NAVIGATION.map} component={Map} />
           <RootStack.Screen
             name={KEY_NAVIGATION.notification}
@@ -106,6 +112,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.youtube_ads}
             component={YoutobeAds}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.up_view}
+            component={UpviewAndroid}
           />
 
           <RootStack.Screen

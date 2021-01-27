@@ -24,6 +24,7 @@ const KEY_NAVIGATION = {
   light_screen: 'LIGHT_SCREEN',
   upload_images: 'UPLOAD_IMAGES',
   react_query: 'REACT_QUERY',
+  up_view: 'UP_VIEW_ANDROID',
 
   //FIRE_BASE:
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',

@@ -3,13 +3,13 @@ import {StyleSheet, View, TouchableOpacity, Alert} from 'react-native';
 import YouTube from 'react-native-youtube';
 import {useNavigation} from '@react-navigation/core';
 import {API_KEY_YOUTUBE, SIZE, COLOR} from '../../utils';
-// import {getIDWithLinkYouTube} from '../Video/utils';
+import {getIDWithLinkYouTube} from '../Video/utils';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 function VideoFullScreenAndroid({route}) {
   const videoAndroid = useRef(null);
-  // const {itemVideoAndroid} = route.params;
-  // const {url} = itemVideoAndroid;
+  const {itemVideoAndroid} = route.params;
+  const {url} = itemVideoAndroid;
   const navigation = useNavigation();
   const [isPlaying, setStatePlaying] = useState(false);
   const [fullScreen, setStateFullScreen] = useState(false);
@@ -50,7 +50,7 @@ function VideoFullScreenAndroid({route}) {
           <YouTube
             ref={videoAndroid}
             apiKey={API_KEY_YOUTUBE}
-            videoId={'cjkq1JuX3B8'}
+            videoId={getIDWithLinkYouTube(url)}
             play={isPlaying}
             loop={true}
             fullscreen={fullScreen}
