@@ -7105,6 +7105,13 @@ react-native-create-library@^3.1.2:
     update-notifier "^2.1.0"
     uuid "^3.0.1"
 
+react-native-custom-keyboard-kit@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-custom-keyboard-kit/-/react-native-custom-keyboard-kit-1.0.2.tgz#5fa463b1aae4564f82880d267ab362061e5a5da1"
+  integrity sha512-dknh7Rr6TKVsEYP7RJjE1HKjlmRNABhfZJf914JeAZhN0NGTTLkrGtTstJ51I+MBorgFlhDN8RSqKIzA0kQcgA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-device-info@^6.0.2:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-6.2.1.tgz#6b63faeef833d8959d636c0413ccd5066eada2bf"

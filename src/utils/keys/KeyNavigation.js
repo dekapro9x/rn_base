@@ -25,6 +25,7 @@ const KEY_NAVIGATION = {
   upload_images: 'UPLOAD_IMAGES',
   react_query: 'REACT_QUERY',
   up_view: 'UP_VIEW_ANDROID',
+  key_broad: 'KEY_BROAD',
 
   //FIRE_BASE:
   firebase_auth: 'FIRE_BASE_AUTHENTICATION',

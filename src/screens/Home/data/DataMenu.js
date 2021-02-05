@@ -137,11 +137,11 @@ const DATA_MENU_HOME = [
     },
     {
       id: 11,
-      type: 'none',
-      screen: KEY_NAVIGATION.download_img,
+      type: 'icon',
+      screen: KEY_NAVIGATION.key_broad,
       img:
-        'https://khanhnguyen.vn/wp-content/uploads/2019/10/bigstock-Download-glossy-button-32202518.jpg',
-      name: 'Download Image',
+        'https://previews.123rf.com/images/yupiramos/yupiramos1804/yupiramos180417843/99943969-hands-using-computer-keyboard-icon.jpg',
+      name: 'KeyBroad Custom',
       icon: '',
     },
   ],

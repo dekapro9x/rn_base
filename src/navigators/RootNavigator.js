@@ -34,6 +34,7 @@ import UploadImage from '../screens/UploadImage/UploadImg';
 import ReactQuery from '../screens/ReactQuery/ReactQuery';
 import VideoFullScreenAndroid from '../screens/VideoDetailAndroid/VideoFullScreenAndroid';
 import UpviewAndroid from '../screens/UpViewYoutube/UpviewAndroid';
+import KeyBoardCustom from '../screens/KeyBoardCustom/KeyboardCustom';
 
 //FireBase:
 import FireBaseCrashlytic from '../screens/FireBaseCrashLytics/FireBaseCrashlytic';
@@ -130,6 +131,10 @@ function RootNavigator() {
           <RootStack.Screen
             name={KEY_NAVIGATION.upload_images}
             component={UploadImage}
+          />
+          <RootStack.Screen
+            name={KEY_NAVIGATION.key_broad}
+            component={KeyBoardCustom}
           />
           {/* FIRE_BASE */}
           <RootStack.Screen
